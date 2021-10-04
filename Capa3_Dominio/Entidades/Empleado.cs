@@ -17,6 +17,8 @@ namespace Capa3_Dominio.Entidades
         private String correo;
         private String direccion;
 
+        List<Contrato> listaContratos;
+
 
         public string Empleado_id { get => empleado_id; set => empleado_id = value; }
         public string Nombres { get => nombres; set => nombres = value; }

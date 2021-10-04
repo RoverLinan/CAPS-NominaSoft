@@ -21,5 +21,42 @@ namespace Capa3_Dominio.Entidades
         public DateTime Fecha { get => fecha; set => fecha = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public bool Cerrada { get => cerrada; set => cerrada = value; }
+        public PeriodoDeNomina Periodo { get => periodo; set => periodo = value; }
+        public List<BoletaDePago> BoletaDePagos { get => boletaDePagos; set => boletaDePagos = value; }
+
+        //REGLA-06
+
+        public bool ValidarFechaContratos()
+        {
+            foreach (BoletaDePago item in boletaDePagos)
+            {
+                if(item.Contrato.Fechafin.CompareTo(periodo.Fechainicio) == 1 && item.Contrato.Cancelado == false)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        //REGLA-06
+        public bool ValidarFechaFinPeriodo()
+        {
+            if (periodo.Fechafin.CompareTo(this.fecha) == -1)
+            {
+                return true;
+            }
+            return false;
+        }
+        //REGLA-06
+        public bool EsFactibleGenerarNomina()
+        {
+            if(ValidarFechaContratos() && ValidarFechaFinPeriodo())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

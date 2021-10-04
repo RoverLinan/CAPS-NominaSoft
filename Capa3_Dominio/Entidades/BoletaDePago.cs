@@ -22,6 +22,7 @@ namespace Capa3_Dominio.Entidades
 
 
         private Contrato contrato;
+        private Nomina nomina;
         
 
         public string Boleta_id { get => boleta_id; set => boleta_id = value; }
@@ -35,5 +36,41 @@ namespace Capa3_Dominio.Entidades
         public double Montoporhorasdefalta { get => montoporhorasdefalta; set => montoporhorasdefalta = value; }
         public double Adelantos { get => adelantos; set => adelantos = value; }
         public double Otrosdescuentos { get => otrosdescuentos; set => otrosdescuentos = value; }
+        public Contrato Contrato { get => contrato; set => contrato = value; }
+
+
+
+
+        //REGLA-7
+        public int CalcularTotalHoras()
+        {
+            return nomina.Periodo.CalcularTotalSemanas() * contrato.Horasporsemana;
+
+        }
+
+        //REGLA-08
+        public double CalcularSueldoBasico()
+        {
+            return this.sueldobasico = CalcularTotalHoras() * contrato.Pagoporhora;
+        }
+
+        //REGLA-09
+        public double CalcularMontoAsignacionFamiliar()
+        {
+            if (contrato.Tieneasignacionfamiliar)
+            {
+                return CalcularSueldoBasico() * 0.1;
+            }
+            return 0;
+        }
+
+
+        //REGLA-10
+        public void CalcularMontoPorHorasExtras()
+        {
+
+            montoporhoraextras = 
+        }
+
     }
 }
