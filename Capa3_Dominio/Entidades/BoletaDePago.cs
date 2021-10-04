@@ -69,7 +69,7 @@ namespace Capa3_Dominio.Entidades
         public void CalcularMontoPorHorasExtras()
         {
 
-            montoporhoraextras = 
+         
         }
 
     }

@@ -30,6 +30,9 @@ namespace Capa3_Dominio.Entidades
         public double Pagoporhora { get => pagoporhora; set => pagoporhora = value; }
         public string Puesto { get => puesto; set => puesto = value; }
         public bool Cancelado { get => cancelado; set => cancelado = value; }
+        public Afp Afp { get => afp; set => afp = value; }
+        internal Empleado Empleado { get => empleado; set => empleado = value; }
+        public List<IncidenciaLaboral> Incidencias { get => incidencias; set => incidencias = value; }
 
 
         //REGLA-01
@@ -119,7 +122,7 @@ namespace Capa3_Dominio.Entidades
             return false;
         }
 
-
+        
 
 
 

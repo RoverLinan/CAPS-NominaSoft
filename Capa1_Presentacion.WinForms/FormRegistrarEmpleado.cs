@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Capa1_Presentacion.WinForms
 {
-    public partial class Form1 : Form
+    public partial class FormRegistrarEmpleado : Form
     {
-        public Form1()
+        public FormRegistrarEmpleado()
         {
             InitializeComponent();
         }
+
+       
     }
 }
