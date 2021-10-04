@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormGestionarContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionarContrato.Designer.cs">
+      <DependentUpon>FormGestionarContrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRegistrarEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormGestionarContrato.resx">
+      <DependentUpon>FormGestionarContrato.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarEmpleado.resx">
       <DependentUpon>FormRegistrarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
