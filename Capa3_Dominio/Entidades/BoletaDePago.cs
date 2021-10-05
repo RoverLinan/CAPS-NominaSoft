@@ -99,7 +99,13 @@ namespace Capa3_Dominio.Entidades
 
             return Regimenpensionario + CalcularMontoHorasFalta() + Adelantos + Otrosdescuentos;
         }
+		
+		//REGLA-15
+        public double CalcularNetoAPagar()
+        {
 
+            return CalcularTotalIngresos() + CalcularTotalRetenciones();
+        }
 
     }
 }
