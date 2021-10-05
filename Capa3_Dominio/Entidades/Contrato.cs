@@ -135,7 +135,26 @@ namespace Capa3_Dominio.Entidades
             return totalHorasExtras * pagoporhora;
         }
 
+        //REGLA-13
+        public double CalcularHorasFalta()
+        {
+            double totalHorasFalta = 0;
+            if (incidencias.Count() > 0)
+            {
+                foreach (IncidenciaLaboral incidenciaLaboral in incidencias)
+                {
+                    totalHorasFalta += incidenciaLaboral.Totalhorasdefalta;
+                }
+            }
+            return totalHorasFalta;
+        }
 
+        //REGLA-13
+        public double CalcularMontoHorasFalta()
+        {
+
+            return CalcularHorasFalta() * Pagoporhora;
+        }
 
 
     }

@@ -66,13 +66,39 @@ namespace Capa3_Dominio.Entidades
 
 
         //REGLA-10
-        public void CalcularMontoPorHorasExtras()
+        public double CalcularMontoPorHorasExtras()
         {
             montoporhoraextras = this.contrato.CalcularMontoPorHorasExtras();
-         
+            return contrato.CalcularMontoPorHorasExtras();
         }
 
+        //REGLA-11
+        public double CalcularTotalIngresos()
+        {
 
+            return Sueldobasico + CalcularMontoAsignacionFamiliar() + CalcularMontoPorHorasExtras() + Reintegros + Movilidad + Otrosingresos;
+        }
+
+        //REGLA-12
+        public double CalcularRegimenPensionario()
+        {
+
+            return Sueldobasico * contrato.Afp.Porcentajedescuento;
+        }
+
+        //REGLA-13
+        public double CalcularMontoHorasFalta()
+        {
+
+            return contrato.CalcularMontoHorasFalta();
+        }
+
+        //REGLA-14
+        public double CalcularTotalRetenciones()
+        {
+
+            return Regimenpensionario + CalcularMontoHorasFalta() + Adelantos + Otrosdescuentos;
+        }
 
 
     }
