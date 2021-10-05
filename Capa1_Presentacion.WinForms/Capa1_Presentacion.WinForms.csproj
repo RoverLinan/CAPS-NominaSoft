@@ -46,33 +46,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormGestionarContrato.cs">
+    <Compile Include="Acceso\FormIniciarSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormGestionarContrato.Designer.cs">
+    <Compile Include="Acceso\FormIniciarSesion.Designer.cs">
+      <DependentUpon>FormIniciarSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contrato\FormContratoPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrato\FormContratoPrincipal.Designer.cs">
+      <DependentUpon>FormContratoPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contrato\FormGestionarContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrato\FormGestionarContrato.Designer.cs">
       <DependentUpon>FormGestionarContrato.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRegistrarEmpleado.cs">
+    <Compile Include="Empleado\FormEmpleadoPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegistrarEmpleado.Designer.cs">
+    <Compile Include="Empleado\FormEmpleadoPrincipal.Designer.cs">
+      <DependentUpon>FormEmpleadoPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Acceso\FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acceso\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado\FormRegistrarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleado\FormRegistrarEmpleado.Designer.cs">
       <DependentUpon>FormRegistrarEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRegistrarPeriodoDeNomina.cs">
+    <Compile Include="Nomina\FormNominaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRegistrarPeriodoDeNomina.Designer.cs">
+    <Compile Include="Nomina\FormNominaPrincipal.Designer.cs">
+      <DependentUpon>FormNominaPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nomina\FormRegistrarPeriodoDeNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nomina\FormRegistrarPeriodoDeNomina.Designer.cs">
       <DependentUpon>FormRegistrarPeriodoDeNomina.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormGestionarContrato.resx">
+    <EmbeddedResource Include="Contrato\FormGestionarContrato.resx">
       <DependentUpon>FormGestionarContrato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistrarEmpleado.resx">
+    <EmbeddedResource Include="Acceso\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleado\FormRegistrarEmpleado.resx">
       <DependentUpon>FormRegistrarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRegistrarPeriodoDeNomina.resx">
+    <EmbeddedResource Include="Nomina\FormRegistrarPeriodoDeNomina.resx">
       <DependentUpon>FormRegistrarPeriodoDeNomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
