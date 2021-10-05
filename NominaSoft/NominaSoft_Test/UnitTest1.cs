@@ -58,9 +58,10 @@ namespace NominaSoft_Test
         [TestMethod]
         public void Test_Regla04()
         {
-            int hora1 = 12;
+            Contrato contrato = new Contrato();
+            contrato.Horasporsemana = 12;
             bool esperado = true;
-            Contrato Horas = new Contrato();
+            
             bool obtenido = Horas.ViladarHorasPorSemana();
             Assert.AreEqual(esperado, obtenido);
         }
