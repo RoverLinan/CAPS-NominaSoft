@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa1_Presentacion.WinForms.Nomina
+namespace Capa1_Presentacion.WinForms.Acceso
 {
-    public partial class FormRegistrarPeriodoDeNomina : Form
+    public partial class FormRegistrarUsuario : Form
     {
-        public FormRegistrarPeriodoDeNomina()
+        public FormRegistrarUsuario()
         {
             InitializeComponent();
         }

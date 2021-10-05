@@ -16,5 +16,13 @@ namespace Capa1_Presentacion.WinForms.Acceso
         {
             InitializeComponent();
         }
+
+        private void labelRegistrar_Click(object sender, EventArgs e)
+        {
+            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
+
+            formRegistrarUsuario.ShowDialog();
+        
+        }
     }
 }

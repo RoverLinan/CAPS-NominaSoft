@@ -1,5 +1,5 @@
 ﻿
-namespace Capa1_Presentacion.WinForms
+namespace Capa1_Presentacion.WinForms.Nomina
 {
     partial class FormRegistrarPeriodoDeNomina
     {

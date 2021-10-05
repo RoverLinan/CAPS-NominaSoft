@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa1_Presentacion.WinForms
+namespace Capa1_Presentacion.WinForms.Empleado
 {
     public partial class FormRegistrarEmpleado : Form
     {

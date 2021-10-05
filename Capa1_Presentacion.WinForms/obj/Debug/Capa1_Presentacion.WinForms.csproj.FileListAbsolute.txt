@@ -1,5 +1,4 @@
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.AssemblyReference.cache
-C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.FormRegistrarEmpleado.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Properties.Resources.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.GenerateResource.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.CoreCompileInputs.cache
@@ -8,3 +7,9 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa1_Presentacion.WinForms.pdb
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.exe
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormIniciarSesion.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormRegistrarUsuario.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contrato.FormGestionarContrato.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormPrincipal.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleado.FormRegistrarEmpleado.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nomina.FormRegistrarPeriodoDeNomina.resources
