@@ -111,7 +111,7 @@ namespace Capa3_Dominio.Entidades
             return false;
         }
 
-        //REGLA-06
+        //REGLA-05
         public bool ValidarPagoPorHora()
         {
             if(pagoporhora >= 10.0 && pagoporhora <= 60.0)

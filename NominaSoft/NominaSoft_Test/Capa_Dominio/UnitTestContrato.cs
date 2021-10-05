@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Capa3_Dominio.Entidades;
+using System.Collections.Generic;
 
 namespace NominaSoft_Test.Capa_Dominio
 {
@@ -83,6 +84,23 @@ namespace NominaSoft_Test.Capa_Dominio
             Assert.AreEqual(esperado, obtenido);
 
 
+        }
+
+
+        [TestMethod]
+        public void Test_Regla10()
+        {
+            Contrato contrato = new Contrato();
+            contrato.Pagoporhora = 10;
+            contrato.Incidencias = new List<IncidenciaLaboral>();
+            IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
+            incidenciaLaboral.Totalhorasextras = 10;
+            contrato.Incidencias.Add(incidenciaLaboral);
+            BoletaDePago boletadePago = new BoletaDePago();
+            boletadePago.Contrato = contrato;
+            double esperado = 100;
+            double obtenido = boletadePago.CalcularMontoPorHorasExtras();
+            Assert.AreEqual(esperado, obtenido);
         }
     }
 }

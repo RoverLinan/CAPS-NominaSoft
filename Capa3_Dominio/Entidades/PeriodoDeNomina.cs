@@ -30,7 +30,6 @@ namespace Capa3_Dominio.Entidades
             {
                 TimeSpan diffechas = fechafin - fechainicio;
                 int dias = diffechas.Days;
-
                 return dias / 7;
 
             }

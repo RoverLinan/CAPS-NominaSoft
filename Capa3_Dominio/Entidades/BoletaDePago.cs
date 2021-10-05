@@ -37,6 +37,7 @@ namespace Capa3_Dominio.Entidades
         public double Adelantos { get => adelantos; set => adelantos = value; }
         public double Otrosdescuentos { get => otrosdescuentos; set => otrosdescuentos = value; }
         public Contrato Contrato { get => contrato; set => contrato = value; }
+        public Nomina Nomina { get => nomina; set => nomina = value; }
 
 
 
@@ -44,7 +45,7 @@ namespace Capa3_Dominio.Entidades
         //REGLA-7
         public int CalcularTotalHoras()
         {
-            return nomina.Periodo.CalcularTotalSemanas() * contrato.Horasporsemana;
+            return Nomina.Periodo.CalcularTotalSemanas() * contrato.Horasporsemana;
 
         }
 
@@ -104,7 +105,7 @@ namespace Capa3_Dominio.Entidades
         public double CalcularNetoAPagar()
         {
 
-            return CalcularTotalIngresos() + CalcularTotalRetenciones();
+            return CalcularTotalIngresos() - CalcularTotalRetenciones();
         }
 
     }

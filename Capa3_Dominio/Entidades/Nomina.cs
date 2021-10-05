@@ -69,5 +69,19 @@ namespace Capa3_Dominio.Entidades
             return false;
         }
 
+
+        //REGLA-17
+
+        public bool TienePagosEmpleados()
+        {
+            if(boletaDePagos.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
     }
 }
