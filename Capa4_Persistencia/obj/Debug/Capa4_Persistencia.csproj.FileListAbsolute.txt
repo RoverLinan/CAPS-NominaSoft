@@ -1,0 +1,6 @@
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Debug\Capa4_Persistencia.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Debug\Capa4_Persistencia.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.csproj.AssemblyReference.cache
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.pdb
