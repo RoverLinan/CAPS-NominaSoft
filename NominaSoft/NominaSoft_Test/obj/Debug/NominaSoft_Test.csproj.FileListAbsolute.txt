@@ -1,0 +1,2 @@
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\obj\Debug\NominaSoft_Test.csproj.AssemblyReference.cache
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\obj\Debug\NominaSoft_Test.csproj.CoreCompileInputs.cache

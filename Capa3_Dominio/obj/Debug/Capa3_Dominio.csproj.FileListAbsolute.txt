@@ -1,6 +1,5 @@
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\bin\Debug\Capa3_Dominio.dll
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\bin\Debug\Capa3_Dominio.pdb
-C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.csproj.AssemblyReference.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.csproj.CoreCompileInputs.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.dll
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.pdb
