@@ -10,33 +10,37 @@ namespace NominaSoft_Test
         [TestMethod]
         public void Test_Regla01_1()
         {
-            DateTime fechafin = new DateTime(2021, 10, 4);
+            DateTime fechafin = new DateTime(2021, 10, 10);
         
             bool esperado = true;
-            Contrato Vigente = new Contrato();
-            Vigente.Fechafin = DateTime.Today;
-            Vigente.Cancelado = false;
-            bool obtenido = Vigente.EstaVigente();
+            Contrato contrato = new Contrato();
+            contrato.Fechafin = fechafin;
+            contrato.Cancelado = false;
+            bool obtenido = contrato.EstaVigente();
             Assert.AreEqual(esperado, obtenido);
         }
+
+
         [TestMethod]
         public void Test_Regla01_2()
         {
             DateTime fechafin = new DateTime(2021, 10, 4);
-            bool cancelado = true;
             bool esperado = false;
-            Contrato Vigente = new Contrato();
-            bool obtenido = Vigente.EstaVigente();
+            Contrato contrato = new Contrato();
+            contrato.Cancelado = true;
+            contrato.Fechafin = fechafin;
+            bool obtenido = contrato.EstaVigente();
             Assert.AreEqual(esperado, obtenido);
         }
 
         [TestMethod]
         public void Test_Regla02()
         {
-            DateTime fechainicio = new DateTime(2021, 10, 6);
+            DateTime fechainicio = new DateTime(2021, 10, 10);
             bool esperado = true;
-            Contrato Fecha_2 = new Contrato();
-            bool obtenido = Fecha_2.ValidarFechaInicio();
+            Contrato contrato = new Contrato();
+            contrato.Fechainicio = fechainicio;
+            bool obtenido = contrato.ValidarFechaInicio();
             Assert.AreEqual(esperado, obtenido);
 
 
@@ -48,8 +52,10 @@ namespace NominaSoft_Test
             DateTime fechafin = new DateTime(2022, 2, 6);
             DateTime fechainicio = new DateTime(2021, 10, 4);
             bool esperado = true;
-            Contrato Fecha_3 = new Contrato();
-            bool obtenido = Fecha_3.ValidarFechaFin();
+            Contrato contrato = new Contrato();
+            contrato.Fechainicio = fechainicio;
+            contrato.Fechafin = fechafin;
+            bool obtenido = contrato.ValidarFechaFin();
             Assert.AreEqual(esperado, obtenido);
 
 
@@ -61,10 +67,11 @@ namespace NominaSoft_Test
             Contrato contrato = new Contrato();
             contrato.Horasporsemana = 12;
             bool esperado = true;
-            
-            bool obtenido = Horas.ViladarHorasPorSemana();
+            bool obtenido = contrato.ViladarHorasPorSemana();
             Assert.AreEqual(esperado, obtenido);
         }
+
+
 
         [TestMethod]
         public void Test_Regla05()
