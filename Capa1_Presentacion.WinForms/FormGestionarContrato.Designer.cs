@@ -227,7 +227,7 @@ namespace Capa1_Presentacion.WinForms
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(362, 133);
+            this.button2.Location = new System.Drawing.Point(404, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 7;
@@ -236,7 +236,7 @@ namespace Capa1_Presentacion.WinForms
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(488, 133);
+            this.button3.Location = new System.Drawing.Point(530, 133);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 8;
@@ -245,7 +245,7 @@ namespace Capa1_Presentacion.WinForms
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(717, 405);
+            this.button4.Location = new System.Drawing.Point(659, 133);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 9;
@@ -361,7 +361,7 @@ namespace Capa1_Presentacion.WinForms
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(589, 405);
+            this.button5.Location = new System.Drawing.Point(732, 405);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 10;

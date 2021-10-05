@@ -68,9 +68,12 @@ namespace Capa3_Dominio.Entidades
         //REGLA-10
         public void CalcularMontoPorHorasExtras()
         {
-
+            montoporhoraextras = this.contrato.CalcularMontoPorHorasExtras();
          
         }
+
+
+
 
     }
 }

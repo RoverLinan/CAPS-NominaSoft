@@ -123,6 +123,18 @@ namespace Capa3_Dominio.Entidades
         }
 
         
+        //REGLA-10
+        public double CalcularMontoPorHorasExtras()
+        {
+            int totalHorasExtras = 0;
+            foreach (IncidenciaLaboral item in incidencias)
+            {
+                totalHorasExtras += item.Totalhorasextras;
+            }
+
+            return totalHorasExtras * pagoporhora;
+        }
+
 
 
 
