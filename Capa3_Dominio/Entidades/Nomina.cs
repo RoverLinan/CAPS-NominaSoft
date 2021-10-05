@@ -58,5 +58,16 @@ namespace Capa3_Dominio.Entidades
             return false;
         }
 
+        //REGLA-16
+        public bool ValidarRestaFechaFinPeriodo()
+        {
+            var timeSpan = periodo.Fechafin - periodo.Fechainicio;
+            if (timeSpan.TotalDays > 15 && timeSpan.TotalDays < 30)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
