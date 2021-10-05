@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conexion.cs" />
+    <Compile Include="AfpSQLServer.cs" />
+    <Compile Include="BoletaDePagoSQLServer.cs" />
+    <Compile Include="ContratoSQLServer.cs" />
+    <Compile Include="EmpleadoSQLServer.cs" />
     <Compile Include="GestorSQLServer.cs" />
+    <Compile Include="IncidenciaLaboralSQLServer.cs" />
+    <Compile Include="NominaSQLServer.cs" />
+    <Compile Include="PeriodoDeNominaSQLServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

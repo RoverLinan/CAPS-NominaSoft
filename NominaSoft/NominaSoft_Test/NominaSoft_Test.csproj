@@ -49,7 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Capa_Dominio\UnitTestBoletaDePago.cs" />
+    <Compile Include="Capa_Dominio\UnitTestContrato.cs" />
+    <Compile Include="Capa_Dominio\UnitTestIncidenciaLaboral.cs" />
+    <Compile Include="Capa_Dominio\UnitTestNomina.cs" />
+    <Compile Include="Capa_Dominio\UnitTestPeriodoDeNomina.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +64,9 @@
       <Project>{09dbef37-9295-4f07-982a-a6377ce4f990}</Project>
       <Name>Capa3_Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Capa_Aplicacion\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

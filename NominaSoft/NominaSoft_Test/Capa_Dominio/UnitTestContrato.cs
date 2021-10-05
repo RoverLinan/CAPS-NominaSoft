@@ -1,17 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Capa3_Dominio.Entidades;
 using System;
+using Capa3_Dominio.Entidades;
 
-namespace NominaSoft_Test
+namespace NominaSoft_Test.Capa_Dominio
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestContrato
     {
         [TestMethod]
         public void Test_Regla01_1()
         {
             DateTime fechafin = new DateTime(2021, 10, 10);
-        
+
             bool esperado = true;
             Contrato contrato = new Contrato();
             contrato.Fechafin = fechafin;
