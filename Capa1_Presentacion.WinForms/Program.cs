@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa1_Presentacion.WinForms.Acceso;
 
 namespace Capa1_Presentacion.WinForms
 {
@@ -16,7 +17,7 @@ namespace Capa1_Presentacion.WinForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormRegistrarEmpleado());
+            Application.Run(new FormIniciarSesion());
         }
     }
 }

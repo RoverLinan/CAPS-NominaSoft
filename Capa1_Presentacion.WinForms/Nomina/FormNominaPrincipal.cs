@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Capa1_Presentacion.WinForms
+namespace Capa1_Presentacion.WinForms.Nomina
 {
-    public partial class FormGestionarContrato : Form
+    public partial class FormNominaPrincipal : Form
     {
-        public FormGestionarContrato()
+        public FormNominaPrincipal()
         {
             InitializeComponent();
         }
