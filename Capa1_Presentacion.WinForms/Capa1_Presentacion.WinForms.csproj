@@ -143,7 +143,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Capa4_Persistencia\Capa4_Persistencia.csproj">
+      <Project>{7654d614-3cc8-47d6-bdd5-8c9b7d822625}</Project>
+      <Name>Capa4_Persistencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Recursos\imagen_portada.jpg" />
   </ItemGroup>

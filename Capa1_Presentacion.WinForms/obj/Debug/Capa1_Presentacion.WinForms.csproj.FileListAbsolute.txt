@@ -28,3 +28,6 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.CoreCompileInputs.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.exe
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa4_Persistencia.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa4_Persistencia.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.CopyComplete

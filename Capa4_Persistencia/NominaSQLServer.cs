@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    class NominaSQLServer
+    public class NominaSQLServer
     {
+        private GestorSQLServer gestor;
     }
 }

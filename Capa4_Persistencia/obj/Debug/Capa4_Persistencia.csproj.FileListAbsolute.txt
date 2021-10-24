@@ -4,3 +4,6 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Cap
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.csproj.CoreCompileInputs.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.dll
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Debug\Capa3_Dominio.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Debug\Capa3_Dominio.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\Capa4_Persistencia.csproj.CopyComplete

@@ -22,7 +22,7 @@ namespace Capa3_Dominio.Entidades
         public DateTime Fechafin { get => fechafin; set => fechafin = value; }
 
 
-        //REGLA-06
+        //REGLA-07
         public int CalcularTotalSemanas()
         {
             

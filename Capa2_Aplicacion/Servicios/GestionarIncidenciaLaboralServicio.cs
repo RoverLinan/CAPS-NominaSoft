@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Capa4_Persistencia
+namespace Capa2_Aplicacion.Servicios
 {
-    public class PeriodoDeNominaSQLServer
+    class GestionarIncidenciaLaboralServicio
     {
-        private GestorSQLServer gestor;
     }
 }

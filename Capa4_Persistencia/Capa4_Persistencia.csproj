@@ -51,5 +51,11 @@
     <Compile Include="PeriodoDeNominaSQLServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa3_Dominio\Capa3_Dominio.csproj">
+      <Project>{09dbef37-9295-4f07-982a-a6377ce4f990}</Project>
+      <Name>Capa3_Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

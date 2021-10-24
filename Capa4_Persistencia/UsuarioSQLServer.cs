@@ -7,10 +7,13 @@ using Capa3_Dominio.Entidades;
 
 namespace Capa4_Persistencia
 {
-    public class AfpSQLServer
+    public class UsuarioSQLServer
     {
-        private GestorSQLServer gestor;
-        
-        
+        private GestorSQLServer gestor = GestorSQLServer.getInstance();
+
+        public void guardar(Usuario usuario)
+        {
+
+        }
     }
 }

@@ -12,14 +12,35 @@ namespace Capa4_Persistencia
     {
         private SqlConnection conexion;
         private SqlTransaction transaccion;
+        private static GestorSQLServer gestorSingleton;
+
+
+
+
+        private GestorSQLServer()
+        {
+
+        }
+
+
+        public static GestorSQLServer getInstance()
+        {
+            if(gestorSingleton == null)
+            {
+                return new GestorSQLServer();
+            }
+            return gestorSingleton;
+        }
+
 
         public void AbrirConexion()
         {
             try
             {
                 conexion = new SqlConnection();
-                conexion.ConnectionString = "Data Source=(local);Initial Catalog=INTENSITY;Integrated Security=true";
+                conexion.ConnectionString = "Data Source=(local);Initial Catalog=NOMINASOFT;Integrated Security=true";
                 conexion.Open();
+                Console.WriteLine("Se abrio la conexion");
             }
             catch (Exception err)
             {
@@ -38,7 +59,7 @@ namespace Capa4_Persistencia
             {
                 throw new Exception("Error al cerrar la conexión con la Base de Datos.", err);
             }
-
+            Console.WriteLine("Se abrio la conexion");
         }
 
         public void IniciarTransaccion()

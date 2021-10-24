@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    class BoletaDePagoSQLServer
+    public class BoletaDePagoSQLServer
     {
+        private GestorSQLServer gestor;
     }
 }

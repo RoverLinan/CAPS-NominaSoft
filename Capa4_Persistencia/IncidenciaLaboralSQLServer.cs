@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    class IncidenciaLaboralSQLServer
+    public class IncidenciaLaboralSQLServer
     {
+        private GestorSQLServer gestor;
     }
 }

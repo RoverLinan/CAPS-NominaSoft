@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa4_Persistencia;
 
 namespace Capa1_Presentacion.WinForms.Acceso
 {
@@ -20,7 +21,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private void labelRegistrar_Click(object sender, EventArgs e)
         {
             FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
-
+            
             formRegistrarUsuario.ShowDialog();
         
         }
