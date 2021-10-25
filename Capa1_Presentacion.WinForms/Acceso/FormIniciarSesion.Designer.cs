@@ -29,7 +29,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
         /// </summary>
         private void InitializeComponent()
         {
-            this.textDni = new System.Windows.Forms.TextBox();
+            this.textUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textPassword = new System.Windows.Forms.TextBox();
@@ -43,13 +43,13 @@ namespace Capa1_Presentacion.WinForms.Acceso
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textDni
+            // textUsername
             // 
-            this.textDni.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDni.Location = new System.Drawing.Point(102, 168);
-            this.textDni.Name = "textDni";
-            this.textDni.Size = new System.Drawing.Size(182, 26);
-            this.textDni.TabIndex = 0;
+            this.textUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUsername.Location = new System.Drawing.Point(102, 168);
+            this.textUsername.Name = "textUsername";
+            this.textUsername.Size = new System.Drawing.Size(182, 26);
+            this.textUsername.TabIndex = 0;
             // 
             // label1
             // 
@@ -85,7 +85,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnIniciarSesion);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textDni);
+            this.panel1.Controls.Add(this.textUsername);
             this.panel1.Controls.Add(this.textPassword);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(490, -1);
@@ -137,6 +137,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.btnIniciarSesion.TabIndex = 4;
             this.btnIniciarSesion.Text = "Iniciar sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = false;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // pictureBox1
             // 
@@ -168,7 +169,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
 
         #endregion
 
-        private System.Windows.Forms.TextBox textDni;
+        private System.Windows.Forms.TextBox textUsername;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textPassword;

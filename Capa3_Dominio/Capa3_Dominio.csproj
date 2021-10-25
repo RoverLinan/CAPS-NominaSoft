@@ -48,6 +48,8 @@
     <Compile Include="Entidades\IncidenciaLaboral.cs" />
     <Compile Include="Entidades\Nomina.cs" />
     <Compile Include="Entidades\PeriodoDeNomina.cs" />
+    <Compile Include="Entidades\SesionSingleton.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

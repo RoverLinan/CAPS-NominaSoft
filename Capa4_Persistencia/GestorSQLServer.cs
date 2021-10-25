@@ -27,7 +27,7 @@ namespace Capa4_Persistencia
         {
             if(gestorSingleton == null)
             {
-                return new GestorSQLServer();
+                gestorSingleton =  new GestorSQLServer();
             }
             return gestorSingleton;
         }
@@ -59,7 +59,7 @@ namespace Capa4_Persistencia
             {
                 throw new Exception("Error al cerrar la conexión con la Base de Datos.", err);
             }
-            Console.WriteLine("Se abrio la conexion");
+            
         }
 
         public void IniciarTransaccion()

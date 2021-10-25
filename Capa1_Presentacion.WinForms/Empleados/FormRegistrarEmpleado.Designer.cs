@@ -1,5 +1,5 @@
 ﻿
-namespace Capa1_Presentacion.WinForms.Empleado
+namespace Capa1_Presentacion.WinForms.Empleados
 {
     partial class FormRegistrarEmpleado
     {
@@ -29,31 +29,31 @@ namespace Capa1_Presentacion.WinForms.Empleado
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxNombres = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxApellidos = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBoxDni = new System.Windows.Forms.TextBox();
+            this.dateTimeNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxCorreo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonGuardarEmpleado = new System.Windows.Forms.Button();
+            this.buttonCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxNombres
             // 
-            this.textBox1.Location = new System.Drawing.Point(54, 111);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxNombres.Location = new System.Drawing.Point(54, 111);
+            this.textBoxNombres.Name = "textBoxNombres";
+            this.textBoxNombres.Size = new System.Drawing.Size(238, 20);
+            this.textBoxNombres.TabIndex = 0;
             // 
             // label1
             // 
@@ -73,12 +73,12 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label2.TabIndex = 3;
             this.label2.Text = "Apellidos";
             // 
-            // textBox2
+            // textBoxApellidos
             // 
-            this.textBox2.Location = new System.Drawing.Point(54, 164);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(238, 20);
-            this.textBox2.TabIndex = 2;
+            this.textBoxApellidos.Location = new System.Drawing.Point(54, 164);
+            this.textBoxApellidos.Name = "textBoxApellidos";
+            this.textBoxApellidos.Size = new System.Drawing.Size(238, 20);
+            this.textBoxApellidos.TabIndex = 2;
             // 
             // label3
             // 
@@ -89,19 +89,19 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label3.TabIndex = 5;
             this.label3.Text = "DNI";
             // 
-            // textBox3
+            // textBoxDni
             // 
-            this.textBox3.Location = new System.Drawing.Point(54, 217);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(238, 20);
-            this.textBox3.TabIndex = 4;
+            this.textBoxDni.Location = new System.Drawing.Point(54, 217);
+            this.textBoxDni.Name = "textBoxDni";
+            this.textBoxDni.Size = new System.Drawing.Size(238, 20);
+            this.textBoxDni.TabIndex = 4;
             // 
-            // dateTimePicker1
+            // dateTimeNacimiento
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(54, 271);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(238, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dateTimeNacimiento.Location = new System.Drawing.Point(54, 271);
+            this.dateTimeNacimiento.Name = "dateTimeNacimiento";
+            this.dateTimeNacimiento.Size = new System.Drawing.Size(238, 20);
+            this.dateTimeNacimiento.TabIndex = 6;
             // 
             // label4
             // 
@@ -121,12 +121,12 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label5.TabIndex = 9;
             this.label5.Text = "Telefono";
             // 
-            // textBox4
+            // textBoxTelefono
             // 
-            this.textBox4.Location = new System.Drawing.Point(54, 327);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(238, 20);
-            this.textBox4.TabIndex = 8;
+            this.textBoxTelefono.Location = new System.Drawing.Point(54, 327);
+            this.textBoxTelefono.Name = "textBoxTelefono";
+            this.textBoxTelefono.Size = new System.Drawing.Size(238, 20);
+            this.textBoxTelefono.TabIndex = 8;
             // 
             // label6
             // 
@@ -137,12 +137,12 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label6.TabIndex = 11;
             this.label6.Text = "Correo";
             // 
-            // textBox5
+            // textBoxCorreo
             // 
-            this.textBox5.Location = new System.Drawing.Point(54, 379);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(238, 20);
-            this.textBox5.TabIndex = 10;
+            this.textBoxCorreo.Location = new System.Drawing.Point(54, 379);
+            this.textBoxCorreo.Name = "textBoxCorreo";
+            this.textBoxCorreo.Size = new System.Drawing.Size(238, 20);
+            this.textBoxCorreo.TabIndex = 10;
             // 
             // label7
             // 
@@ -153,12 +153,12 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label7.TabIndex = 13;
             this.label7.Text = "Direccion";
             // 
-            // textBox6
+            // textBoxDireccion
             // 
-            this.textBox6.Location = new System.Drawing.Point(54, 425);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(238, 20);
-            this.textBox6.TabIndex = 12;
+            this.textBoxDireccion.Location = new System.Drawing.Point(54, 425);
+            this.textBoxDireccion.Name = "textBoxDireccion";
+            this.textBoxDireccion.Size = new System.Drawing.Size(238, 20);
+            this.textBoxDireccion.TabIndex = 12;
             // 
             // label8
             // 
@@ -170,46 +170,48 @@ namespace Capa1_Presentacion.WinForms.Empleado
             this.label8.TabIndex = 14;
             this.label8.Text = "REGISTRO DE EMPLEADO";
             // 
-            // button1
+            // buttonGuardarEmpleado
             // 
-            this.button1.Location = new System.Drawing.Point(54, 471);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(238, 30);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "GUARDAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonGuardarEmpleado.Location = new System.Drawing.Point(54, 471);
+            this.buttonGuardarEmpleado.Name = "buttonGuardarEmpleado";
+            this.buttonGuardarEmpleado.Size = new System.Drawing.Size(238, 30);
+            this.buttonGuardarEmpleado.TabIndex = 15;
+            this.buttonGuardarEmpleado.Text = "GUARDAR";
+            this.buttonGuardarEmpleado.UseVisualStyleBackColor = true;
+            this.buttonGuardarEmpleado.Click += new System.EventHandler(this.buttonGuardarEmpleado_Click);
             // 
-            // button2
+            // buttonCancelar
             // 
-            this.button2.Location = new System.Drawing.Point(54, 511);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(238, 29);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Location = new System.Drawing.Point(54, 511);
+            this.buttonCancelar.Name = "buttonCancelar";
+            this.buttonCancelar.Size = new System.Drawing.Size(238, 29);
+            this.buttonCancelar.TabIndex = 16;
+            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // FormRegistrarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 552);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(357, 591);
+            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.buttonGuardarEmpleado);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBoxDireccion);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBoxCorreo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBoxTelefono);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimeNacimiento);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxDni);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxApellidos);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxNombres);
             this.MaximizeBox = false;
             this.Name = "FormRegistrarEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -221,22 +223,22 @@ namespace Capa1_Presentacion.WinForms.Empleado
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxNombres;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxApellidos;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBoxDni;
+        private System.Windows.Forms.DateTimePicker dateTimeNacimiento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxCorreo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxDireccion;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonGuardarEmpleado;
+        private System.Windows.Forms.Button buttonCancelar;
     }
 }

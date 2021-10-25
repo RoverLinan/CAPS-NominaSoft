@@ -30,14 +30,50 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonNomina = new System.Windows.Forms.Button();
+            this.buttonContrato = new System.Windows.Forms.Button();
+            this.buttonEmpleado = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonNomina);
+            this.panel1.Controls.Add(this.buttonContrato);
+            this.panel1.Controls.Add(this.buttonEmpleado);
             this.panel1.Location = new System.Drawing.Point(-2, 101);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1038, 351);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonNomina
+            // 
+            this.buttonNomina.Location = new System.Drawing.Point(776, 28);
+            this.buttonNomina.Name = "buttonNomina";
+            this.buttonNomina.Size = new System.Drawing.Size(129, 150);
+            this.buttonNomina.TabIndex = 2;
+            this.buttonNomina.Text = "NOMINAS";
+            this.buttonNomina.UseVisualStyleBackColor = true;
+            // 
+            // buttonContrato
+            // 
+            this.buttonContrato.Location = new System.Drawing.Point(456, 28);
+            this.buttonContrato.Name = "buttonContrato";
+            this.buttonContrato.Size = new System.Drawing.Size(129, 150);
+            this.buttonContrato.TabIndex = 1;
+            this.buttonContrato.Text = "CONTRATOS";
+            this.buttonContrato.UseVisualStyleBackColor = true;
+            this.buttonContrato.Click += new System.EventHandler(this.buttonContrato_Click);
+            // 
+            // buttonEmpleado
+            // 
+            this.buttonEmpleado.Location = new System.Drawing.Point(120, 28);
+            this.buttonEmpleado.Name = "buttonEmpleado";
+            this.buttonEmpleado.Size = new System.Drawing.Size(129, 150);
+            this.buttonEmpleado.TabIndex = 0;
+            this.buttonEmpleado.Text = "EMPLEADOS";
+            this.buttonEmpleado.UseVisualStyleBackColor = true;
+            this.buttonEmpleado.Click += new System.EventHandler(this.buttonEmpleado_Click);
             // 
             // FormPrincipal
             // 
@@ -47,6 +83,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.Controls.Add(this.panel1);
             this.Name = "FormPrincipal";
             this.Text = "FormPrincipal";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -54,5 +91,8 @@ namespace Capa1_Presentacion.WinForms.Acceso
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonNomina;
+        private System.Windows.Forms.Button buttonContrato;
+        private System.Windows.Forms.Button buttonEmpleado;
     }
 }

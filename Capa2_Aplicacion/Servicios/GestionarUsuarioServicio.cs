@@ -13,12 +13,38 @@ namespace Capa2_Aplicacion.Servicios
         private UsuarioSQLServer usuarioSQL;
         private GestorSQLServer gestorSQL;
 
+        
+        public GestionarUsuarioServicio()
+        {
+            this.usuarioSQL = new UsuarioSQLServer();
+            this.gestorSQL = GestorSQLServer.getInstance();
+        }
 
-        public void guardar(Usuario usuario)
+
+        public bool guardar(Usuario usuario)
         {
             gestorSQL.AbrirConexion();
             usuarioSQL.guardar(usuario);
             gestorSQL.CerrarConexion();
+            return true;
+        }
+
+
+        public Usuario iniciarSesion(string username, string password)
+        {
+            try
+            {
+                gestorSQL.AbrirConexion();
+                Usuario usuario = usuarioSQL.validarUsuario(username, password);
+                gestorSQL.CerrarConexion();
+                return usuario;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            
+        
         }
 
 

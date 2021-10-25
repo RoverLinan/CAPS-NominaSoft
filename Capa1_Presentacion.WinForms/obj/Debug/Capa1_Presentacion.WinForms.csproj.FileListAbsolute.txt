@@ -19,9 +19,7 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.AssemblyReference.cache
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormIniciarSesion.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormRegistrarUsuario.resources
-C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contrato.FormGestionarContrato.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormPrincipal.resources
-C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleado.FormRegistrarEmpleado.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nomina.FormRegistrarPeriodoDeNomina.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Properties.Resources.resources
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.GenerateResource.cache
@@ -31,3 +29,11 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa4_Persistencia.dll
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa4_Persistencia.pdb
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.CopyComplete
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa2_Aplicacion.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa3_Dominio.dll
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa2_Aplicacion.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\bin\Debug\Capa3_Dominio.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contratos.FormGestionarContrato.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleados.FormEmpleadoPrincipal.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleados.FormRegistrarEmpleado.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contratos.FormContratoPrincipal.resources

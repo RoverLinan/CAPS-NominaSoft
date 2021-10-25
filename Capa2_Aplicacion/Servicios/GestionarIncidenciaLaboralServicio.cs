@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Capa2_Aplicacion.Servicios
 {
-    class GestionarIncidenciaLaboralServicio
+    public class GestionarIncidenciaLaboralServicio
     {
     }
 }

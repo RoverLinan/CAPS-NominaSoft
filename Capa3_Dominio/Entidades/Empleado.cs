@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Capa3_Dominio.Entidades
 {
-    class Empleado
+    public class Empleado
     {
-        private String empleado_id;
+        private string empleado_id;
         private String nombres;
         private String apellidos;
         private String dni;

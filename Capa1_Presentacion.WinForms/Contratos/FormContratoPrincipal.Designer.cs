@@ -1,5 +1,5 @@
 ﻿
-namespace Capa1_Presentacion.WinForms.Contrato
+namespace Capa1_Presentacion.WinForms.Contratos
 {
     partial class FormContratoPrincipal
     {
@@ -29,12 +29,33 @@ namespace Capa1_Presentacion.WinForms.Contrato
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.buttonGestionar = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // buttonGestionar
+            // 
+            this.buttonGestionar.Location = new System.Drawing.Point(94, 94);
+            this.buttonGestionar.Name = "buttonGestionar";
+            this.buttonGestionar.Size = new System.Drawing.Size(148, 160);
+            this.buttonGestionar.TabIndex = 0;
+            this.buttonGestionar.Text = "GESTIONAR";
+            this.buttonGestionar.UseVisualStyleBackColor = true;
+            this.buttonGestionar.Click += new System.EventHandler(this.buttonGestionar_Click);
+            // 
+            // FormContratoPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonGestionar);
+            this.Name = "FormContratoPrincipal";
             this.Text = "FormContratoPrincipal";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonGestionar;
     }
 }
