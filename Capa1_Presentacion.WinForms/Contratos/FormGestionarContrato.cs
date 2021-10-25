@@ -57,6 +57,9 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
         }
 
-
+        private void buttonCrearContrato_Click(object sender, EventArgs e)
+        {
+            panelInfoContrato.Visible = true;
+        }
     }
 }

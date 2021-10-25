@@ -45,16 +45,18 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             // textUsername
             // 
-            this.textUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textUsername.Location = new System.Drawing.Point(102, 168);
+            this.textUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUsername.Location = new System.Drawing.Point(102, 159);
             this.textUsername.Name = "textUsername";
-            this.textUsername.Size = new System.Drawing.Size(182, 26);
+            this.textUsername.Size = new System.Drawing.Size(182, 24);
             this.textUsername.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 152);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(99, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 1;
@@ -63,7 +65,9 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 206);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(99, 202);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 3;
@@ -71,10 +75,11 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             // textPassword
             // 
-            this.textPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textPassword.Location = new System.Drawing.Point(102, 222);
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(182, 26);
+            this.textPassword.PasswordChar = '*';
+            this.textPassword.Size = new System.Drawing.Size(182, 24);
             this.textPassword.TabIndex = 2;
             // 
             // panel1
