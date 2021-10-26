@@ -42,7 +42,9 @@ namespace Capa1_Presentacion.WinForms.Contratos
                 Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
                 this.empleado = empleadoAux;
                 cargarDatosEmpleado(empleadoAux);
+                buttonActualizar.Visible = false;
                 panelGeneralInfo.Visible = true;
+                listaAfp = afpServicio.obtenerListaAfp();
 
             }
             catch (Exception err)
@@ -63,20 +65,87 @@ namespace Capa1_Presentacion.WinForms.Contratos
             labelDirecc.Text = empleado.Direccion;
             labelFechaNac.Text = empleado.Fechanacimiento.ToShortDateString();
 
+            try
+            {
+                this.contrato = contratoServicio.buscarContratoVigentePorIdEmpleado(empleado.Empleado_id);
+                if(this.contrato != null)
+                {
+                    if (this.contrato.EstaVigente())
+                    {
+                        cargarDatosContratoVigente(this.contrato);
+                        panelInfoContrato.Visible = true;
+                        buttonCrearContrato.Enabled = false;
+                        buttonEditarContrato.Enabled = true;
+                        buttonGuardarContrato.Visible = false;
+                        buttonGuardarContrato.Enabled = false;
+                        buttonCancelarContrato.Enabled = true;
+                    }
+                   
+                }
+                else
+                {
+
+                    MessageBox.Show(this, "Mensaje: no hay contratos vigentes");
+                    buttonCrearContrato.Enabled = true;
+                    buttonEditarContrato.Enabled = false;
+                    panelInfoContrato.Visible = false;
+                }
+
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show(this, "Mensaje: " + err.Message);
+            }
+         
+            
+
+        }
+
+
+        private void cargarDatosContratoVigente(Contrato contrato)
+        {
+
+
+
+            labelIdContrato.Text = "ID: "+ contrato.Contrato_id;
+            dateTimeInicio.Value = contrato.Fechainicio;
+            dateTimeFin.Value = contrato.Fechafin;
+            textBoxPuesto.Text = contrato.Puesto;
+            textBoxHorasSemana.Text = contrato.Horasporsemana.ToString();
+            textBoxPagoHora.Text = contrato.Pagoporhora.ToString();
+
+            if (contrato.Tieneasignacionfamiliar)
+            {
+                checkBoxSi.Checked = true;
+            }
+            else
+            {
+                checkBoxNo.Checked = true;
+            }
+            
+            contrato.Afp = afpServicio.buscarAfpPorId(contrato.Afp.Afp_id);
+            comboBoxAfp.Text = contrato.Afp.Nombre;
+
+
+            desactivarControles();
+
         }
 
         private void buttonCrearContrato_Click(object sender, EventArgs e)
         {
             panelInfoContrato.Visible = true;
             buttonGuardarContrato.Visible = true;
+            buttonGuardarContrato.Enabled = true;
+            buttonActualizar.Visible = false;
+            buttonActualizar.Enabled = false;
             cargarListaAfp();
+            limpiarDatos();
+            activarControles();
         }
 
 
-        private void cargarDatosContrato()
-        {
-
-        }
+     
 
         private void buttonGuardarContrato_Click(object sender, EventArgs e)
         {
@@ -109,11 +178,16 @@ namespace Capa1_Presentacion.WinForms.Contratos
                 }
 
                 contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
-                contratoAux.Pagoporhora = double.Parse(textBoxHorasSemana.Text);
+                contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
+                contratoAux.Cancelado = false;
 
                 if(contratoServicio.guardarContrato(contratoAux, this.empleado, contratoAux.Afp))
                 {
                     MessageBox.Show(this, "Contrato creado correctamente");
+                    panelGeneralInfo.Visible = false;
+                    this.contrato = null;
+                    this.empleado = null;
+
                 }
 
             }
@@ -128,10 +202,8 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
         private  void cargarListaAfp()
         {
-            listaAfp = afpServicio.obtenerListaAfp();
 
-            
-           
+            comboBoxAfp.Items.Clear();
             foreach (Afp item in listaAfp)
             {
                 comboBoxAfp.Items.Add(item.Nombre);
@@ -139,6 +211,48 @@ namespace Capa1_Presentacion.WinForms.Contratos
             }
 
        
+        }
+
+        private void limpiarDatos()
+        {
+            labelIdContrato.Text = "";
+            dateTimeInicio.Value = DateTime.Now;
+            dateTimeFin.Value = DateTime.Now;
+            textBoxPuesto.Text = "";
+            textBoxHorasSemana.Text = "";
+            textBoxPagoHora.Text = "";
+            checkBoxSi.Checked = false;
+            checkBoxNo.Checked = false;
+            comboBoxAfp.Text = "Seleccione";
+        }
+
+
+        private void desactivarControles()
+        {
+
+            labelIdContrato.Enabled = false;
+            dateTimeInicio.Enabled = false;
+            dateTimeFin.Enabled = false;
+            textBoxPuesto.Enabled = false;
+            textBoxHorasSemana.Enabled = false;
+            textBoxPagoHora.Enabled = false;
+            checkBoxSi.Enabled = false;
+            checkBoxNo.Enabled = false;
+            comboBoxAfp.Enabled = false;
+        }
+
+
+        private void activarControles()
+        {
+
+            dateTimeInicio.Enabled = true;
+            dateTimeFin.Enabled = true;
+            textBoxPuesto.Enabled = true;
+            textBoxHorasSemana.Enabled = true;
+            textBoxPagoHora.Enabled = true;
+            checkBoxSi.Enabled = true;
+            checkBoxNo.Enabled = true;
+            comboBoxAfp.Enabled = true;
         }
 
         private void checkBoxSi_CheckedChanged(object sender, EventArgs e)
@@ -149,6 +263,95 @@ namespace Capa1_Presentacion.WinForms.Contratos
         private void checkBoxNo_CheckedChanged(object sender, EventArgs e)
         {
             checkBoxSi.Checked = false;
+        }
+
+        private void buttonCancelarContrato_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (contrato != null)
+                {
+                    contratoServicio.cancelarContrato(this.contrato.Contrato_id);
+                    limpiarDatos();
+                    buttonCancelarContrato.Enabled = false;
+                    buttonGuardarContrato.Visible = false;
+                    MessageBox.Show(this, "mensaje:  contrato cancelado correctamente");
+                    panelInfoContrato.Visible = false;
+                    buttonCrearContrato.Enabled = true;
+                }
+
+
+
+                   
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+
+
+        }
+
+        private void buttonEditarContrato_Click(object sender, EventArgs e)
+        {
+            activarControles();
+            cargarListaAfp();
+            buttonActualizar.Enabled = true;
+            buttonActualizar.Visible = true;
+
+        }
+
+        private void buttonActualizar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Contrato contratoAux = this.contrato;
+                contratoAux.Fechainicio = dateTimeInicio.Value;
+                contratoAux.Fechafin = dateTimeFin.Value;
+                contratoAux.Puesto = textBoxPuesto.Text;
+
+                foreach (Afp item in listaAfp)
+                {
+                    if (comboBoxAfp.Text.Equals(item.Nombre))
+                    {
+                        contratoAux.Afp = item;
+                        break;
+                    }
+                }
+
+                if (checkBoxSi.Checked)
+                {
+                    contratoAux.Tieneasignacionfamiliar = true;
+                }
+                if (checkBoxNo.Checked)
+                {
+                    contratoAux.Tieneasignacionfamiliar = false;
+                }
+
+                contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
+                contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
+                contratoAux.Cancelado = false;
+
+                if (contratoServicio.actualizarContrato(contratoAux))
+                {
+                    
+                    MessageBox.Show(this, "El contrato se actualizado correctamente");
+                    panelGeneralInfo.Visible = false;
+                    this.contrato = null;
+                    this.empleado = null;
+                    buttonActualizar.Enabled = false;
+
+                }
+
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show(this, "Mensaje: " + err.Message);
+            }
         }
     }
 }

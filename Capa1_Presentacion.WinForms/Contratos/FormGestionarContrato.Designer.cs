@@ -50,7 +50,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.label9 = new System.Windows.Forms.Label();
             this.buttonGuardarContrato = new System.Windows.Forms.Button();
             this.checkBoxNo = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.labelIdContrato = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxPagoHora = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -70,6 +70,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonEditarContrato = new System.Windows.Forms.Button();
             this.buttonCancelarContrato = new System.Windows.Forms.Button();
             this.panelGeneralInfo = new System.Windows.Forms.Panel();
+            this.buttonActualizar = new System.Windows.Forms.Button();
             this.panelInfoEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfoContrato.SuspendLayout();
@@ -259,10 +260,11 @@ namespace Capa1_Presentacion.WinForms.Contratos
             // 
             // panelInfoContrato
             // 
+            this.panelInfoContrato.Controls.Add(this.buttonActualizar);
             this.panelInfoContrato.Controls.Add(this.label9);
             this.panelInfoContrato.Controls.Add(this.buttonGuardarContrato);
             this.panelInfoContrato.Controls.Add(this.checkBoxNo);
-            this.panelInfoContrato.Controls.Add(this.label18);
+            this.panelInfoContrato.Controls.Add(this.labelIdContrato);
             this.panelInfoContrato.Controls.Add(this.label17);
             this.panelInfoContrato.Controls.Add(this.textBoxPagoHora);
             this.panelInfoContrato.Controls.Add(this.label16);
@@ -293,7 +295,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             // 
             // buttonGuardarContrato
             // 
-            this.buttonGuardarContrato.Location = new System.Drawing.Point(333, 322);
+            this.buttonGuardarContrato.Location = new System.Drawing.Point(42, 316);
             this.buttonGuardarContrato.Name = "buttonGuardarContrato";
             this.buttonGuardarContrato.Size = new System.Drawing.Size(122, 23);
             this.buttonGuardarContrato.TabIndex = 10;
@@ -313,15 +315,16 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.checkBoxNo.UseVisualStyleBackColor = true;
             this.checkBoxNo.CheckedChanged += new System.EventHandler(this.checkBoxNo_CheckedChanged);
             // 
-            // label18
+            // labelIdContrato
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(26, 19);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(49, 13);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "ID: 545";
+            this.labelIdContrato.AutoSize = true;
+            this.labelIdContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIdContrato.Location = new System.Drawing.Point(26, 19);
+            this.labelIdContrato.Name = "labelIdContrato";
+            this.labelIdContrato.Size = new System.Drawing.Size(49, 13);
+            this.labelIdContrato.TabIndex = 14;
+            this.labelIdContrato.Text = "ID: 545";
+            this.labelIdContrato.Visible = false;
             // 
             // label17
             // 
@@ -471,6 +474,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonEditarContrato.TabIndex = 8;
             this.buttonEditarContrato.Text = "Editar";
             this.buttonEditarContrato.UseVisualStyleBackColor = true;
+            this.buttonEditarContrato.Click += new System.EventHandler(this.buttonEditarContrato_Click);
             // 
             // buttonCancelarContrato
             // 
@@ -481,6 +485,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonCancelarContrato.TabIndex = 9;
             this.buttonCancelarContrato.Text = "Cancelar";
             this.buttonCancelarContrato.UseVisualStyleBackColor = true;
+            this.buttonCancelarContrato.Click += new System.EventHandler(this.buttonCancelarContrato_Click);
             // 
             // panelGeneralInfo
             // 
@@ -495,6 +500,17 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.panelGeneralInfo.Name = "panelGeneralInfo";
             this.panelGeneralInfo.Size = new System.Drawing.Size(1160, 516);
             this.panelGeneralInfo.TabIndex = 11;
+            // 
+            // buttonActualizar
+            // 
+            this.buttonActualizar.Location = new System.Drawing.Point(305, 316);
+            this.buttonActualizar.Name = "buttonActualizar";
+            this.buttonActualizar.Size = new System.Drawing.Size(122, 23);
+            this.buttonActualizar.TabIndex = 17;
+            this.buttonActualizar.Text = "Actualizar";
+            this.buttonActualizar.UseVisualStyleBackColor = true;
+            this.buttonActualizar.Visible = false;
+            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click);
             // 
             // FormGestionarContrato
             // 
@@ -540,7 +556,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
         private System.Windows.Forms.Button buttonCrearContrato;
         private System.Windows.Forms.Button buttonEditarContrato;
         private System.Windows.Forms.Button buttonCancelarContrato;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label labelIdContrato;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxPagoHora;
         private System.Windows.Forms.Label label16;
@@ -563,5 +579,6 @@ namespace Capa1_Presentacion.WinForms.Contratos
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBoxNo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonActualizar;
     }
 }

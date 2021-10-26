@@ -27,7 +27,7 @@ namespace Capa4_Persistencia
             {
                 SqlCommand comando = new SqlCommand();
                 comando = gestorSQL.ObtenerComandoSQL(insertarContrato);
-                comando.Parameters.AddWithValue("@c_id", "CON" + empleado.Dni);
+                comando.Parameters.AddWithValue("@c_id", "CON" + empleado.Dni + new Random().Next(10,10001));
                 comando.Parameters.AddWithValue("@e_id", empleado.Empleado_id);
                 comando.Parameters.AddWithValue("@afp_id", afp.Afp_id);
                 comando.Parameters.AddWithValue("@feini", contrato.Fechainicio);
@@ -48,6 +48,46 @@ namespace Capa4_Persistencia
 
          
         }
+
+
+
+        public bool actualizar(Contrato contrato)
+        {
+
+            string actualizarContrato = "UPDATE contrato set afp_id = @afp_id, fechainicio = @fechaini, fechafin=@fechafin" +
+                                       ",tieneasignacionfamiliar=@asigfami,horasporsemana=@hxsema,pagoporhora=@pagxh,puesto=@puesto,cancelado=@canc" +
+                                       " where contrato_id=@c_id";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand();
+                comando = gestorSQL.ObtenerComandoSQL(actualizarContrato);
+                comando.Parameters.AddWithValue("@afp_id", contrato.Afp.Afp_id);
+                comando.Parameters.AddWithValue("@fechaini", contrato.Fechainicio);
+                comando.Parameters.AddWithValue("@fechafin", contrato.Fechafin);
+                comando.Parameters.AddWithValue("@asigfami", contrato.Tieneasignacionfamiliar);
+                comando.Parameters.AddWithValue("@hxsema", contrato.Horasporsemana);
+                comando.Parameters.AddWithValue("@pagxh", decimal.Parse(contrato.Pagoporhora.ToString()));
+                comando.Parameters.AddWithValue("@puesto", contrato.Puesto);
+                comando.Parameters.AddWithValue("@canc", contrato.Cancelado);
+                comando.Parameters.AddWithValue("@c_id", contrato.Contrato_id);
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+
+        }
+
+
+
+
+
+
 
         public List<Contrato> buscarContratosPorIdEmpleado(string id)
         {
@@ -75,18 +115,27 @@ namespace Capa4_Persistencia
 
         public Contrato buscarContratoVigentePorIdEmpleado(string id)
         {
-            Contrato contrato = new Contrato();
-            DateTime fechActual = DateTime.Now;
+            Contrato contrato = null;
 
-            string consultaSQL = "select   * from contrato where empleado_id = '" + id + "' and fechafin >= '"+fechActual.ToShortDateString()+"'";
+            DateTime fechActual = DateTime.Now;
+            Console.WriteLine("fecha cortaaaaaa  :  " + fechActual.ToString("dd-MM-yyyy"));
+            string consultaSQL = "select   * from contrato where empleado_id = '" + id + "' and fechafin > '"+fechActual.ToString("MM-dd-yyyy") +"'";
+            Console.WriteLine(consultaSQL);
+
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
-                if (resultadoSQL.Read())
+                while(resultadoSQL.Read())
                 {
-                    contrato = obtenerContrato(resultadoSQL);
+                    if (obtenerContrato(resultadoSQL).EstaVigente())
+                    {
+                        contrato = obtenerContrato(resultadoSQL);
+                        break;
+                    }
+                   
                 }
-                else
+
+                if (contrato == null)
                 {
                     throw new Exception("No hay contratos vigentes ");
                 }
@@ -98,11 +147,39 @@ namespace Capa4_Persistencia
             return contrato;
         }
 
+
+        public bool cancelar(string idContrato)
+        {
+            try
+            {
+                string consultaSQL = "update contrato set cancelado = @valor where contrato_id = '" + idContrato + "'";
+
+                SqlCommand comando = new SqlCommand();
+                comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
+                comando.Parameters.AddWithValue("@valor", true);
+                comando.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+           
+        }
+
         public Contrato obtenerContrato(SqlDataReader resultado)
         {
             Contrato contrato = new Contrato();
+            Afp afp = new Afp();
+            Empleado empleado = new Empleado();
+
+            contrato.Afp = afp;
+            contrato.Empleado = empleado;
 
             contrato.Contrato_id = resultado.GetString(0);
+            contrato.Empleado.Empleado_id = resultado.GetString(1);
+            contrato.Afp.Afp_id = resultado.GetInt32(2);
             contrato.Fechainicio = resultado.GetDateTime(3);
             contrato.Fechafin = resultado.GetDateTime(4);
             contrato.Tieneasignacionfamiliar = resultado.GetBoolean(5);

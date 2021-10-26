@@ -43,7 +43,7 @@ namespace Capa4_Persistencia
             }
         }
 
-        public Afp buscarAfpPorId(string id)
+        public Afp buscarAfpPorId(int id)
         {
             Afp afp;
             string consultaSQL = "select   * from afp where afp_id = '" + id + "'";

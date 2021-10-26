@@ -102,5 +102,63 @@ namespace Capa2_Aplicacion.Servicios
 
         }
 
+        public bool actualizarContrato(Contrato contrato)
+        {
+
+
+            try
+            {
+
+
+                if (!contrato.ValidarFechaInicio())
+                {
+                    throw new Exception("fecha inicio incorrecta");
+                }
+
+                if (!contrato.ValidarFechaFin())
+                {
+                    throw new Exception("fecha fin incorrecta");
+                }
+
+                if (!contrato.ValidarPagoPorHora())
+                {
+                    throw new Exception("pago por hora incorrecta");
+                }
+                if (!contrato.ViladarHorasPorSemana())
+                {
+                    throw new Exception("horas por semana incorrecta");
+                }
+
+
+
+                gestorSQL.AbrirConexion();
+                bool guardado = contratoSQLServer.actualizar(contrato);
+                gestorSQL.CerrarConexion();
+                return guardado;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
+
+        public bool cancelarContrato(string id)
+        {
+           
+            try
+            {
+                gestorSQL.AbrirConexion();
+                bool cancelado = contratoSQLServer.cancelar(id);
+                gestorSQL.CerrarConexion();
+                return cancelado;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
+
     }
 }

@@ -31,7 +31,7 @@ namespace Capa3_Dominio.Entidades
         public string Puesto { get => puesto; set => puesto = value; }
         public bool Cancelado { get => cancelado; set => cancelado = value; }
         public Afp Afp { get => afp; set => afp = value; }
-        internal Empleado Empleado { get => empleado; set => empleado = value; }
+        public Empleado Empleado { get => empleado; set => empleado = value; }
         public List<IncidenciaLaboral> Incidencias { get => incidencias; set => incidencias = value; }
 
 

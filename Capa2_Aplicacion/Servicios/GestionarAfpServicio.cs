@@ -38,7 +38,7 @@ namespace Capa2_Aplicacion.Servicios
 
         }
 
-        public Afp buscarAfpPorId(string id)
+        public Afp buscarAfpPorId(int id)
         {
             Afp afp;
             try
