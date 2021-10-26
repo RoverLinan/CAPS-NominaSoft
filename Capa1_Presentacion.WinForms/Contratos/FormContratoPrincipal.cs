@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa1_Presentacion.WinForms.Otros;
 
 namespace Capa1_Presentacion.WinForms.Contratos
 {
@@ -21,6 +22,12 @@ namespace Capa1_Presentacion.WinForms.Contratos
         {
             FormGestionarContrato formGestionar = new FormGestionarContrato();
             formGestionar.ShowDialog(this);
+        }
+
+        private void buttonIncidenciaLabo_Click(object sender, EventArgs e)
+        {
+            FormRegistrarIncidencia formRegistrarIncidencia = new FormRegistrarIncidencia();
+            formRegistrarIncidencia.ShowDialog(this);
         }
     }
 }

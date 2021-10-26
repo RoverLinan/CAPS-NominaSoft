@@ -18,5 +18,7 @@ namespace Capa3_Dominio.Entidades
         public int Incidencia_id { get => incidencia_id; set => incidencia_id = value; }
         public int Totalhorasdefalta { get => totalhorasdefalta; set => totalhorasdefalta = value; }
         public int Totalhorasextras { get => totalhorasextras; set => totalhorasextras = value; }
+        public PeriodoDeNomina Periodo { get => periodo; set => periodo = value; }
+        public Contrato Contrato { get => contrato; set => contrato = value; }
     }
 }

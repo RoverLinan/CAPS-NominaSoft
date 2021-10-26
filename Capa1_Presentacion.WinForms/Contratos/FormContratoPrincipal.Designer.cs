@@ -30,6 +30,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
         private void InitializeComponent()
         {
             this.buttonGestionar = new System.Windows.Forms.Button();
+            this.buttonIncidenciaLabo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonGestionar
@@ -42,11 +43,22 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonGestionar.UseVisualStyleBackColor = true;
             this.buttonGestionar.Click += new System.EventHandler(this.buttonGestionar_Click);
             // 
+            // buttonIncidenciaLabo
+            // 
+            this.buttonIncidenciaLabo.Location = new System.Drawing.Point(554, 94);
+            this.buttonIncidenciaLabo.Name = "buttonIncidenciaLabo";
+            this.buttonIncidenciaLabo.Size = new System.Drawing.Size(148, 160);
+            this.buttonIncidenciaLabo.TabIndex = 1;
+            this.buttonIncidenciaLabo.Text = "REGISTRAR INCIDENCIA LABORAL";
+            this.buttonIncidenciaLabo.UseVisualStyleBackColor = true;
+            this.buttonIncidenciaLabo.Click += new System.EventHandler(this.buttonIncidenciaLabo_Click);
+            // 
             // FormContratoPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonIncidenciaLabo);
             this.Controls.Add(this.buttonGestionar);
             this.Name = "FormContratoPrincipal";
             this.Text = "FormContratoPrincipal";
@@ -57,5 +69,6 @@ namespace Capa1_Presentacion.WinForms.Contratos
         #endregion
 
         private System.Windows.Forms.Button buttonGestionar;
+        private System.Windows.Forms.Button buttonIncidenciaLabo;
     }
 }
