@@ -2,6 +2,8 @@
 using Capa3_Dominio.Entidades;
 using Capa1_Presentacion.WinForms.Empleados;
 using Capa1_Presentacion.WinForms.Contratos;
+using Capa1_Presentacion.WinForms.Nominas;
+
 
 namespace Capa1_Presentacion.WinForms.Acceso
 {
@@ -25,6 +27,13 @@ namespace Capa1_Presentacion.WinForms.Acceso
         {
             FormContratoPrincipal formContrato = new FormContratoPrincipal();
             formContrato.Show();
+        }
+
+        private void buttonNomina_Click(object sender, System.EventArgs e)
+        {
+            FormNominaPrincipal formNominaPrincipal = new FormNominaPrincipal();
+            formNominaPrincipal.Show();
+
         }
     }
 }

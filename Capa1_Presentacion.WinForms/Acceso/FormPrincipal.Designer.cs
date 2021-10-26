@@ -54,6 +54,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.buttonNomina.TabIndex = 2;
             this.buttonNomina.Text = "NOMINAS";
             this.buttonNomina.UseVisualStyleBackColor = true;
+            this.buttonNomina.Click += new System.EventHandler(this.buttonNomina_Click);
             // 
             // buttonContrato
             // 

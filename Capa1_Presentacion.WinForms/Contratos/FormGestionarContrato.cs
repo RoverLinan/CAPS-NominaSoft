@@ -61,5 +61,11 @@ namespace Capa1_Presentacion.WinForms.Contratos
         {
             panelInfoContrato.Visible = true;
         }
+
+
+        private void cargarDatosContrato()
+        {
+
+        }
     }
 }
