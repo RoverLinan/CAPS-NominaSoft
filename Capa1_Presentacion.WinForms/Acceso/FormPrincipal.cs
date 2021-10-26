@@ -3,6 +3,7 @@ using Capa3_Dominio.Entidades;
 using Capa1_Presentacion.WinForms.Empleados;
 using Capa1_Presentacion.WinForms.Contratos;
 using Capa1_Presentacion.WinForms.Nominas;
+using Capa1_Presentacion.WinForms.Otros;
 
 
 namespace Capa1_Presentacion.WinForms.Acceso
@@ -34,6 +35,12 @@ namespace Capa1_Presentacion.WinForms.Acceso
             FormNominaPrincipal formNominaPrincipal = new FormNominaPrincipal();
             formNominaPrincipal.Show();
 
+        }
+
+        private void buttonAfp_Click(object sender, System.EventArgs e)
+        {
+            FormAFPPrincipal formAFPPrincipal = new FormAFPPrincipal();
+            formAFPPrincipal.Show();
         }
     }
 }

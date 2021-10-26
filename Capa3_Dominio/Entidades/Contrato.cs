@@ -62,6 +62,8 @@ namespace Capa3_Dominio.Entidades
         {
             bool estado = false;
             DateTime fechaActual = DateTime.Now;
+            Console.WriteLine(fechaActual.ToString() + "             " + fechainicio.ToString());
+
             if (fechainicio.CompareTo(fechaActual) == 0 || fechainicio.CompareTo(fechaActual) == 1)
             {
                 estado = true;
@@ -114,7 +116,7 @@ namespace Capa3_Dominio.Entidades
         //REGLA-05
         public bool ValidarPagoPorHora()
         {
-            if(pagoporhora >= 10.0 && pagoporhora <= 60.0)
+            if(pagoporhora >= 10 && pagoporhora <= 60)
             {
                 return true;
             }

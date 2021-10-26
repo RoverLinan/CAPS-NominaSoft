@@ -33,11 +33,13 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.buttonNomina = new System.Windows.Forms.Button();
             this.buttonContrato = new System.Windows.Forms.Button();
             this.buttonEmpleado = new System.Windows.Forms.Button();
+            this.buttonAfp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonAfp);
             this.panel1.Controls.Add(this.buttonNomina);
             this.panel1.Controls.Add(this.buttonContrato);
             this.panel1.Controls.Add(this.buttonEmpleado);
@@ -48,7 +50,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             // buttonNomina
             // 
-            this.buttonNomina.Location = new System.Drawing.Point(776, 28);
+            this.buttonNomina.Location = new System.Drawing.Point(578, 28);
             this.buttonNomina.Name = "buttonNomina";
             this.buttonNomina.Size = new System.Drawing.Size(129, 150);
             this.buttonNomina.TabIndex = 2;
@@ -58,7 +60,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             // buttonContrato
             // 
-            this.buttonContrato.Location = new System.Drawing.Point(456, 28);
+            this.buttonContrato.Location = new System.Drawing.Point(348, 28);
             this.buttonContrato.Name = "buttonContrato";
             this.buttonContrato.Size = new System.Drawing.Size(129, 150);
             this.buttonContrato.TabIndex = 1;
@@ -75,6 +77,16 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.buttonEmpleado.Text = "EMPLEADOS";
             this.buttonEmpleado.UseVisualStyleBackColor = true;
             this.buttonEmpleado.Click += new System.EventHandler(this.buttonEmpleado_Click);
+            // 
+            // buttonAfp
+            // 
+            this.buttonAfp.Location = new System.Drawing.Point(792, 28);
+            this.buttonAfp.Name = "buttonAfp";
+            this.buttonAfp.Size = new System.Drawing.Size(129, 150);
+            this.buttonAfp.TabIndex = 3;
+            this.buttonAfp.Text = "AFP";
+            this.buttonAfp.UseVisualStyleBackColor = true;
+            this.buttonAfp.Click += new System.EventHandler(this.buttonAfp_Click);
             // 
             // FormPrincipal
             // 
@@ -95,5 +107,6 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private System.Windows.Forms.Button buttonNomina;
         private System.Windows.Forms.Button buttonContrato;
         private System.Windows.Forms.Button buttonEmpleado;
+        private System.Windows.Forms.Button buttonAfp;
     }
 }

@@ -33,6 +33,11 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.label1 = new System.Windows.Forms.Label();
             this.buttonBuscarEmpleado = new System.Windows.Forms.Button();
             this.panelInfoEmpleado = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.labelDirecc = new System.Windows.Forms.Label();
             this.labelFechaNac = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,6 +47,9 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.labelIdEmpleado = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panelInfoContrato = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.buttonGuardarContrato = new System.Windows.Forms.Button();
+            this.checkBoxNo = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxPagoHora = new System.Windows.Forms.TextBox();
@@ -61,19 +69,11 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonCrearContrato = new System.Windows.Forms.Button();
             this.buttonEditarContrato = new System.Windows.Forms.Button();
             this.buttonCancelarContrato = new System.Windows.Forms.Button();
-            this.buttonGuardarContrato = new System.Windows.Forms.Button();
             this.panelGeneralInfo = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBoxNo = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelInfoEmpleado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelInfoContrato.SuspendLayout();
             this.panelGeneralInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxDniEmpleado
@@ -124,6 +124,58 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.panelInfoEmpleado.Name = "panelInfoEmpleado";
             this.panelInfoEmpleado.Size = new System.Drawing.Size(435, 385);
             this.panelInfoEmpleado.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::Capa1_Presentacion.WinForms.Properties.Resources.user;
+            this.pictureBox1.Location = new System.Drawing.Point(117, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(173, 137);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(71, 288);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 18);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Dirección:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(76, 261);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 18);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Telefono:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(87, 234);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 18);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Correo:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 210);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(137, 18);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Nombres/Apellidos:";
             // 
             // labelDirecc
             // 
@@ -230,6 +282,37 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.panelInfoContrato.TabIndex = 4;
             this.panelInfoContrato.Visible = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 157);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Asignación familiar";
+            // 
+            // buttonGuardarContrato
+            // 
+            this.buttonGuardarContrato.Location = new System.Drawing.Point(333, 322);
+            this.buttonGuardarContrato.Name = "buttonGuardarContrato";
+            this.buttonGuardarContrato.Size = new System.Drawing.Size(122, 23);
+            this.buttonGuardarContrato.TabIndex = 10;
+            this.buttonGuardarContrato.Text = "Guardar";
+            this.buttonGuardarContrato.UseVisualStyleBackColor = true;
+            this.buttonGuardarContrato.Visible = false;
+            this.buttonGuardarContrato.Click += new System.EventHandler(this.buttonGuardarContrato_Click);
+            // 
+            // checkBoxNo
+            // 
+            this.checkBoxNo.AutoSize = true;
+            this.checkBoxNo.Location = new System.Drawing.Point(69, 178);
+            this.checkBoxNo.Name = "checkBoxNo";
+            this.checkBoxNo.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxNo.TabIndex = 15;
+            this.checkBoxNo.Text = "No";
+            this.checkBoxNo.UseVisualStyleBackColor = true;
+            this.checkBoxNo.CheckedChanged += new System.EventHandler(this.checkBoxNo_CheckedChanged);
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -281,6 +364,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.checkBoxSi.TabIndex = 9;
             this.checkBoxSi.Text = "Si";
             this.checkBoxSi.UseVisualStyleBackColor = true;
+            this.checkBoxSi.CheckedChanged += new System.EventHandler(this.checkBoxSi_CheckedChanged);
             // 
             // label15
             // 
@@ -298,6 +382,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.comboBoxAfp.Name = "comboBoxAfp";
             this.comboBoxAfp.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAfp.TabIndex = 7;
+            this.comboBoxAfp.Text = "Selecciona";
             // 
             // label14
             // 
@@ -397,16 +482,6 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.buttonCancelarContrato.Text = "Cancelar";
             this.buttonCancelarContrato.UseVisualStyleBackColor = true;
             // 
-            // buttonGuardarContrato
-            // 
-            this.buttonGuardarContrato.Location = new System.Drawing.Point(333, 322);
-            this.buttonGuardarContrato.Name = "buttonGuardarContrato";
-            this.buttonGuardarContrato.Size = new System.Drawing.Size(122, 23);
-            this.buttonGuardarContrato.TabIndex = 10;
-            this.buttonGuardarContrato.Text = "Guardar";
-            this.buttonGuardarContrato.UseVisualStyleBackColor = true;
-            this.buttonGuardarContrato.Visible = false;
-            // 
             // panelGeneralInfo
             // 
             this.panelGeneralInfo.Controls.Add(this.label2);
@@ -420,77 +495,6 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.panelGeneralInfo.Name = "panelGeneralInfo";
             this.panelGeneralInfo.Size = new System.Drawing.Size(1160, 516);
             this.panelGeneralInfo.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 210);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(137, 18);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Nombres/Apellidos:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(87, 234);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 18);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Correo:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(76, 261);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 18);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Telefono:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(71, 288);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 18);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Dirección:";
-            // 
-            // checkBoxNo
-            // 
-            this.checkBoxNo.AutoSize = true;
-            this.checkBoxNo.Location = new System.Drawing.Point(69, 178);
-            this.checkBoxNo.Name = "checkBoxNo";
-            this.checkBoxNo.Size = new System.Drawing.Size(40, 17);
-            this.checkBoxNo.TabIndex = 15;
-            this.checkBoxNo.Text = "No";
-            this.checkBoxNo.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 157);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Asignación familiar";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = global::Capa1_Presentacion.WinForms.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(117, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(173, 137);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
             // 
             // FormGestionarContrato
             // 
@@ -506,11 +510,11 @@ namespace Capa1_Presentacion.WinForms.Contratos
             this.Text = "FormGestionarContrato";
             this.panelInfoEmpleado.ResumeLayout(false);
             this.panelInfoEmpleado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelInfoContrato.ResumeLayout(false);
             this.panelInfoContrato.PerformLayout();
             this.panelGeneralInfo.ResumeLayout(false);
             this.panelGeneralInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

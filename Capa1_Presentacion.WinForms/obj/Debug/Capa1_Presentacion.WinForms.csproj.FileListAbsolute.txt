@@ -40,3 +40,4 @@ C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.exe
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.pdb
 C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormNominaPrincipal.resources
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Otros.FormAFPPrincipal.resources

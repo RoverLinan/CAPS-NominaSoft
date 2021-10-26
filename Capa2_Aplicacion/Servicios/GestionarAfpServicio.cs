@@ -56,5 +56,22 @@ namespace Capa2_Aplicacion.Servicios
             }
 
         }
+
+        public List<Afp> obtenerListaAfp()
+        {
+            try
+            {
+                gestorSQL.AbrirConexion();
+                List<Afp> listaAfp = afpSQL.listaAfp();
+                gestorSQL.CerrarConexion();
+
+                return listaAfp;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
     }
 }

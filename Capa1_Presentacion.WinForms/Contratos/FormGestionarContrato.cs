@@ -14,12 +14,19 @@ namespace Capa1_Presentacion.WinForms.Contratos
 {
     public partial class FormGestionarContrato : Form
     {
+        private GestionarContratoServicio contratoServicio;
         private GestionarEmpleadoServicio empleadoServicio;
+        private GestionarAfpServicio afpServicio;
+        private List<Afp> listaAfp;
+        private Empleado empleado;
+        private Contrato contrato;
         public FormGestionarContrato()
         {
             InitializeComponent();
             panelGeneralInfo.Visible = false;
             empleadoServicio = new GestionarEmpleadoServicio();
+            contratoServicio = new GestionarContratoServicio();
+            afpServicio = new GestionarAfpServicio();
         }
 
         private void buttonBuscarEmpleado_Click(object sender, EventArgs e)
@@ -32,8 +39,9 @@ namespace Capa1_Presentacion.WinForms.Contratos
             try
             {   
                 
-                Empleado empleado = empleadoServicio.buscarEmpleadoPorDni(dni);
-                cargarDatosEmpleado(empleado);
+                Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
+                this.empleado = empleadoAux;
+                cargarDatosEmpleado(empleadoAux);
                 panelGeneralInfo.Visible = true;
 
             }
@@ -60,12 +68,84 @@ namespace Capa1_Presentacion.WinForms.Contratos
         private void buttonCrearContrato_Click(object sender, EventArgs e)
         {
             panelInfoContrato.Visible = true;
+            buttonGuardarContrato.Visible = true;
+            cargarListaAfp();
         }
 
 
         private void cargarDatosContrato()
         {
 
+        }
+
+        private void buttonGuardarContrato_Click(object sender, EventArgs e)
+        {
+
+                
+          
+            try
+            {
+                Contrato contratoAux = new Contrato();
+                contratoAux.Fechainicio = dateTimeInicio.Value;
+                contratoAux.Fechafin = dateTimeFin.Value;
+                contratoAux.Puesto = textBoxPuesto.Text;
+
+                foreach (Afp item in listaAfp)
+                {
+                    if (comboBoxAfp.Text.Equals(item.Nombre))
+                    {
+                        contratoAux.Afp = item;
+                        break;
+                    }
+                }
+
+                if (checkBoxSi.Checked)
+                {
+                    contratoAux.Tieneasignacionfamiliar = true;
+                }
+                if (checkBoxNo.Checked)
+                {
+                    contratoAux.Tieneasignacionfamiliar = false;
+                }
+
+                contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
+                contratoAux.Pagoporhora = double.Parse(textBoxHorasSemana.Text);
+
+                contratoServicio.guardarContrato(contratoAux, this.empleado, contratoAux.Afp);
+
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show(this,"Mensaje: " + err.Message);
+            }
+
+        }
+
+
+        private  void cargarListaAfp()
+        {
+            listaAfp = afpServicio.obtenerListaAfp();
+
+            
+           
+            foreach (Afp item in listaAfp)
+            {
+                comboBoxAfp.Items.Add(item.Nombre);
+            
+            }
+
+       
+        }
+
+        private void checkBoxSi_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxNo.Checked = false;
+        }
+
+        private void checkBoxNo_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxSi.Checked = false;
         }
     }
 }

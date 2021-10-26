@@ -28,5 +28,6 @@ namespace Capa3_Dominio.Entidades
         public string Telefono { get => telefono; set => telefono = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Direccion { get => direccion; set => direccion = value; }
+        public List<Contrato> ListaContratos { get => listaContratos; set => listaContratos = value; }
     }
 }

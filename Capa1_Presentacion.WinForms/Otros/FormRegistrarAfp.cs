@@ -26,7 +26,8 @@ namespace Capa1_Presentacion.WinForms.Otros
         private void button1_Click(object sender, EventArgs e)
         {
             Afp afp = new Afp();
-            afp.Nombre = textBoxNombre.Text;
+            afp.Afp_id = int.Parse( textBoxIdAfp.Text);
+            afp.Nombre = textBoxNombreAfp.Text;
             afp.Porcentajedescuento = Convert.ToDouble(textBoxPorcentajeDescuento.Text);
 
             try
