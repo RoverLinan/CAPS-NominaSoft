@@ -32,12 +32,12 @@ namespace Capa2_Aplicacion.Servicios
             {
 
 
-                if (contrato.ValidarFechaInicio())
+                if (!contrato.ValidarFechaInicio())
                 {
                     throw new Exception("fecha inicio incorrecta");
                 }
 
-                if (contrato.ValidarFechaFin())
+                if (!contrato.ValidarFechaFin())
                 {
                     throw new Exception("fecha fin incorrecta");
                 }

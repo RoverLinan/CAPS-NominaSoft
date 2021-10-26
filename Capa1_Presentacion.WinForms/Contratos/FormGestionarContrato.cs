@@ -111,7 +111,10 @@ namespace Capa1_Presentacion.WinForms.Contratos
                 contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
                 contratoAux.Pagoporhora = double.Parse(textBoxHorasSemana.Text);
 
-                contratoServicio.guardarContrato(contratoAux, this.empleado, contratoAux.Afp);
+                if(contratoServicio.guardarContrato(contratoAux, this.empleado, contratoAux.Afp))
+                {
+                    MessageBox.Show(this, "Contrato creado correctamente");
+                }
 
             }
             catch (Exception err)
