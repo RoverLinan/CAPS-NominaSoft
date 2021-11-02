@@ -97,6 +97,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.button1.TabIndex = 16;
             this.button1.Text = "Generar Nomina";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -142,7 +143,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.label4.Text = "Boltas de pago para la Nomina";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // FormNominaPrincipal
+            // FormProcesarNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,7 +159,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
-            this.Name = "FormNominaPrincipal";
+            this.Name = "FormProcesarNomina";
             this.Text = "FormNominaPrincipal";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
