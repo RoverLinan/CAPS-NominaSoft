@@ -53,14 +53,14 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonRegistrarPeriodo.UseVisualStyleBackColor = true;
             this.buttonRegistrarPeriodo.Click += new System.EventHandler(this.buttonRegistrarPeriodo_Click);
             // 
-            // FormNominaPrinciapl
+            // FormNominaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonRegistrarPeriodo);
             this.Controls.Add(this.buttonProcesar);
-            this.Name = "FormNominaPrinciapl";
+            this.Name = "FormNominaPrincipal";
             this.Text = "FormNominaPrinciapl";
             this.ResumeLayout(false);
 

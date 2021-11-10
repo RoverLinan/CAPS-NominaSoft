@@ -22,43 +22,46 @@ namespace Capa1_Presentacion.WinForms.Nominas
             InitializeComponent();
             periodoServicio = new GestionarPeriodoNominaServicio();
             listaPeriodo = periodoServicio.obtenerListaPeriodo();
+            panelSeleccionPeriodo.Visible = true;
             cargarListaPeriodo();
         }
 
         private void cargarListaPeriodo()
         {
 
-            comboBox1.Items.Clear();
+            comboBoxListaNomina.Items.Clear();
             foreach (PeriodoDeNomina item in listaPeriodo)
             {
-                comboBox1.Items.Add(item.Descripcion);
+                comboBoxListaNomina.Items.Add(item.Descripcion);
             }
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+       
+     
+
+        private void buttonBuscarNomina_Click(object sender, EventArgs e)
         {
+
+            FormBuscarNomina formBuscar = new FormBuscarNomina();
+            formBuscar.ShowDialog();
+
+
+
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void buttonCrearNomina_Click(object sender, EventArgs e)
         {
+            panelSeleccionPeriodo.Visible = true;
+            panelInformacionNomina.Visible = false;
+            if (listaPeriodo.Count == 0)
+            {
+                buttonCerrar.Visible = false;
+                buttonGuardar.Visible = false;
+                buttonEliminar.Visible = false;
 
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

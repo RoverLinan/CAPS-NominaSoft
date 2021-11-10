@@ -71,3 +71,5 @@ C:\coding\UPN\calidad\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa
 C:\coding\UPN\calidad\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.CopyComplete
 C:\coding\UPN\calidad\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.exe
 C:\coding\UPN\calidad\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.pdb
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.SuggestedBindingRedirects.cache
+C:\Users\ROVER\Documents\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormBuscarNomina.resources

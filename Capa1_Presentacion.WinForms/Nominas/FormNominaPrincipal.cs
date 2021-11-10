@@ -28,5 +28,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             FormRegistrarPeriodoDeNomina formRegistrarPeriodoDeNomina = new FormRegistrarPeriodoDeNomina();
             formRegistrarPeriodoDeNomina.ShowDialog(this);
         }
+
+    
     }
 }
