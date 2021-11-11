@@ -29,8 +29,7 @@ namespace Capa1_Presentacion.WinForms.Otros
             incidenciaLaboralServicio = new GestionarIncidenciaLaboralServicio();
             empleadoServicio = new GestionarEmpleadoServicio();
             contratoServicio = new GestionarContratoServicio();
-            listaPeriodo = periodoServicio.obtenerListaPeriodo();
-            cargarListaPeriodo();
+            panelIngresoHoras.Visible = false;
         }
 
         private void cargarDatosContrato()
@@ -43,45 +42,73 @@ namespace Capa1_Presentacion.WinForms.Otros
                     labelEstado.Text = "Vigente";
                 }
                 labelFecha.Text = this.contrato.Fechafin.ToShortDateString();
+                panelIngresoHoras.Visible = true;
+                cargarListaPeriodo();
             }
             catch (Exception err)
             {
 
-                MessageBox.Show(this, "Mensaje: " + err.Message);
+                throw err;
             }
         }
 
         private void cargarListaPeriodo()
         {
-
-            comboBoxPeriodo.Items.Clear();
-            foreach (PeriodoDeNomina item in listaPeriodo)
+            try
             {
-                comboBoxPeriodo.Items.Add(item.Descripcion);
+                listaPeriodo = periodoServicio.obtenerListaPeriodo();
+                comboBoxPeriodo.Items.Clear();
+  
+                foreach (PeriodoDeNomina item in listaPeriodo)
+                {
+                    comboBoxPeriodo.Items.Add(item.Descripcion);
 
+                }
+                comboBoxPeriodo.Text = listaPeriodo[0].Descripcion;
+             
             }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+           
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonGuardarIncidencia_Click(object sender, EventArgs e)
         {
-            IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
-            foreach (PeriodoDeNomina item in listaPeriodo)
-            {
-                if (comboBoxPeriodo.Text.Equals(item.Descripcion))
-                {
-                    incidenciaLaboral.Periodo = item;
-                    break;
-                }
-            }
-            incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(textBox2.Text);
-            incidenciaLaboral.Totalhorasextras = Convert.ToInt32(textBox3.Text);
-            incidenciaLaboral.Contrato = this.contrato;
+
+            
+            
             try
             {
-                incidenciaLaboralServicio.guardar(incidenciaLaboral);
-                MessageBox.Show(this, "Se completo el registro exitoso.");
-                this.Dispose();
+                
+                IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
+                foreach (PeriodoDeNomina item in listaPeriodo)
+                {
+                    if (comboBoxPeriodo.Text.Equals(item.Descripcion))
+                    {
+                        incidenciaLaboral.Periodo = item;
+                        break;
+                    }
+                }
+
+                if(esSoloDigitos(textBoxTotalHorasFalta.Text) && esSoloDigitos(textBoxTotalHorasExtras.Text))
+                {
+                    incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(textBoxTotalHorasFalta.Text);
+                    incidenciaLaboral.Totalhorasextras = Convert.ToInt32(textBoxTotalHorasExtras.Text);
+                    incidenciaLaboral.Contrato = this.contrato;
+
+                    incidenciaLaboralServicio.guardar(incidenciaLaboral);
+                    MessageBox.Show(this, "Se completo el registro exitoso.");
+                    this.Dispose();
+                }
+                else
+                {
+                    throw new Exception("Porfavor ingrese solo numeros");
+                }
+                
             }
             catch (Exception err)
             {
@@ -91,21 +118,39 @@ namespace Capa1_Presentacion.WinForms.Otros
 
         private void buttonBuscarEmpleado_Click_1(object sender, EventArgs e)
         {
-            string dni = textBox1.Text.Trim();
+            string dni = textBoxDniEmpleado.Text.Trim();
+            
             try
             {
-
-                Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                this.empleado = empleadoAux;
-                Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.empleado.Dni);
-                this.contrato = contratoAux;
-                cargarDatosContrato();
+                if (esSoloDigitos(dni))
+                {
+                    Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
+                    this.empleado = empleadoAux;
+                    Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.empleado.Dni);
+                    this.contrato = contratoAux;
+                    cargarDatosContrato();
+                }
+                else
+                {
+                    throw new Exception("Porfavor ingrese solo numeros");
+                }
+               
             }
             catch (Exception err)
             {
 
                 MessageBox.Show(this, "Mensaje: " + err.Message);
             }
+        }
+
+
+        private bool esSoloDigitos(String cadena)
+        {
+            if (cadena.All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

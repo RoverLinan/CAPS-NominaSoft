@@ -319,6 +319,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonGenerarNomina.TabIndex = 2;
             this.buttonGenerarNomina.Text = "Generar nómina";
             this.buttonGenerarNomina.UseVisualStyleBackColor = true;
+            this.buttonGenerarNomina.Click += new System.EventHandler(this.buttonGenerarNomina_Click);
             // 
             // label3
             // 

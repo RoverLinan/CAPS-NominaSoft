@@ -15,12 +15,17 @@ namespace Capa1_Presentacion.WinForms.Nominas
     public partial class FormProcesarNomina : Form
     {
         private GestionarPeriodoNominaServicio periodoServicio;
+        private GestionarEmpleadoServicio empleadoServicio;
+        private GestionarContratoServicio contratoServicio;
         private List<PeriodoDeNomina> listaPeriodo;
 
         public FormProcesarNomina()
         {
             InitializeComponent();
             periodoServicio = new GestionarPeriodoNominaServicio();
+            empleadoServicio =  new GestionarEmpleadoServicio();
+            contratoServicio = new GestionarContratoServicio();
+
             panelSeleccionPeriodo.Visible = false;
             panelInformacionNomina.Visible = false;
             flowLayoutPanelPeriodo.Visible = false;
@@ -136,6 +141,19 @@ namespace Capa1_Presentacion.WinForms.Nominas
             }
 
             return periodo;
+        }
+
+        private void buttonGenerarNomina_Click(object sender, EventArgs e)
+        {
+            Nomina nomina = new Nomina();
+            nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
+
+
+
+
+
+
+
         }
     }
 }

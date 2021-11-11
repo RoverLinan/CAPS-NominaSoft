@@ -37,14 +37,23 @@ namespace Capa1_Presentacion.WinForms.Contratos
             }
             string dni = textBoxDniEmpleado.Text.Trim();
             try
-            {   
-                
-                Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                this.empleado = empleadoAux;
-                cargarDatosEmpleado(empleadoAux);
-                buttonActualizar.Visible = false;
-                panelGeneralInfo.Visible = true;
-                listaAfp = afpServicio.obtenerListaAfp();
+            {
+
+                if (dni.All(char.IsDigit))
+                {
+                    Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
+                    this.empleado = empleadoAux;
+                    cargarDatosEmpleado(empleadoAux);
+                    buttonActualizar.Visible = false;
+                    panelGeneralInfo.Visible = true;
+                    listaAfp = afpServicio.obtenerListaAfp();
+                }
+                else
+                {
+                    throw new Exception("Porfavor ingrese solo numeros");
+                }
+
+              
 
             }
             catch (Exception err)
