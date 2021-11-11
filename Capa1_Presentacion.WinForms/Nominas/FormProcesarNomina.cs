@@ -21,18 +21,19 @@ namespace Capa1_Presentacion.WinForms.Nominas
         {
             InitializeComponent();
             periodoServicio = new GestionarPeriodoNominaServicio();
-            listaPeriodo = periodoServicio.obtenerListaPeriodo();
-            panelSeleccionPeriodo.Visible = true;
-            cargarListaPeriodo();
+            panelSeleccionPeriodo.Visible = false;
+            panelInformacionNomina.Visible = false;
+            flowLayoutPanelPeriodo.Visible = false;
+        
         }
 
         private void cargarListaPeriodo()
         {
-
-            comboBoxListaNomina.Items.Clear();
+            listaPeriodo = periodoServicio.obtenerListaPeriodo();
+            comboBoxListaPeriodo.Items.Clear();
             foreach (PeriodoDeNomina item in listaPeriodo)
             {
-                comboBoxListaNomina.Items.Add(item.Descripcion);
+                comboBoxListaPeriodo.Items.Add(item.Descripcion);
             }
 
         }
@@ -42,9 +43,15 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void buttonBuscarNomina_Click(object sender, EventArgs e)
         {
+            Nomina nomina = null;
 
-            FormBuscarNomina formBuscar = new FormBuscarNomina();
+            FormBuscarNomina formBuscar = new FormBuscarNomina(nomina);
             formBuscar.ShowDialog();
+
+            if(nomina != null)
+            {
+
+            }
 
 
 
@@ -53,15 +60,29 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void buttonCrearNomina_Click(object sender, EventArgs e)
         {
-            panelSeleccionPeriodo.Visible = true;
-            panelInformacionNomina.Visible = false;
+            
             if (listaPeriodo.Count == 0)
             {
+                
                 buttonCerrar.Visible = false;
                 buttonGuardar.Visible = false;
                 buttonEliminar.Visible = false;
+                MessageBox.Show(this, "No hay periodos disponibles");
+            }
+            else
+            {
+                panelSeleccionPeriodo.Visible = true;
+                cargarListaPeriodo();
+          
 
             }
+        }
+
+        private void comboBoxListaPeriodo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox comboBoxListaPeriodo = (ComboBox)sender;
+
+            Console.WriteLine("se cambio de selection" + comboBoxListaPeriodo.SelectedIndex);
         }
     }
 }

@@ -36,10 +36,10 @@ namespace Capa1_Presentacion.WinForms.Acceso
             Usuario usuario  = null;
             try
             {
-                usuario = usuarioServicio.iniciarSesion(username, password);
-                SesionSingleton sesion = SesionSingleton.getInstance();
-                sesion.SetUsuario(usuario);
-                FormPrincipal formPrincipal = new FormPrincipal(usuario);
+               // usuario = usuarioServicio.iniciarSesion(username, password);
+                //SesionSingleton sesion = SesionSingleton.getInstance();
+                //sesion.SetUsuario(usuario);
+                FormPrincipal formPrincipal = new FormPrincipal(new Usuario());
                 this.Visible = false;
                 formPrincipal.Show();
                 

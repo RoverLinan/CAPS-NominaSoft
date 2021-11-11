@@ -30,15 +30,19 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonAfp = new System.Windows.Forms.Button();
             this.buttonNomina = new System.Windows.Forms.Button();
             this.buttonContrato = new System.Windows.Forms.Button();
             this.buttonEmpleado = new System.Windows.Forms.Button();
-            this.buttonAfp = new System.Windows.Forms.Button();
+            this.buttonGestionarContrato = new System.Windows.Forms.Button();
+            this.buttonProcesarNomina = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonProcesarNomina);
+            this.panel1.Controls.Add(this.buttonGestionarContrato);
             this.panel1.Controls.Add(this.buttonAfp);
             this.panel1.Controls.Add(this.buttonNomina);
             this.panel1.Controls.Add(this.buttonContrato);
@@ -47,6 +51,16 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1038, 351);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonAfp
+            // 
+            this.buttonAfp.Location = new System.Drawing.Point(792, 28);
+            this.buttonAfp.Name = "buttonAfp";
+            this.buttonAfp.Size = new System.Drawing.Size(129, 150);
+            this.buttonAfp.TabIndex = 3;
+            this.buttonAfp.Text = "AFP";
+            this.buttonAfp.UseVisualStyleBackColor = true;
+            this.buttonAfp.Click += new System.EventHandler(this.buttonAfp_Click);
             // 
             // buttonNomina
             // 
@@ -78,15 +92,25 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.buttonEmpleado.UseVisualStyleBackColor = true;
             this.buttonEmpleado.Click += new System.EventHandler(this.buttonEmpleado_Click);
             // 
-            // buttonAfp
+            // buttonGestionarContrato
             // 
-            this.buttonAfp.Location = new System.Drawing.Point(792, 28);
-            this.buttonAfp.Name = "buttonAfp";
-            this.buttonAfp.Size = new System.Drawing.Size(129, 150);
-            this.buttonAfp.TabIndex = 3;
-            this.buttonAfp.Text = "AFP";
-            this.buttonAfp.UseVisualStyleBackColor = true;
-            this.buttonAfp.Click += new System.EventHandler(this.buttonAfp_Click);
+            this.buttonGestionarContrato.Location = new System.Drawing.Point(272, 245);
+            this.buttonGestionarContrato.Name = "buttonGestionarContrato";
+            this.buttonGestionarContrato.Size = new System.Drawing.Size(193, 77);
+            this.buttonGestionarContrato.TabIndex = 4;
+            this.buttonGestionarContrato.Text = "Gestionar CONTRATO";
+            this.buttonGestionarContrato.UseVisualStyleBackColor = true;
+            this.buttonGestionarContrato.Click += new System.EventHandler(this.buttonGestionarContrato_Click);
+            // 
+            // buttonProcesarNomina
+            // 
+            this.buttonProcesarNomina.Location = new System.Drawing.Point(578, 245);
+            this.buttonProcesarNomina.Name = "buttonProcesarNomina";
+            this.buttonProcesarNomina.Size = new System.Drawing.Size(200, 77);
+            this.buttonProcesarNomina.TabIndex = 5;
+            this.buttonProcesarNomina.Text = "Procesar NOMINA";
+            this.buttonProcesarNomina.UseVisualStyleBackColor = true;
+            this.buttonProcesarNomina.Click += new System.EventHandler(this.buttonProcesarNomina_Click);
             // 
             // FormPrincipal
             // 
@@ -108,5 +132,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private System.Windows.Forms.Button buttonContrato;
         private System.Windows.Forms.Button buttonEmpleado;
         private System.Windows.Forms.Button buttonAfp;
+        private System.Windows.Forms.Button buttonProcesarNomina;
+        private System.Windows.Forms.Button buttonGestionarContrato;
     }
 }

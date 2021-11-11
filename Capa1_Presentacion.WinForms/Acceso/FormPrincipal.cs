@@ -42,5 +42,17 @@ namespace Capa1_Presentacion.WinForms.Acceso
             FormAFPPrincipal formAFPPrincipal = new FormAFPPrincipal();
             formAFPPrincipal.Show();
         }
+
+        private void buttonGestionarContrato_Click(object sender, System.EventArgs e)
+        {
+            FormGestionarContrato formGestionar = new FormGestionarContrato();
+            formGestionar.Show(this);
+        }
+
+        private void buttonProcesarNomina_Click(object sender, System.EventArgs e)
+        {
+            FormProcesarNomina formProcesar = new FormProcesarNomina();
+            formProcesar.Show(this);
+        }
     }
 }

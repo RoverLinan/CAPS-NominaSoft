@@ -29,7 +29,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxListaNomina = new System.Windows.Forms.ComboBox();
+            this.comboBoxListaPeriodo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonBuscarNomina = new System.Windows.Forms.Button();
@@ -64,8 +64,8 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panelSeleccionPeriodo = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanelPeriodo = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelIdPeriodo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,19 +79,20 @@ namespace Capa1_Presentacion.WinForms.Nominas
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaPagos)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelSeleccionPeriodo.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanelPeriodo.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBoxListaNomina
+            // comboBoxListaPeriodo
             // 
-            this.comboBoxListaNomina.FormattingEnabled = true;
-            this.comboBoxListaNomina.Location = new System.Drawing.Point(19, 53);
-            this.comboBoxListaNomina.Name = "comboBoxListaNomina";
-            this.comboBoxListaNomina.Size = new System.Drawing.Size(424, 21);
-            this.comboBoxListaNomina.TabIndex = 0;
+            this.comboBoxListaPeriodo.FormattingEnabled = true;
+            this.comboBoxListaPeriodo.Location = new System.Drawing.Point(19, 53);
+            this.comboBoxListaPeriodo.Name = "comboBoxListaPeriodo";
+            this.comboBoxListaPeriodo.Size = new System.Drawing.Size(359, 21);
+            this.comboBoxListaPeriodo.TabIndex = 0;
+            this.comboBoxListaPeriodo.SelectionChangeCommitted += new System.EventHandler(this.comboBoxListaPeriodo_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -135,6 +136,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // panelInformacionNomina
             // 
             this.panelInformacionNomina.Controls.Add(this.textBoxTotalNetoPagar);
+            this.panelInformacionNomina.Controls.Add(this.label4);
             this.panelInformacionNomina.Controls.Add(this.label15);
             this.panelInformacionNomina.Controls.Add(this.textBoxTotalRetenciones);
             this.panelInformacionNomina.Controls.Add(this.label14);
@@ -149,15 +151,15 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.panelInformacionNomina.Controls.Add(this.buttonGenerarNomina);
             this.panelInformacionNomina.Controls.Add(this.label3);
             this.panelInformacionNomina.Controls.Add(this.dateTimePickerFechaInicioNomina);
-            this.panelInformacionNomina.Location = new System.Drawing.Point(84, 301);
+            this.panelInformacionNomina.Location = new System.Drawing.Point(84, 286);
             this.panelInformacionNomina.Name = "panelInformacionNomina";
-            this.panelInformacionNomina.Size = new System.Drawing.Size(1021, 495);
+            this.panelInformacionNomina.Size = new System.Drawing.Size(1021, 510);
             this.panelInformacionNomina.TabIndex = 24;
             // 
             // textBoxTotalNetoPagar
             // 
             this.textBoxTotalNetoPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalNetoPagar.Location = new System.Drawing.Point(172, 427);
+            this.textBoxTotalNetoPagar.Location = new System.Drawing.Point(172, 453);
             this.textBoxTotalNetoPagar.Name = "textBoxTotalNetoPagar";
             this.textBoxTotalNetoPagar.Size = new System.Drawing.Size(103, 31);
             this.textBoxTotalNetoPagar.TabIndex = 13;
@@ -165,7 +167,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 436);
+            this.label15.Location = new System.Drawing.Point(17, 462);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(149, 13);
             this.label15.TabIndex = 12;
@@ -174,7 +176,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // textBoxTotalRetenciones
             // 
             this.textBoxTotalRetenciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalRetenciones.Location = new System.Drawing.Point(734, 377);
+            this.textBoxTotalRetenciones.Location = new System.Drawing.Point(734, 403);
             this.textBoxTotalRetenciones.Name = "textBoxTotalRetenciones";
             this.textBoxTotalRetenciones.Size = new System.Drawing.Size(108, 31);
             this.textBoxTotalRetenciones.TabIndex = 11;
@@ -182,7 +184,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(584, 386);
+            this.label14.Location = new System.Drawing.Point(584, 412);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(144, 13);
             this.label14.TabIndex = 10;
@@ -191,7 +193,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // textBoxTotalIngresos
             // 
             this.textBoxTotalIngresos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalIngresos.Location = new System.Drawing.Point(416, 377);
+            this.textBoxTotalIngresos.Location = new System.Drawing.Point(416, 403);
             this.textBoxTotalIngresos.Name = "textBoxTotalIngresos";
             this.textBoxTotalIngresos.Size = new System.Drawing.Size(108, 31);
             this.textBoxTotalIngresos.TabIndex = 9;
@@ -199,7 +201,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(282, 386);
+            this.label13.Location = new System.Drawing.Point(282, 412);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(128, 13);
             this.label13.TabIndex = 8;
@@ -208,7 +210,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // textBoxTotalGenerados
             // 
             this.textBoxTotalGenerados.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTotalGenerados.Location = new System.Drawing.Point(142, 377);
+            this.textBoxTotalGenerados.Location = new System.Drawing.Point(142, 403);
             this.textBoxTotalGenerados.Name = "textBoxTotalGenerados";
             this.textBoxTotalGenerados.Size = new System.Drawing.Size(103, 31);
             this.textBoxTotalGenerados.TabIndex = 7;
@@ -216,7 +218,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 386);
+            this.label12.Location = new System.Drawing.Point(17, 412);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(119, 13);
             this.label12.TabIndex = 6;
@@ -225,7 +227,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 121);
+            this.label11.Location = new System.Drawing.Point(15, 147);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 13);
             this.label11.TabIndex = 5;
@@ -242,7 +244,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.totalIngresos,
             this.totalRetenciones,
             this.netoPagar});
-            this.dataGridViewListaPagos.Location = new System.Drawing.Point(16, 137);
+            this.dataGridViewListaPagos.Location = new System.Drawing.Point(16, 163);
             this.dataGridViewListaPagos.Name = "dataGridViewListaPagos";
             this.dataGridViewListaPagos.Size = new System.Drawing.Size(983, 216);
             this.dataGridViewListaPagos.TabIndex = 4;
@@ -287,7 +289,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 61);
+            this.label1.Location = new System.Drawing.Point(13, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 13);
             this.label1.TabIndex = 3;
@@ -295,14 +297,14 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // textBoxDescripcionNomina
             // 
-            this.textBoxDescripcionNomina.Location = new System.Drawing.Point(17, 77);
+            this.textBoxDescripcionNomina.Location = new System.Drawing.Point(17, 103);
             this.textBoxDescripcionNomina.Name = "textBoxDescripcionNomina";
             this.textBoxDescripcionNomina.Size = new System.Drawing.Size(475, 20);
             this.textBoxDescripcionNomina.TabIndex = 2;
             // 
             // buttonGenerarNomina
             // 
-            this.buttonGenerarNomina.Location = new System.Drawing.Point(509, 77);
+            this.buttonGenerarNomina.Location = new System.Drawing.Point(509, 103);
             this.buttonGenerarNomina.Name = "buttonGenerarNomina";
             this.buttonGenerarNomina.Size = new System.Drawing.Size(135, 23);
             this.buttonGenerarNomina.TabIndex = 2;
@@ -312,7 +314,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 8);
+            this.label3.Location = new System.Drawing.Point(13, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 1;
@@ -320,7 +322,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // dateTimePickerFechaInicioNomina
             // 
-            this.dateTimePickerFechaInicioNomina.Location = new System.Drawing.Point(16, 24);
+            this.dateTimePickerFechaInicioNomina.Location = new System.Drawing.Point(16, 50);
             this.dateTimePickerFechaInicioNomina.Name = "dateTimePickerFechaInicioNomina";
             this.dateTimePickerFechaInicioNomina.Size = new System.Drawing.Size(273, 20);
             this.dateTimePickerFechaInicioNomina.TabIndex = 0;
@@ -376,7 +378,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 285);
+            this.label4.Location = new System.Drawing.Point(2, 2);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 26;
@@ -384,36 +386,35 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // panelSeleccionPeriodo
             // 
-            this.panelSeleccionPeriodo.Controls.Add(this.label10);
-            this.panelSeleccionPeriodo.Controls.Add(this.flowLayoutPanel2);
-            this.panelSeleccionPeriodo.Controls.Add(this.comboBoxListaNomina);
+            this.panelSeleccionPeriodo.Controls.Add(this.button1);
+            this.panelSeleccionPeriodo.Controls.Add(this.flowLayoutPanelPeriodo);
+            this.panelSeleccionPeriodo.Controls.Add(this.comboBoxListaPeriodo);
             this.panelSeleccionPeriodo.Controls.Add(this.label2);
             this.panelSeleccionPeriodo.Location = new System.Drawing.Point(84, 145);
             this.panelSeleccionPeriodo.Name = "panelSeleccionPeriodo";
             this.panelSeleccionPeriodo.Size = new System.Drawing.Size(1017, 122);
             this.panelSeleccionPeriodo.TabIndex = 27;
             // 
-            // label10
+            // button1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(461, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 20);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "---->";
+            this.button1.Location = new System.Drawing.Point(404, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Ver detalles >";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel2
+            // flowLayoutPanelPeriodo
             // 
-            this.flowLayoutPanel2.Controls.Add(this.panel3);
-            this.flowLayoutPanel2.Controls.Add(this.panel4);
-            this.flowLayoutPanel2.Controls.Add(this.panel5);
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(528, 10);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(471, 109);
-            this.flowLayoutPanel2.TabIndex = 5;
-            this.flowLayoutPanel2.Visible = false;
+            this.flowLayoutPanelPeriodo.Controls.Add(this.panel3);
+            this.flowLayoutPanelPeriodo.Controls.Add(this.panel4);
+            this.flowLayoutPanelPeriodo.Controls.Add(this.panel5);
+            this.flowLayoutPanelPeriodo.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelPeriodo.Location = new System.Drawing.Point(528, 10);
+            this.flowLayoutPanelPeriodo.Name = "flowLayoutPanelPeriodo";
+            this.flowLayoutPanelPeriodo.Size = new System.Drawing.Size(471, 109);
+            this.flowLayoutPanelPeriodo.TabIndex = 5;
+            this.flowLayoutPanelPeriodo.Visible = false;
             // 
             // panel3
             // 
@@ -498,7 +499,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1147, 962);
             this.Controls.Add(this.panelSeleccionPeriodo);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelInformacionNomina);
             this.Controls.Add(this.buttonCrearNomina);
@@ -512,7 +512,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panelSeleccionPeriodo.ResumeLayout(false);
             this.panelSeleccionPeriodo.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanelPeriodo.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -526,7 +526,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxListaNomina;
+        private System.Windows.Forms.ComboBox comboBoxListaPeriodo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonBuscarNomina;
@@ -542,7 +542,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panelSeleccionPeriodo;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPeriodo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelIdPeriodo;
         private System.Windows.Forms.Label label5;
@@ -571,6 +571,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private System.Windows.Forms.DataGridViewTextBoxColumn netoPagar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDescripcionNomina;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
     }
 }

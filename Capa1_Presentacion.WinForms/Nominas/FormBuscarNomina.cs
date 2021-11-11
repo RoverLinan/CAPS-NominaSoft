@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa3_Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
 {
     public partial class FormBuscarNomina : Form
     {
-        public FormBuscarNomina()
+        private Nomina nomina;
+        public FormBuscarNomina(Nomina nomina)
         {
+            this.nomina = nomina;
             InitializeComponent();
         }
     }
