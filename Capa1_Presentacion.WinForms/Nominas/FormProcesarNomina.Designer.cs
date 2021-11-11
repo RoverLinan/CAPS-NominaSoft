@@ -36,6 +36,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonCrearNomina = new System.Windows.Forms.Button();
             this.panelInformacionNomina = new System.Windows.Forms.Panel();
             this.textBoxTotalNetoPagar = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxTotalRetenciones = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -62,9 +63,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.panelSeleccionPeriodo = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanelPeriodo = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelIdPeriodo = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.panel5 = new System.Windows.Forms.Panel();
             this.dateTimePickerFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panelInformacionNomina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaPagos)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -92,7 +92,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.comboBoxListaPeriodo.Name = "comboBoxListaPeriodo";
             this.comboBoxListaPeriodo.Size = new System.Drawing.Size(359, 21);
             this.comboBoxListaPeriodo.TabIndex = 0;
-            this.comboBoxListaPeriodo.SelectionChangeCommitted += new System.EventHandler(this.comboBoxListaPeriodo_SelectionChangeCommitted);
+            this.comboBoxListaPeriodo.SelectedIndexChanged += new System.EventHandler(this.comboBoxListaPeriodo_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -163,6 +163,15 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.textBoxTotalNetoPagar.Name = "textBoxTotalNetoPagar";
             this.textBoxTotalNetoPagar.Size = new System.Drawing.Size(103, 31);
             this.textBoxTotalNetoPagar.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 13);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Información de nómina";
             // 
             // label15
             // 
@@ -347,6 +356,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonCancelar.TabIndex = 0;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // buttonGuardar
             // 
@@ -375,18 +385,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 2);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Información de nómina";
-            // 
             // panelSeleccionPeriodo
             // 
-            this.panelSeleccionPeriodo.Controls.Add(this.button1);
+            this.panelSeleccionPeriodo.Controls.Add(this.label6);
             this.panelSeleccionPeriodo.Controls.Add(this.flowLayoutPanelPeriodo);
             this.panelSeleccionPeriodo.Controls.Add(this.comboBoxListaPeriodo);
             this.panelSeleccionPeriodo.Controls.Add(this.label2);
@@ -394,15 +395,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.panelSeleccionPeriodo.Name = "panelSeleccionPeriodo";
             this.panelSeleccionPeriodo.Size = new System.Drawing.Size(1017, 122);
             this.panelSeleccionPeriodo.TabIndex = 27;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(404, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Ver detalles >";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelPeriodo
             // 
@@ -493,6 +485,16 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.label9.TabIndex = 2;
             this.label9.Text = "Fecha fin:";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(426, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "--->";
+            // 
             // FormProcesarNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,6 +573,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private System.Windows.Forms.DataGridViewTextBoxColumn netoPagar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxDescripcionNomina;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
     }
 }

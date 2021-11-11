@@ -24,17 +24,31 @@ namespace Capa1_Presentacion.WinForms.Nominas
             panelSeleccionPeriodo.Visible = false;
             panelInformacionNomina.Visible = false;
             flowLayoutPanelPeriodo.Visible = false;
-        
+
+            buttonCerrar.Visible = false;
+            buttonGuardar.Visible = false;
+            buttonEliminar.Visible = false;
+
         }
 
         private void cargarListaPeriodo()
         {
-            listaPeriodo = periodoServicio.obtenerListaPeriodo();
-            comboBoxListaPeriodo.Items.Clear();
-            foreach (PeriodoDeNomina item in listaPeriodo)
+            try
             {
-                comboBoxListaPeriodo.Items.Add(item.Descripcion);
+                listaPeriodo = periodoServicio.obtenerListaPeriodo();
+                comboBoxListaPeriodo.Items.Clear();
+                foreach (PeriodoDeNomina item in listaPeriodo)
+                {
+                    comboBoxListaPeriodo.Items.Add(item.Descripcion);
+                }
+               comboBoxListaPeriodo.Text = listaPeriodo[0].Descripcion;
             }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+          
 
         }
 
@@ -60,29 +74,68 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void buttonCrearNomina_Click(object sender, EventArgs e)
         {
-            
-            if (listaPeriodo.Count == 0)
-            {
-                
-                buttonCerrar.Visible = false;
-                buttonGuardar.Visible = false;
-                buttonEliminar.Visible = false;
-                MessageBox.Show(this, "No hay periodos disponibles");
-            }
-            else
-            {
-                panelSeleccionPeriodo.Visible = true;
-                cargarListaPeriodo();
-          
 
+            try
+            {
+                cargarListaPeriodo();
+                if (listaPeriodo == null)
+                {
+
+                }
+                else
+                {
+                    panelSeleccionPeriodo.Visible = true;
+
+
+
+                }
+            } 
+            catch (Exception err)
+            {
+
+                MessageBox.Show(err.Message);
             }
+          
         }
 
-        private void comboBoxListaPeriodo_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            ComboBox comboBoxListaPeriodo = (ComboBox)sender;
+    
 
-            Console.WriteLine("se cambio de selection" + comboBoxListaPeriodo.SelectedIndex);
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void comboBoxListaPeriodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("se cambio de selection" + comboBoxListaPeriodo.Text);
+
+
+            PeriodoDeNomina periodo = buscarPeriodo(comboBoxListaPeriodo.Text);
+
+            flowLayoutPanelPeriodo.Visible = true;
+            labelIdPeriodo.Text = periodo.Periodo_id;
+            dateTimePickerFechaInicio.Value = periodo.Fechainicio;
+            dateTimePickerFechaFin.Value = periodo.Fechafin;
+
+
+
+        }
+
+
+
+        private PeriodoDeNomina buscarPeriodo(String descripcion)
+        {   
+            PeriodoDeNomina periodo = null;
+            foreach (PeriodoDeNomina item in listaPeriodo)
+            {
+                if (item.Descripcion.Equals(comboBoxListaPeriodo.Text))
+                {
+                    periodo = item;
+                    break;
+                }
+            }
+
+            return periodo;
         }
     }
 }
