@@ -94,20 +94,40 @@ namespace Capa1_Presentacion.WinForms.Otros
                     }
                 }
 
-                if(esSoloDigitos(textBoxTotalHorasFalta.Text) && esSoloDigitos(textBoxTotalHorasExtras.Text))
+                if(textBoxTotalHorasExtras.Text.Trim().Length > 0 && textBoxTotalHorasFalta.Text.Trim().Length > 0)
                 {
-                    incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(textBoxTotalHorasFalta.Text);
-                    incidenciaLaboral.Totalhorasextras = Convert.ToInt32(textBoxTotalHorasExtras.Text);
-                    incidenciaLaboral.Contrato = this.contrato;
+                    
+                    if (esSoloDigitos(textBoxTotalHorasFalta.Text) && esSoloDigitos(textBoxTotalHorasExtras.Text))
+                    {
+                        incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(textBoxTotalHorasFalta.Text);
+                        incidenciaLaboral.Totalhorasextras = Convert.ToInt32(textBoxTotalHorasExtras.Text);
+                        incidenciaLaboral.Contrato = this.contrato;
 
-                    incidenciaLaboralServicio.guardar(incidenciaLaboral);
-                    MessageBox.Show(this, "Se completo el registro exitoso.");
-                    this.Dispose();
+                        if (textBoxDniEmpleado.Text.Equals(empleado.Dni))
+                        {
+                            incidenciaLaboralServicio.guardar(incidenciaLaboral);
+                            MessageBox.Show(this, "Se completo el registro exitoso.");
+                            this.Dispose();
+                        }
+                        else
+                        {
+                            throw new Exception("DNI no coincide con el empleado que busco");
+                        }
+
+                    }
+                    else
+                    {
+                        throw new Exception("Porfavor ingrese solo numeros");
+                    }
+
+
                 }
                 else
                 {
-                    throw new Exception("Porfavor ingrese solo numeros");
+                    throw new Exception("Porfavor complete todos los cuadros");
                 }
+
+              
                 
             }
             catch (Exception err)
@@ -144,7 +164,7 @@ namespace Capa1_Presentacion.WinForms.Otros
         }
 
 
-        private bool esSoloDigitos(String cadena)
+        private bool esSoloDigitos(string cadena)
         {
             if (cadena.All(char.IsDigit))
             {

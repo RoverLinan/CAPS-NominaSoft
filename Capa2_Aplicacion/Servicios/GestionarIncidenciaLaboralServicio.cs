@@ -38,6 +38,22 @@ namespace Capa2_Aplicacion.Servicios
         }
 
 
+        public List<IncidenciaLaboral> obtenerPorIdPeriodo(string id)
+        {
+            try
+            {
+                gestorSQL.AbrirConexion();
+                List<IncidenciaLaboral> lista = incidenciaLaboralSQL.obtenerPorIdPeriodo(id);
+                gestorSQL.CerrarConexion();
+                return lista;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
+
 
     }
 }

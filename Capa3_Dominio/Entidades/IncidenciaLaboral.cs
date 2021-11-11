@@ -20,5 +20,8 @@ namespace Capa3_Dominio.Entidades
         public int Totalhorasextras { get => totalhorasextras; set => totalhorasextras = value; }
         public PeriodoDeNomina Periodo { get => periodo; set => periodo = value; }
         public Contrato Contrato { get => contrato; set => contrato = value; }
+
+        
+       
     }
 }

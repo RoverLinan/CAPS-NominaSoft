@@ -17,7 +17,12 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private GestionarPeriodoNominaServicio periodoServicio;
         private GestionarEmpleadoServicio empleadoServicio;
         private GestionarContratoServicio contratoServicio;
+        private GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
         private List<PeriodoDeNomina> listaPeriodo;
+        private List<IncidenciaLaboral> incidenciasLaborales;
+        private List<Contrato> contratos;
+        private List<BoletaDePago> boletasDePago;
+
 
         public FormProcesarNomina()
         {
@@ -25,11 +30,12 @@ namespace Capa1_Presentacion.WinForms.Nominas
             periodoServicio = new GestionarPeriodoNominaServicio();
             empleadoServicio =  new GestionarEmpleadoServicio();
             contratoServicio = new GestionarContratoServicio();
+            incidenciaLaboralServicio = new GestionarIncidenciaLaboralServicio();
 
             panelSeleccionPeriodo.Visible = false;
             panelInformacionNomina.Visible = false;
             flowLayoutPanelPeriodo.Visible = false;
-
+            dateTimePickerFechaInicioNomina.Enabled = false;
             buttonCerrar.Visible = false;
             buttonGuardar.Visible = false;
             buttonEliminar.Visible = false;
@@ -83,17 +89,12 @@ namespace Capa1_Presentacion.WinForms.Nominas
             try
             {
                 cargarListaPeriodo();
-                if (listaPeriodo == null)
-                {
-
-                }
-                else
-                {
-                    panelSeleccionPeriodo.Visible = true;
+               
+                panelSeleccionPeriodo.Visible = true;
+                panelInformacionNomina.Visible = true;
+              
 
 
-
-                }
             } 
             catch (Exception err)
             {
@@ -145,15 +146,36 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void buttonGenerarNomina_Click(object sender, EventArgs e)
         {
-            Nomina nomina = new Nomina();
-            nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
 
+            try
+            {
+                Nomina nomina = new Nomina
+                {
+                    Descripcion = textBoxDescripcionNomina.Text.ToUpper()
+                };
 
+                PeriodoDeNomina periodoDeNomina = buscarPeriodo(comboBoxListaPeriodo.Text);
+                if(periodoDeNomina != null)
+                {
+                    incidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
 
+                    foreach (IncidenciaLaboral item in incidenciasLaborales)
+                    {
+                        Console.WriteLine(item.Contrato.Contrato_id + "    >>>>>>>  "  + item.Periodo.Periodo_id);
+                    }
+                    
 
+                }
+           
+            }
+            catch (Exception err)
+            {
 
-
+                MessageBox.Show(err.Message);
+            }
+           
 
         }
+
     }
 }

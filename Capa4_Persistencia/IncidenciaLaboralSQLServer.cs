@@ -76,16 +76,43 @@ namespace Capa4_Persistencia
            
         }
 
-        public void buscarPorIdPeriodo(string id)
+        public List<IncidenciaLaboral> obtenerPorIdPeriodo(string id)
         {
+            string buscarSql = "SELECT * FROM incidencialaboral where periodo_id ='" + id + "'";
+            List<IncidenciaLaboral> listaIncidencias = new List<IncidenciaLaboral>();
 
+            try
+            {
+                SqlDataReader resultado = gestorSQL.EjecutarConsulta(buscarSql);
+
+                while (resultado.Read())
+                {
+                    listaIncidencias.Add(obtenerIncidencia(resultado));
+                }
+
+                if (listaIncidencias.Count == 0)
+                {
+                    throw new Exception("No hay incidencias para este periodo");
+                }
+
+                return listaIncidencias;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
 
         }
 
         private IncidenciaLaboral obtenerIncidencia(SqlDataReader resultado)
         {
             IncidenciaLaboral incidencia = new IncidenciaLaboral();
+            incidencia.Periodo = new PeriodoDeNomina();
+            incidencia.Contrato = new Contrato();
             incidencia.Incidencia_id = resultado.GetInt32(0);
+            incidencia.Periodo.Periodo_id = resultado.GetString(1);
+            incidencia.Contrato.Contrato_id = resultado.GetString(2);
             incidencia.Totalhorasdefalta = resultado.GetInt32(3);
             incidencia.Totalhorasextras = resultado.GetInt32(4);
             return incidencia;
