@@ -1,0 +1,9 @@
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Release\Capa4_Persistencia.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Release\Capa4_Persistencia.pdb
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Release\Capa3_Dominio.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\bin\Release\Capa3_Dominio.pdb
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Release\Capa4_Persistencia.csproj.AssemblyReference.cache
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Release\Capa4_Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Release\Capa4_Persistencia.csproj.CopyComplete
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Release\Capa4_Persistencia.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Release\Capa4_Persistencia.pdb

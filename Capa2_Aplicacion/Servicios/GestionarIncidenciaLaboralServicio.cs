@@ -17,6 +17,7 @@ namespace Capa2_Aplicacion.Servicios
         public GestionarIncidenciaLaboralServicio()
         {
             incidenciaLaboralSQL = new IncidenciaLaboralSQLServer();
+            periodoNominaServicio = new GestionarPeriodoNominaServicio();
             gestorSQL = GestorSQLServer.getInstance();
         }
 

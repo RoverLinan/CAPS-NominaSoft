@@ -14,7 +14,7 @@ namespace Capa3_Dominio.Entidades
         private bool cerrada;
 
         private PeriodoDeNomina periodo;
-        private List<BoletaDePago> boletaDePagos;
+        private List<BoletaDePago> boletaDePagos = new List<BoletaDePago>();
         
 
         public string Nomina_id { get => nomina_id; set => nomina_id = value; }

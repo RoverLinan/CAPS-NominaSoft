@@ -148,6 +148,7 @@ namespace Capa4_Persistencia
             IncidenciaLaboral incidencia = new IncidenciaLaboral();
             incidencia.Periodo = new PeriodoDeNomina();
             incidencia.Contrato = new Contrato();
+
             incidencia.Incidencia_id = resultado.GetInt32(0);
             incidencia.Periodo.Periodo_id = resultado.GetString(1);
             incidencia.Contrato.Contrato_id = resultado.GetString(2);

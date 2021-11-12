@@ -136,14 +136,18 @@ namespace Capa2_Aplicacion.Servicios
          
             try
             {
+                Console.WriteLine("---------------->>>>>  1");
                 List<Contrato> contratos;
                 gestorSQL.AbrirConexion();
                 contratos = contratoSQLServer.obtenerContratos();
                 gestorSQL.CerrarConexion();
+
+                
                 foreach (Contrato item in contratos)
                 {
                     item.Afp = afpServicio.buscarAfpPorId(item.Afp.Afp_id);
                     item.Empleado = empleadoServicio.buscarEmpleadoPorId(item.Empleado.Empleado_id);
+                    Console.WriteLine("---------------->>>>>  4");
                     item.Incidencias = incidenciaLaboralServicio.obtenerListaPorIdContrato(item.Contrato_id);
                 }
               

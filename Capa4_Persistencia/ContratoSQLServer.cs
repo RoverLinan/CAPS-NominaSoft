@@ -53,7 +53,7 @@ namespace Capa4_Persistencia
         {
 
             List<Contrato> contratos = new List<Contrato>();
-            string consultaSQL = "select   * from contrato where cancelado = false";
+            string consultaSQL = "select   * from contrato where cancelado = 'false'";
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
