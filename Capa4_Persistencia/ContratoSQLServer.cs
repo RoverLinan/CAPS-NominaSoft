@@ -85,7 +85,36 @@ namespace Capa4_Persistencia
 
 
 
+        public Contrato buscarPorId(string id)
+        {
+            string consultaSQL = "select   * from contrato where contrato_id = '" + id + "'";
 
+            Contrato contrato = null;
+
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    if (obtenerContrato(resultadoSQL).EstaVigente())
+                    {
+                        contrato = obtenerContrato(resultadoSQL);
+                        break;
+                    }
+
+                }
+
+                if (contrato == null)
+                {
+                    throw new Exception("No hay contratos vigentes ");
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            return contrato;
+        }
 
 
 

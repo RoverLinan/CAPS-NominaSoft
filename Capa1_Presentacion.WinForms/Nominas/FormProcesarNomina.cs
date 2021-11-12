@@ -18,10 +18,16 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private GestionarEmpleadoServicio empleadoServicio;
         private GestionarContratoServicio contratoServicio;
         private GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
+        private GestionarAfpServicio afpServicio;
+        private GestionarBoletaDePagoServicio boletaDePagoServicio;
+
+
         private List<PeriodoDeNomina> listaPeriodo;
-        private List<IncidenciaLaboral> incidenciasLaborales;
-        private List<Contrato> contratos;
-        private List<BoletaDePago> boletasDePago;
+        private List<IncidenciaLaboral> listaIncidenciasLaborales;
+        private List<Contrato> listaContratos;
+        private List<BoletaDePago> listaBoletasDePago;
+        private List<Afp> listaAfp;
+        private List<Empleado> listaEmpleados;
 
 
         public FormProcesarNomina()
@@ -157,11 +163,21 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 PeriodoDeNomina periodoDeNomina = buscarPeriodo(comboBoxListaPeriodo.Text);
                 if(periodoDeNomina != null)
                 {
-                    incidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
+                    this.listaIncidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
 
-                    foreach (IncidenciaLaboral item in incidenciasLaborales)
+                    foreach (IncidenciaLaboral item in listaIncidenciasLaborales)
                     {
                         Console.WriteLine(item.Contrato.Contrato_id + "    >>>>>>>  "  + item.Periodo.Periodo_id);
+                        item.Periodo = periodoDeNomina;
+                        Contrato contrato = contratoServicio.buscarPorId(item.Contrato.Contrato_id);
+                        item.Contrato = contrato;
+                        contrato.Incidencias.Add(item);
+
+                        //buscamos empleado y afp
+
+                        
+
+                        this.listaContratos.Add(contrato);
                     }
                     
 

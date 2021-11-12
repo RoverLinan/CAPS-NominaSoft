@@ -21,6 +21,24 @@ namespace Capa2_Aplicacion.Servicios
         }
 
 
+        public Contrato buscarPorId(string id)
+        {
+            try
+            {
+                gestorSQL.AbrirConexion();
+                Contrato contrato = contratoSQLServer.buscarPorId(id);
+                gestorSQL.CerrarConexion();
+                return contrato;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+          
+        }
+
+
         public bool guardarContrato(Contrato contrato, Empleado empleado, Afp afp)
         {
 
