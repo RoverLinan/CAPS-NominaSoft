@@ -28,7 +28,7 @@ namespace Capa4_Persistencia
             {
                 SqlCommand comando = new SqlCommand();
                 comando = gestorSQL.ObtenerComandoSQL(insertarNomina);
-                comando.Parameters.AddWithValue("@id", "NOM" + new Random().Next(1000, 9999));
+                comando.Parameters.AddWithValue("@id", nomina.Nomina_id);
                 comando.Parameters.AddWithValue("@per_id", nomina.Periodo.Periodo_id);
                 comando.Parameters.AddWithValue("@fecha", nomina.Fecha);
                 comando.Parameters.AddWithValue("@descripcion", nomina.Descripcion);
@@ -79,8 +79,7 @@ namespace Capa4_Persistencia
         private Nomina obtenerNomina(SqlDataReader resultado)
         {
             Nomina nomina = new Nomina();
-            PeriodoDeNomina periodo = new PeriodoDeNomina();
-            nomina.Periodo = periodo;
+            nomina.Periodo = new PeriodoDeNomina(); ;
 
             nomina.Nomina_id = resultado.GetString(0);
             nomina.Periodo.Periodo_id = resultado.GetString(1);

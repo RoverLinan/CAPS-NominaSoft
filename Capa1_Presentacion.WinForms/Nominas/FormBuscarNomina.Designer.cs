@@ -87,6 +87,7 @@
             this.dataGridViewListaNominas.Name = "dataGridViewListaNominas";
             this.dataGridViewListaNominas.Size = new System.Drawing.Size(569, 271);
             this.dataGridViewListaNominas.TabIndex = 4;
+            this.dataGridViewListaNominas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListaNominas_RowEnter);
             // 
             // idNomina
             // 

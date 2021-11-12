@@ -37,13 +37,13 @@ namespace Capa4_Persistencia
                 comando.Parameters.AddWithValue("@4", boleta.Sueldobasico);
                 comando.Parameters.AddWithValue("@5", boleta.Asignacionfamiliar);
                 comando.Parameters.AddWithValue("@6", boleta.Montoporhoraextras);
-                comando.Parameters.AddWithValue("@7", boleta.Reintegros);
-                comando.Parameters.AddWithValue("@8", boleta.Movilidad);
-                comando.Parameters.AddWithValue("@9", boleta.Otrosingresos);
+                comando.Parameters.AddWithValue("@7", boleta.Reintegros = 0);
+                comando.Parameters.AddWithValue("@8", boleta.Movilidad = 0);
+                comando.Parameters.AddWithValue("@9", boleta.Otrosingresos = 0);
                 comando.Parameters.AddWithValue("@10", boleta.Regimenpensionario);
                 comando.Parameters.AddWithValue("@11", boleta.Montoporhorasdefalta);
-                comando.Parameters.AddWithValue("@12", boleta.Adelantos);
-                comando.Parameters.AddWithValue("@13", boleta.Otrosdescuentos);
+                comando.Parameters.AddWithValue("@12", boleta.Adelantos = 0);
+                comando.Parameters.AddWithValue("@13", boleta.Otrosdescuentos = 0);
                 comando.ExecuteNonQuery();
                 return true;
 

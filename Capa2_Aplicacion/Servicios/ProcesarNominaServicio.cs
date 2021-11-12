@@ -17,7 +17,8 @@ namespace Capa2_Aplicacion.Servicios
 
         public ProcesarNominaServicio()
         {
-            gestorSql = GestorSQLServer.getInstance();  
+            gestorSql = GestorSQLServer.getInstance();
+            nominaSQL = new NominaSQLServer();
             boletaDePagoServicio = new GestionarBoletaDePagoServicio();
             periodoNominaServicio = new GestionarPeriodoNominaServicio();
         }
@@ -25,11 +26,36 @@ namespace Capa2_Aplicacion.Servicios
 
         public void guardar(Nomina nomina)
         {
+
+
+
             try
             {
+                if (nomina.BoletaDePagos.Count == 0)
+                {
+
+                    throw new Exception("No se han generado boletas de pago");
+
+                }
+
+                if (nomina.EsFactibleGenerarNomina() == false)
+                {
+
+                    throw new Exception("No es factible generar la nomina");
+
+                }
+
+
                 gestorSql.AbrirConexion();
                 nominaSQL.guardar(nomina);
                 gestorSql.CerrarConexion();
+
+                // guardamos las boletas 
+                foreach (BoletaDePago boleta in nomina.BoletaDePagos)
+                {
+                    boletaDePagoServicio.guardar(boleta);
+                }
+
             }
             catch (Exception err)
             {
@@ -38,7 +64,7 @@ namespace Capa2_Aplicacion.Servicios
             }
         }
 
-        public List<Nomina> buscarPorDescripcion(string descripcion)
+        public List<Nomina> buscarNominaPorDescripcion(string descripcion)
         {
             try
             {
@@ -49,9 +75,7 @@ namespace Capa2_Aplicacion.Servicios
                 foreach (Nomina nomina in listaNomina)
                 {
                     nomina.BoletaDePagos = boletaDePagoServicio.buscarBoletasPorIdNomina(nomina);
-                    nomina.Periodo = periodoNominaServicio.buscarPeriodoPorIdNomina();
-
-
+                    nomina.Periodo = periodoNominaServicio.buscarPeriodoPorId(nomina.Periodo.Periodo_id);
                 }
 
 

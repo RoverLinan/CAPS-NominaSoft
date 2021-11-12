@@ -64,6 +64,36 @@ namespace Capa4_Persistencia
             }
             return periodoDeNomina;
         }
+
+        public List<PeriodoDeNomina> buscarPeriodosPorIdNomina(Nomina nomina)
+        {
+            List<PeriodoDeNomina> listaPeriodoDeNomina = new List<PeriodoDeNomina>();
+
+            string consultaSQL = "select   * from periodonomina where periodo_id = '" + nomina.Periodo.Periodo_id + "'";
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                while (resultadoSQL.Read())
+                {
+                    PeriodoDeNomina periodo = obtenerPeriodoDeNomina(resultadoSQL);
+                    listaPeriodoDeNomina.Add(periodo);
+                }
+
+                if (listaPeriodoDeNomina.Count == 0)
+                {
+                    throw new Exception("No hay Periodos registradas para esta nomina");
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            return listaPeriodoDeNomina;
+        }
+
+
+
+
         public PeriodoDeNomina obtenerPeriodoDeNomina(SqlDataReader resultado)
         {
             PeriodoDeNomina periodoDeNomina = new PeriodoDeNomina();

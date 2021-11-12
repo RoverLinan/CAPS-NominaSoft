@@ -56,6 +56,32 @@ namespace Capa2_Aplicacion.Servicios
 
         }
 
+
+
+        public List<PeriodoDeNomina> buscarPeriodoPorIdNomina(Nomina nomina)
+        {
+
+          
+            try
+            {
+                List<PeriodoDeNomina> listaPeriodoDeNomina;
+                gestorSQL.AbrirConexion();
+                listaPeriodoDeNomina = periodoNominaSQL.buscarPeriodosPorIdNomina(nomina);
+                gestorSQL.CerrarConexion();
+
+                return listaPeriodoDeNomina;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+
+
+
+        }
+
         public List<PeriodoDeNomina> obtenerListaPeriodo()
         {
             try
