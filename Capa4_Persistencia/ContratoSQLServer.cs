@@ -57,25 +57,22 @@ namespace Capa4_Persistencia
             try
             {
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
-                if (resultadoSQL.Read())
+                while(resultadoSQL.Read())
                 {
                     contratos.Add(obtenerContrato(resultadoSQL));
                 }
-                else
+
+                if(contratos.Count == 0)
                 {
-                    throw new Exception("No hay contratos asignados");
+                    throw new Exception("No hay contratos registrados");
                 }
+               return contratos;
             }
             catch (Exception err)
             {
                 throw err;
             }
-            return contratos;
-
-
-
-
-
+     
 
         }
 

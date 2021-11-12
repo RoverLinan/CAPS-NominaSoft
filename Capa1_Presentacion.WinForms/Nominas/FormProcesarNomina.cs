@@ -270,6 +270,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
                 if(listaIncidenciasFiltrada.Count > 0)
                 {
+                    contrato.Incidencias = listaIncidenciasFiltrada;
                     listaContratosFiltrada.Add(contrato);
                 }
             }
@@ -317,9 +318,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[1].Value = boleta.Contrato.Contrato_id;
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[2].Value = boleta.Contrato.Empleado.Nombres + " " + boleta.Contrato.Empleado.Apellidos;
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[3].Value = boleta.Contrato.Puesto;
-                dataGridViewListaPagos.Rows[rowEscribir].Cells[4].Value = boleta.CalcularTotalIngresos();
-                dataGridViewListaPagos.Rows[rowEscribir].Cells[5].Value = boleta.CalcularTotalRetenciones();
-                dataGridViewListaPagos.Rows[rowEscribir].Cells[6].Value = boleta.CalcularNetoAPagar();
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[4].Value = boleta.CalcularTotalIngresos().ToString();
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[5].Value = boleta.CalcularTotalRetenciones().ToString();
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[6].Value = boleta.CalcularNetoAPagar().ToString();
 
                 rowEscribir++;
             }
