@@ -63,7 +63,7 @@ namespace Capa4_Persistencia
 
                 if (listaNomina.Count == 0)
                 {
-                    throw new Exception("No hay incidencias para este contrato");
+                    throw new Exception("No hay coincidencias de nominas");
                 }
 
                 return listaNomina;
@@ -86,7 +86,7 @@ namespace Capa4_Persistencia
             nomina.Periodo.Periodo_id = resultado.GetString(1);
             nomina.Fecha = resultado.GetDateTime(2);
             nomina.Descripcion = resultado.GetString(3);
-            nomina.Cerrada = resultado.GetBoolean(4);
+            nomina.Cerrada = resultado.GetBoolean(5);
 
             return nomina;
         }

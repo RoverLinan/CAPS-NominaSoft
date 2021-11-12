@@ -12,6 +12,7 @@ namespace Capa2_Aplicacion.Servicios
     {
         private GestorSQLServer gestorSQL;
         private IncidenciaLaboralSQLServer incidenciaLaboralSQL;
+        private GestionarPeriodoNominaServicio periodoNominaServicio;
 
         public GestionarIncidenciaLaboralServicio()
         {
@@ -52,6 +53,30 @@ namespace Capa2_Aplicacion.Servicios
 
                 throw err;
             }
+        }
+
+        public List<IncidenciaLaboral> obtenerListaPorIdContrato(string id)
+        {
+            try
+            {
+                gestorSQL.AbrirConexion();
+                List<IncidenciaLaboral> listaIncidencias = incidenciaLaboralSQL.obtenerListaPorIdContrato(id);
+                foreach (IncidenciaLaboral item in listaIncidencias)
+                {
+
+                    item.Periodo = periodoNominaServicio.buscarPeriodoPorId(item.Periodo.Periodo_id);
+
+                }
+
+                gestorSQL.CerrarConexion();
+                return listaIncidencias;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
         }
 
 

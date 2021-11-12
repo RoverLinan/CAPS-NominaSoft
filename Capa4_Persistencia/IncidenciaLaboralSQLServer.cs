@@ -76,6 +76,44 @@ namespace Capa4_Persistencia
            
         }
 
+
+        public List<IncidenciaLaboral> obtenerListaPorIdContrato(string id)
+        {
+
+            string buscarSql = "SELECT * FROM incidencialaboral where contrato_id ='" + id + "'";
+            List<IncidenciaLaboral> listaIncidencias = new List<IncidenciaLaboral>();
+
+            try
+            {
+                SqlDataReader resultado = gestorSQL.EjecutarConsulta(buscarSql);
+
+                while (resultado.Read())
+                {
+                    listaIncidencias.Add(obtenerIncidencia(resultado));
+                }
+
+                if (listaIncidencias.Count == 0)
+                {
+                    throw new Exception("No hay incidencias para este contrato");
+                }
+
+                return listaIncidencias;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+
+
+        }
+
+
+
+
+
+
         public List<IncidenciaLaboral> obtenerPorIdPeriodo(string id)
         {
             string buscarSql = "SELECT * FROM incidencialaboral where periodo_id ='" + id + "'";

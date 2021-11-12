@@ -70,6 +70,30 @@ namespace Capa4_Persistencia
             }
             return empleado;
         }
+
+        public Empleado buscarEmpleadoPorId(string id)
+        {
+            Empleado empleado;
+            string consultaSQL = "select   * from empleado where empleado_id = '" + id + "'";
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                if (resultadoSQL.Read())
+                {
+                    empleado = obtenerEmpleado(resultadoSQL);
+                }
+                else
+                {
+                    throw new Exception("El empleado no existe");
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            return empleado;
+        }
+
         public Empleado obtenerEmpleado( SqlDataReader resultado)
         {
             Empleado empleado = new Empleado();

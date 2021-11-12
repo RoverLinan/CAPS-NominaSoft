@@ -82,6 +82,49 @@ namespace Capa3_Dominio.Entidades
             return false;
         }
 
+        //REGLA 20
+        public double calcularTotalIngresosNomina()
+        {
+            double total = 0;   
+
+            foreach (BoletaDePago boleta in boletaDePagos)
+            {
+                total += boleta.CalcularTotalIngresos();
+            }
+
+            return total;
+
+        }
+
+        //REGLA 21
+        public double calcularTotalRetencionesNomina()
+        {
+            double total = 0;
+
+            foreach (BoletaDePago boleta in boletaDePagos)
+            {
+                total += boleta.CalcularTotalRetenciones();
+            }
+
+            return total;
+
+        }
+
+        //regla 22
+        public double calcularTotalSueldoNetoNomina()
+        {
+            double total = 0;
+
+            foreach (BoletaDePago boleta in boletaDePagos)
+            {
+                total += boleta.CalcularNetoAPagar();
+            }
+
+            return total;
+
+        }
+
+
 
     }
 }

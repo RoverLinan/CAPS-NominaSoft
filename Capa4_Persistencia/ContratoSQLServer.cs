@@ -49,7 +49,35 @@ namespace Capa4_Persistencia
          
         }
 
+        public List<Contrato> obtenerContratos()
+        {
 
+            List<Contrato> contratos = new List<Contrato>();
+            string consultaSQL = "select   * from contrato where cancelado = false";
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                if (resultadoSQL.Read())
+                {
+                    contratos.Add(obtenerContrato(resultadoSQL));
+                }
+                else
+                {
+                    throw new Exception("No hay contratos asignados");
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+            return contratos;
+
+
+
+
+
+
+        }
 
         public bool actualizar(Contrato contrato)
         {

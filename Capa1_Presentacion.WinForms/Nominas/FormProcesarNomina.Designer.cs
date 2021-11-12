@@ -64,6 +64,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonCerrar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.panelSeleccionPeriodo = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanelPeriodo = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelIdPeriodo = new System.Windows.Forms.Label();
@@ -74,7 +75,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.panel5 = new System.Windows.Forms.Panel();
             this.dateTimePickerFechaFin = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.panelInformacionNomina.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaPagos)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -367,6 +367,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonGuardar.TabIndex = 1;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonCerrar
             // 
@@ -396,6 +397,16 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.panelSeleccionPeriodo.Name = "panelSeleccionPeriodo";
             this.panelSeleccionPeriodo.Size = new System.Drawing.Size(1017, 122);
             this.panelSeleccionPeriodo.TabIndex = 27;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(426, 58);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "--->";
             // 
             // flowLayoutPanelPeriodo
             // 
@@ -485,16 +496,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.label9.Size = new System.Drawing.Size(54, 13);
             this.label9.TabIndex = 2;
             this.label9.Text = "Fecha fin:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(426, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "--->";
             // 
             // FormProcesarNomina
             // 

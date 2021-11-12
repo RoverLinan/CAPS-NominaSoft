@@ -45,7 +45,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.textBox1.Location = new System.Drawing.Point(40, 87);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(449, 65);
+            this.textBox1.Size = new System.Drawing.Size(449, 50);
             this.textBox1.TabIndex = 0;
             // 
             // dateTimePicker1

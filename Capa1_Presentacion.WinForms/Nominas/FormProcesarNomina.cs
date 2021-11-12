@@ -30,6 +30,8 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private List<Empleado> listaEmpleados;
 
 
+        private Nomina nomina;
+
         public FormProcesarNomina()
         {
             InitializeComponent();
@@ -155,33 +157,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
             try
             {
-                Nomina nomina = new Nomina
-                {
-                    Descripcion = textBoxDescripcionNomina.Text.ToUpper()
-                };
-
-                PeriodoDeNomina periodoDeNomina = buscarPeriodo(comboBoxListaPeriodo.Text);
-                if(periodoDeNomina != null)
-                {
-                    this.listaIncidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
-
-                    foreach (IncidenciaLaboral item in listaIncidenciasLaborales)
-                    {
-                        Console.WriteLine(item.Contrato.Contrato_id + "    >>>>>>>  "  + item.Periodo.Periodo_id);
-                        item.Periodo = periodoDeNomina;
-                        Contrato contrato = contratoServicio.buscarPorId(item.Contrato.Contrato_id);
-                        item.Contrato = contrato;
-                        contrato.Incidencias.Add(item);
-
-                        //buscamos empleado y afp
-
-                        
-
-                        this.listaContratos.Add(contrato);
-                    }
-                    
-
-                }
+                this.nomina = new Nomina();
+                // generarNominaMetodoUno();
+                generarNominaMetodoDos();
+              
            
             }
             catch (Exception err)
@@ -192,6 +171,178 @@ namespace Capa1_Presentacion.WinForms.Nominas
            
 
         }
+
+        private void buttonGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.nomina.Nomina_id = "NOM" + new Random().Next(1000, 9999);
+                this.nomina.Fecha = new DateTime();
+                this.nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
+                this.nomina.Cerrada = false;
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+      
+
+
+        private void generarNominaMetodoUno()
+        {
+            
+
+            PeriodoDeNomina periodoDeNomina = buscarPeriodo(comboBoxListaPeriodo.Text);
+            this.nomina.Periodo = periodoDeNomina;
+
+
+
+            if (periodoDeNomina != null)
+            {
+                this.listaIncidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
+
+                if (this.listaIncidenciasLaborales.Count > 0)
+                {
+
+                    foreach (IncidenciaLaboral item in listaIncidenciasLaborales)
+                    {
+
+                        // buscamos contrato para asignarle la incidencia
+                        item.Periodo = periodoDeNomina;
+                        Contrato contrato = contratoServicio.buscarPorId(item.Contrato.Contrato_id);
+                        item.Contrato = contrato;
+                        contrato.Incidencias.Add(item);
+
+                        //buscamos empleado y afp
+                        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(contrato.Empleado.Empleado_id);
+                        Afp afp = afpServicio.buscarAfpPorId(contrato.Afp.Afp_id);
+
+                        contrato.Afp = afp;
+                        contrato.Empleado = empleado;
+
+                        this.listaContratos.Add(contrato);
+
+                        BoletaDePago boletaDePago = new BoletaDePago();
+                        boletaDePago.Contrato = contrato;
+                        boletaDePago.Nomina = this.nomina;
+
+
+                        // agregamos la boleta a la nomina para hacer los calculos
+                        nomina.BoletaDePagos.Add(boletaDePago);
+
+                    }
+
+
+                }
+                else
+                {
+                    throw new Exception("No existen incidencias para este periodo");
+                }
+
+            }
+        }
+
+        private void generarNominaMetodoDos()
+        {
+            this.listaContratos = contratoServicio.obtenerContratos();
+
+
+            List<Contrato> listaContratosFiltrada = new List<Contrato>();
+            List<IncidenciaLaboral> listaIncidenciasFiltrada;
+
+            foreach (Contrato contrato in this.listaContratos)
+            {
+                listaIncidenciasFiltrada = new List<IncidenciaLaboral>();
+                foreach (IncidenciaLaboral incidencia in contrato.Incidencias)
+                {
+
+                    if (incidencia.Periodo.Periodo_id.Equals(buscarPeriodo(comboBoxListaPeriodo.Text).Periodo_id))
+                    {
+                        listaIncidenciasFiltrada.Add(incidencia);
+                    }
+                }
+
+                if(listaIncidenciasFiltrada.Count > 0)
+                {
+                    listaContratosFiltrada.Add(contrato);
+                }
+            }
+
+            if(listaContratosFiltrada.Count > 0)
+            {
+
+                foreach (Contrato contrato in listaContratosFiltrada)
+                {
+
+                    BoletaDePago boleta = new BoletaDePago();
+                    boleta.Contrato = contrato;
+                    boleta.Nomina = this.nomina;
+                    this.nomina.BoletaDePagos.Add(boleta);
+
+                }
+
+                this.nomina.Periodo = buscarPeriodo(comboBoxListaPeriodo.Text);
+
+                generarPagosBoleta();
+
+            }
+            else
+            {
+                throw new Exception("No hay contratos con incidencias para este periodo");
+            }
+
+        }
+
+
+        private void generarPagosBoleta()
+        {
+
+
+
+            dataGridViewListaPagos.Rows.Clear();
+            dataGridViewListaPagos.Rows.Add(this.nomina.BoletaDePagos.Count);
+            int rowEscribir = 0;
+            foreach (BoletaDePago boleta in this.nomina.BoletaDePagos)
+            {
+
+
+
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[0].Value = boleta.Contrato.Empleado.Empleado_id;
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[1].Value = boleta.Contrato.Contrato_id;
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[2].Value = boleta.Contrato.Empleado.Nombres + " " + boleta.Contrato.Empleado.Apellidos;
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[3].Value = boleta.Contrato.Puesto;
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[4].Value = boleta.CalcularTotalIngresos();
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[5].Value = boleta.CalcularTotalRetenciones();
+                dataGridViewListaPagos.Rows[rowEscribir].Cells[6].Value = boleta.CalcularNetoAPagar();
+
+                rowEscribir++;
+            }
+
+
+            calcularTotalesNomina();
+
+
+        }
+
+
+        public void calcularTotalesNomina()
+        {
+
+            //generar datos nomina
+
+            textBoxTotalGenerados.Text = this.nomina.BoletaDePagos.Count.ToString();
+            textBoxTotalIngresos.Text = this.nomina.calcularTotalIngresosNomina().ToString();
+            textBoxTotalRetenciones.Text = this.nomina.calcularTotalRetencionesNomina().ToString();
+            textBoxTotalNetoPagar.Text = this.nomina.calcularTotalSueldoNetoNomina().ToString();
+
+        }
+
 
     }
 }

@@ -57,6 +57,26 @@ namespace Capa2_Aplicacion.Servicios
 
         }
 
+        public Empleado buscarEmpleadoPorId(string id)
+        {
+           
+            try
+            {
+                Empleado empleado;
+                gestorSQL.AbrirConexion();
+                empleado = empleadoSQL.buscarEmpleadoPorId(id);
+                gestorSQL.CerrarConexion();
+
+                return empleado;
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+        }
+
 
 
     }
