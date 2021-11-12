@@ -33,10 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewListaNominas = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.idNomina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaNominas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +55,7 @@
             this.buttonBuscar.TabIndex = 1;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // label1
             // 
@@ -87,15 +88,6 @@
             this.dataGridViewListaNominas.Size = new System.Drawing.Size(569, 271);
             this.dataGridViewListaNominas.TabIndex = 4;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(79, 144);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Lista de resultados";
-            // 
             // idNomina
             // 
             this.idNomina.HeaderText = "ID NOMINA";
@@ -111,6 +103,15 @@
             // 
             this.fecha.HeaderText = "FECHA";
             this.fecha.Name = "fecha";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(79, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Lista de resultados";
             // 
             // FormBuscarNomina
             // 

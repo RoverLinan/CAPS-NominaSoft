@@ -57,15 +57,62 @@ namespace Capa4_Persistencia
         }
 
 
+        public List<BoletaDePago> buscarPorIdNomina(Nomina nomina)
+        {
+
+            string selectBoletas = "SELECT * FROM boletadepago where nomina_id = '" + nomina.Nomina_id + "'";
+            List<BoletaDePago> listaBoletas = new List<BoletaDePago>();
+            try
+            {
+                SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(selectBoletas);
+                while (resultadoSQL.Read())
+                {
+                    BoletaDePago boletaDePago = obtenerBoleta(resultadoSQL);
+                    boletaDePago.Nomina = nomina;
+
+                    listaBoletas.Add(boletaDePago);
+                }
+
+                if (listaBoletas.Count == 0)
+                {
+                    throw new Exception("No hay boletas generadas para esta nomina");
+                }
+                return listaBoletas;
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
         public BoletaDePago obtenerBoleta(SqlDataReader resultado)
         {
             BoletaDePago boleta = new BoletaDePago();
+            boleta.Contrato = new Contrato();
+            boleta.Nomina = new Nomina();
 
-            boleta.Sueldobasico =  double.Parse(resultado.GetDecimal(1).ToString());
-            boleta.Asignacionfamiliar = double.Parse(resultado.GetDecimal(2).ToString());
-            boleta.Montoporhoraextras = double.Parse(resultado.GetDecimal(3).ToString());
-            boleta.Reintegros = double.Parse(resultado.GetDecimal(4).ToString());
-            boleta.Movilidad = double.Parse(resultado.GetDecimal(5).ToString());
+            boleta.Boleta_id =              resultado.GetString(0);
+            boleta.Contrato.Contrato_id =   resultado.GetString(1);
+            boleta.Nomina.Nomina_id =       resultado.GetString(2);
+            boleta.Sueldobasico =           double.Parse(resultado.GetDecimal(3).ToString());
+            boleta.Asignacionfamiliar =     double.Parse(resultado.GetDecimal(4).ToString());
+            boleta.Montoporhoraextras =     double.Parse(resultado.GetDecimal(5).ToString());
+            boleta.Reintegros =             double.Parse(resultado.GetDecimal(6).ToString());
+            boleta.Movilidad =              double.Parse(resultado.GetDecimal(7).ToString());
+            boleta.Otrosingresos =          double.Parse(resultado.GetDecimal(8).ToString());
+            boleta.Regimenpensionario =     double.Parse(resultado.GetDecimal(9).ToString());
+            boleta.Montoporhorasdefalta =   double.Parse(resultado.GetDecimal(10).ToString());
+            boleta.Adelantos =              double.Parse(resultado.GetDecimal(11).ToString());
+            boleta.Otrosdescuentos =        double.Parse(resultado.GetDecimal(12).ToString());
 
             return boleta;
 

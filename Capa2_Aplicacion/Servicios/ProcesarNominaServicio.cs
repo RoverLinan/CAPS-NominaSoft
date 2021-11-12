@@ -12,10 +12,14 @@ namespace Capa2_Aplicacion.Servicios
     {
         private GestorSQLServer gestorSql;
         private NominaSQLServer nominaSQL;
+        private GestionarBoletaDePagoServicio boletaDePagoServicio;
+        private GestionarPeriodoNominaServicio periodoNominaServicio;
 
         public ProcesarNominaServicio()
         {
             gestorSql = GestorSQLServer.getInstance();  
+            boletaDePagoServicio = new GestionarBoletaDePagoServicio();
+            periodoNominaServicio = new GestionarPeriodoNominaServicio();
         }
 
 
@@ -41,6 +45,16 @@ namespace Capa2_Aplicacion.Servicios
                 gestorSql.AbrirConexion();
                 List<Nomina> listaNomina = nominaSQL.buscarPorDescripcion(descripcion);
                 gestorSql.CerrarConexion();
+
+                foreach (Nomina nomina in listaNomina)
+                {
+                    nomina.BoletaDePagos = boletaDePagoServicio.buscarBoletasPorIdNomina(nomina);
+                    nomina.Periodo = periodoNominaServicio.buscarPeriodoPorIdNomina();
+
+
+                }
+
+
 
                 return listaNomina;
             }
