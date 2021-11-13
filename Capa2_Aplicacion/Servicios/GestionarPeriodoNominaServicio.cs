@@ -24,7 +24,7 @@ namespace Capa2_Aplicacion.Servicios
             try
             {
 
-                if (periodoDeNomina.tieneFechaFinValida())
+                if (periodoDeNomina.tieneFechaFinValida() == false)
                 {
                     throw new Exception("fecha fin: El periodo no cumple con la regla 16");
                 }

@@ -21,34 +21,19 @@ namespace Capa1_Presentacion.WinForms.Acceso
             usuarioServicio = new GestionarUsuarioServicio();
         }
 
-        private void labelRegistrar_Click(object sender, EventArgs e)
-        {
-            FormRegistrarUsuario formRegistrarUsuario = new FormRegistrarUsuario();
-            
-            formRegistrarUsuario.ShowDialog();
-        
-        }
+       
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            string username = textUsername.Text.Trim();
-            string password = textPassword.Text.Trim();
-            Usuario usuario  = null;
-            try
-            {
-               // usuario = usuarioServicio.iniciarSesion(username, password);
-                //SesionSingleton sesion = SesionSingleton.getInstance();
-                //sesion.SetUsuario(usuario);
-                FormPrincipal formPrincipal = new FormPrincipal(new Usuario());
-                this.Visible = false;
-                formPrincipal.Show();
+          
+     
+            
+              
+                FormPrincipal formPrincipal = new FormPrincipal();
+                formPrincipal.Show(this);
+                Visible = false;
                 
-            }
-            catch (Exception err)
-            {
-                textPassword.Text = "";
-                MessageBox.Show(this,"Error de credenciales \n" + err.Message);
-            }
+            
          
             
         }

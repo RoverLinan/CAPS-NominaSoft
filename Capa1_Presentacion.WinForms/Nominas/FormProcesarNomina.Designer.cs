@@ -106,31 +106,36 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(483, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(218, 25);
+            this.label8.Size = new System.Drawing.Size(233, 25);
             this.label8.TabIndex = 15;
             this.label8.Text = "PROCESAR NOMINA";
             // 
             // buttonBuscarNomina
             // 
-            this.buttonBuscarNomina.Location = new System.Drawing.Point(236, 72);
+            this.buttonBuscarNomina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.buttonBuscarNomina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscarNomina.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonBuscarNomina.Location = new System.Drawing.Point(236, 63);
             this.buttonBuscarNomina.Name = "buttonBuscarNomina";
-            this.buttonBuscarNomina.Size = new System.Drawing.Size(116, 23);
+            this.buttonBuscarNomina.Size = new System.Drawing.Size(116, 32);
             this.buttonBuscarNomina.TabIndex = 22;
             this.buttonBuscarNomina.Text = "Buscar";
-            this.buttonBuscarNomina.UseVisualStyleBackColor = true;
+            this.buttonBuscarNomina.UseVisualStyleBackColor = false;
             this.buttonBuscarNomina.Click += new System.EventHandler(this.buttonBuscarNomina_Click);
             // 
             // buttonCrearNomina
             // 
-            this.buttonCrearNomina.Location = new System.Drawing.Point(84, 72);
+            this.buttonCrearNomina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.buttonCrearNomina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCrearNomina.Location = new System.Drawing.Point(84, 63);
             this.buttonCrearNomina.Name = "buttonCrearNomina";
-            this.buttonCrearNomina.Size = new System.Drawing.Size(116, 23);
+            this.buttonCrearNomina.Size = new System.Drawing.Size(116, 32);
             this.buttonCrearNomina.TabIndex = 23;
             this.buttonCrearNomina.Text = "Crear";
-            this.buttonCrearNomina.UseVisualStyleBackColor = true;
+            this.buttonCrearNomina.UseVisualStyleBackColor = false;
             this.buttonCrearNomina.Click += new System.EventHandler(this.buttonCrearNomina_Click);
             // 
             // panelInformacionNomina
@@ -244,6 +249,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // dataGridViewListaPagos
             // 
+            this.dataGridViewListaPagos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewListaPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idEmpleado,
@@ -253,6 +259,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.totalIngresos,
             this.totalRetenciones,
             this.netoPagar});
+            this.dataGridViewListaPagos.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewListaPagos.Location = new System.Drawing.Point(16, 163);
             this.dataGridViewListaPagos.Name = "dataGridViewListaPagos";
             this.dataGridViewListaPagos.Size = new System.Drawing.Size(983, 216);
@@ -391,6 +398,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // panelSeleccionPeriodo
             // 
+            this.panelSeleccionPeriodo.BackColor = System.Drawing.Color.Snow;
             this.panelSeleccionPeriodo.Controls.Add(this.label6);
             this.panelSeleccionPeriodo.Controls.Add(this.flowLayoutPanelPeriodo);
             this.panelSeleccionPeriodo.Controls.Add(this.comboBoxListaPeriodo);
@@ -503,6 +511,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1147, 962);
             this.Controls.Add(this.panelSeleccionPeriodo);
             this.Controls.Add(this.flowLayoutPanel1);

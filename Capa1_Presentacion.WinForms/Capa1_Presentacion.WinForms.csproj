@@ -52,29 +52,11 @@
     <Compile Include="Acceso\FormIniciarSesion.Designer.cs">
       <DependentUpon>FormIniciarSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Acceso\FormRegistrarUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Acceso\FormRegistrarUsuario.Designer.cs">
-      <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Contratos\FormContratoPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Contratos\FormContratoPrincipal.Designer.cs">
-      <DependentUpon>FormContratoPrincipal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Contratos\FormGestionarContrato.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Contratos\FormGestionarContrato.Designer.cs">
       <DependentUpon>FormGestionarContrato.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\FormEmpleadoPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\FormEmpleadoPrincipal.Designer.cs">
-      <DependentUpon>FormEmpleadoPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Acceso\FormPrincipal.cs">
       <SubType>Form</SubType>
@@ -93,12 +75,6 @@
     </Compile>
     <Compile Include="Nominas\FormBuscarNomina.Designer.cs">
       <DependentUpon>FormBuscarNomina.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Nominas\FormNominaPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Nominas\FormNominaPrincipal.Designer.cs">
-      <DependentUpon>FormNominaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Nominas\FormProcesarNomina.cs">
       <SubType>Form</SubType>
@@ -135,29 +111,17 @@
     <EmbeddedResource Include="Acceso\FormIniciarSesion.resx">
       <DependentUpon>FormIniciarSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Acceso\FormRegistrarUsuario.resx">
-      <DependentUpon>FormRegistrarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Contratos\FormContratoPrincipal.resx">
-      <DependentUpon>FormContratoPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Contratos\FormGestionarContrato.resx">
       <DependentUpon>FormGestionarContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Acceso\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Empleados\FormEmpleadoPrincipal.resx">
-      <DependentUpon>FormEmpleadoPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Empleados\FormRegistrarEmpleado.resx">
       <DependentUpon>FormRegistrarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nominas\FormBuscarNomina.resx">
       <DependentUpon>FormBuscarNomina.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Nominas\FormNominaPrincipal.resx">
-      <DependentUpon>FormNominaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nominas\FormProcesarNomina.resx">
       <DependentUpon>FormProcesarNomina.cs</DependentUpon>
@@ -213,6 +177,8 @@
   <ItemGroup>
     <None Include="Recursos\user.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fondo-1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

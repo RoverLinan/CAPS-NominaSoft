@@ -10,30 +10,30 @@ namespace Capa1_Presentacion.WinForms.Acceso
 {
     public partial class FormPrincipal : Form
     {
-        private Usuario usuarioLocal;
-        public FormPrincipal(Usuario  usuario)
+        
+        public FormPrincipal()
         {
             InitializeComponent();
-            usuarioLocal = usuario;
+           
         }
 
         private void buttonEmpleado_Click(object sender, System.EventArgs e)
         {
-            FormEmpleadoPrincipal formEmpleado = new FormEmpleadoPrincipal();
-            formEmpleado.Show();
+            FormRegistrarEmpleado form = new FormRegistrarEmpleado();
+            form.ShowDialog();
 
         }
 
         private void buttonContrato_Click(object sender, System.EventArgs e)
         {
-            FormContratoPrincipal formContrato = new FormContratoPrincipal();
-            formContrato.Show();
+            FormRegistrarIncidencia form = new FormRegistrarIncidencia();   
+            form.Show();
         }
 
         private void buttonNomina_Click(object sender, System.EventArgs e)
         {
-            FormNominaPrincipal formNominaPrincipal = new FormNominaPrincipal();
-            formNominaPrincipal.Show();
+            FormRegistrarPeriodoDeNomina  form = new FormRegistrarPeriodoDeNomina();
+            form.Show();
 
         }
 

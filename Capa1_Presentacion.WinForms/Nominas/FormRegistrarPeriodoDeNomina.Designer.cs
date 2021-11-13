@@ -91,9 +91,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(289, 316);
+            this.button1.Location = new System.Drawing.Point(216, 316);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
@@ -101,9 +101,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(412, 316);
+            this.button2.Location = new System.Drawing.Point(366, 316);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(123, 23);
             this.button2.TabIndex = 7;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
@@ -124,6 +124,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(535, 373);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button2);

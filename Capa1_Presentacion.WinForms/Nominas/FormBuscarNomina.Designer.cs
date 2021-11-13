@@ -49,9 +49,9 @@
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(505, 74);
+            this.buttonBuscar.Location = new System.Drawing.Point(505, 68);
             this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(145, 23);
+            this.buttonBuscar.Size = new System.Drawing.Size(145, 36);
             this.buttonBuscar.TabIndex = 1;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = true;
@@ -78,6 +78,7 @@
             // 
             // dataGridViewListaNominas
             // 
+            this.dataGridViewListaNominas.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewListaNominas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaNominas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idNomina,
@@ -118,6 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(722, 504);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridViewListaNominas);

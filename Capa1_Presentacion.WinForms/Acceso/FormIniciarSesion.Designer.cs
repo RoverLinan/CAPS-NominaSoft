@@ -117,7 +117,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.labelRegistrar.Size = new System.Drawing.Size(66, 15);
             this.labelRegistrar.TabIndex = 6;
             this.labelRegistrar.Text = "Registrate";
-            this.labelRegistrar.Click += new System.EventHandler(this.labelRegistrar_Click);
+
             // 
             // label3
             // 

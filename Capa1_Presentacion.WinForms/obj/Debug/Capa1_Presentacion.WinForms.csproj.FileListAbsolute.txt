@@ -85,14 +85,10 @@ C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.Win
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.AssemblyReference.cache
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.csproj.SuggestedBindingRedirects.cache
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormIniciarSesion.resources
-C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormRegistrarUsuario.resources
-C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contratos.FormContratoPrincipal.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Contratos.FormGestionarContrato.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Acceso.FormPrincipal.resources
-C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleados.FormEmpleadoPrincipal.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Empleados.FormRegistrarEmpleado.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormBuscarNomina.resources
-C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormNominaPrincipal.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormProcesarNomina.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Nominas.FormRegistrarPeriodoDeNomina.resources
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa1_Presentacion.WinForms\obj\Debug\Capa1_Presentacion.WinForms.Otros.FormAFPPrincipal.resources
