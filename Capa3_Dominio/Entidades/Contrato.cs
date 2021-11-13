@@ -40,18 +40,15 @@ namespace Capa3_Dominio.Entidades
         {
             bool estado = false;
 
-            if (cancelado)
+
+
+            DateTime fechaActual = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+            if ((fechafin.CompareTo(fechaActual) == 0 || fechafin.CompareTo(fechaActual)==1) && cancelado == false)
             {
-                
+                estado = true;
             }
-            else
-            {
-                DateTime fechaActual = DateTime.Now;
-                if (fechafin.CompareTo(fechaActual) == 0 || fechafin.CompareTo(fechaActual)==1)
-                {
-                    estado = true;
-                }
-            }
+            
 
             return estado;
         }
@@ -61,8 +58,10 @@ namespace Capa3_Dominio.Entidades
         public bool ValidarFechaInicio()
         {
             bool estado = false;
-            DateTime fechaActual = DateTime.Now;
-            Console.WriteLine(fechaActual.ToString() + "             " + fechainicio.ToString());
+            
+
+         
+            DateTime fechaActual = DateTime.Parse(DateTime.Now.ToShortDateString());
 
             if (fechainicio.CompareTo(fechaActual) == 0 || fechainicio.CompareTo(fechaActual) == 1)
             {
