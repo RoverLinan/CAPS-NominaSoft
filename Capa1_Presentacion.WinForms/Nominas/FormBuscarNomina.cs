@@ -40,8 +40,8 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 {
 
                     dataGridViewListaNominas.Rows[rowEscribir].Cells[0].Value = nomina.Nomina_id;
-                    dataGridViewListaNominas.Rows[rowEscribir].Cells[1].Value = nomina.Fecha;
-                    dataGridViewListaNominas.Rows[rowEscribir].Cells[2].Value = nomina.Descripcion;
+                    dataGridViewListaNominas.Rows[rowEscribir].Cells[1].Value = nomina.Descripcion;
+                    dataGridViewListaNominas.Rows[rowEscribir].Cells[2].Value = nomina.Fecha;
                     rowEscribir++;
                 }
 
@@ -56,10 +56,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private void dataGridViewListaNominas_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
-           // string nomina_id = (string)dataGridViewListaNominas.CurrentRow.Cells[0].Value;
+            //string nomina_id = (string)dataGridViewListaNominas.CurrentRow.Cells[0].Value;
 
-            this.DialogResult = DialogResult.OK;
-
+            //this.DialogResult = DialogResult.OK;
+            MessageBox.Show("Hoa");
 
         }
     }

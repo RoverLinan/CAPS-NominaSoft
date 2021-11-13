@@ -41,8 +41,10 @@ namespace Capa3_Dominio.Entidades
         //REGLA-06
         public bool ValidarFechaFinPeriodo()
         {
+            Console.WriteLine(periodo.Fechafin.ToString() + "  -----  " + this.fecha.ToString());
             if (periodo.Fechafin.CompareTo(this.fecha) == -1)
             {
+                
                 return true;
             }
             return false;
@@ -66,6 +68,20 @@ namespace Capa3_Dominio.Entidades
             {
                 return true;
             }
+            return false;
+        }
+
+
+
+
+        public bool esValidoFechaGeneracionNomina()
+        {
+
+            if(fecha.CompareTo(Periodo.Fechafin) == 1)
+            {
+                return true;
+            }
+
             return false;
         }
 

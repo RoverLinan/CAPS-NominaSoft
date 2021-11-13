@@ -23,6 +23,12 @@ namespace Capa2_Aplicacion.Servicios
         {
             try
             {
+
+                if (periodoDeNomina.tieneFechaFinValida())
+                {
+                    throw new Exception("fecha fin: El periodo no cumple con la regla 16");
+                }
+
                 gestorSQL.AbrirConexion();
                 periodoNominaSQL.guardar(periodoDeNomina);
                 gestorSQL.CerrarConexion();

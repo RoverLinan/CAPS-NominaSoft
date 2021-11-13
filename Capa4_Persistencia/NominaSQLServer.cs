@@ -40,8 +40,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine(err.Message);
+                throw new Exception("No se puede guardar la Nómina porque existió un problema de ejecución, verifique e intente en otro momento");
             }
 
         }

@@ -31,6 +31,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
             try
             {
+
+
+
+
                 periodoNominaServicio.guardarPeriodoDeNomina(periodoNomina);
                 MessageBox.Show(this, "Se completo el registro exitoso.");
                 this.Dispose();

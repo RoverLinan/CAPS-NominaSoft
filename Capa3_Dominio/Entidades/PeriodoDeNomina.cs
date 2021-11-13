@@ -22,7 +22,7 @@ namespace Capa3_Dominio.Entidades
         public DateTime Fechafin { get => fechafin; set => fechafin = value; }
 
 
-        //REGLA-07
+        //implementacion para cumplir con la REGLA 7
         public int CalcularTotalSemanas()
         {
             
@@ -34,6 +34,20 @@ namespace Capa3_Dominio.Entidades
 
             }
             return 0;
+        }
+
+        //REGLA -16
+        public bool tieneFechaFinValida()
+        {
+            TimeSpan diffechas = fechafin - fechainicio;
+            Console.WriteLine("diferencia de dias: " + diffechas.Days);
+            if(diffechas.Days > 15 && diffechas.Days < 30)
+            {
+                return true;
+            }
+
+            return false;
+
         }
 
     }

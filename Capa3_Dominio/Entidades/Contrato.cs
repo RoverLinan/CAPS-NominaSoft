@@ -126,36 +126,44 @@ namespace Capa3_Dominio.Entidades
 
         
         //REGLA-10
-        public double CalcularMontoPorHorasExtras()
+        public double CalcularMontoPorHorasExtras(string periodo_id)
         {
             int totalHorasExtras = 0;
             foreach (IncidenciaLaboral item in incidencias)
             {
-                totalHorasExtras += item.Totalhorasextras;
+                if (item.Periodo.Periodo_id.Equals(periodo_id))
+                {
+                    totalHorasExtras += item.Totalhorasextras;
+                }
+               
             }
 
             return totalHorasExtras * pagoporhora;
         }
 
         //REGLA-13
-        public double CalcularHorasFalta()
+        public double CalcularHorasFalta(string periodo_id)
         {
             double totalHorasFalta = 0;
             if (incidencias.Count() > 0)
             {
                 foreach (IncidenciaLaboral incidenciaLaboral in incidencias)
                 {
-                    totalHorasFalta += incidenciaLaboral.Totalhorasdefalta;
+                    if (incidenciaLaboral.Periodo.Periodo_id.Equals(periodo_id))
+                    {
+                        totalHorasFalta += incidenciaLaboral.Totalhorasdefalta;
+                    }
+                    
                 }
             }
             return totalHorasFalta;
         }
 
         //REGLA-13
-        public double CalcularMontoHorasFalta()
+        public double CalcularMontoHorasFalta(string periodo_id)
         {
 
-            return CalcularHorasFalta() * Pagoporhora;
+            return CalcularHorasFalta(periodo_id) * Pagoporhora;
         }
 
 

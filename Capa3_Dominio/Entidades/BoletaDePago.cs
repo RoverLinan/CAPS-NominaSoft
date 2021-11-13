@@ -50,61 +50,62 @@ namespace Capa3_Dominio.Entidades
         }
 
         //REGLA-08
-        public double CalcularSueldoBasico()
+        public void CalcularSueldoBasico()
         {
-            return this.sueldobasico = CalcularTotalHoras() * contrato.Pagoporhora;
+             this.sueldobasico = CalcularTotalHoras() * contrato.Pagoporhora;
         }
 
         //REGLA-09
-        public double CalcularMontoAsignacionFamiliar()
+        public void CalcularMontoAsignacionFamiliar()
         {
             if (contrato.Tieneasignacionfamiliar)
             {
-                return CalcularSueldoBasico() * 0.1;
+                this.asignacionfamiliar = this.sueldobasico * 0.1;
             }
-            return 0;
+
+            this.asignacionfamiliar = 0;
         }
 
 
         //REGLA-10
-        public double CalcularMontoPorHorasExtras()
+        public void CalcularMontoPorHorasExtras()
         {
-            montoporhoraextras = this.contrato.CalcularMontoPorHorasExtras();
-            return contrato.CalcularMontoPorHorasExtras();
+
+             this.montoporhoraextras = this.contrato.CalcularMontoPorHorasExtras(nomina.Periodo.Periodo_id);
         }
 
-        //REGLA-11
+
+          //REGLA-11
         public double CalcularTotalIngresos()
         {
 
-            return Sueldobasico + CalcularMontoAsignacionFamiliar() + CalcularMontoPorHorasExtras() + Reintegros + Movilidad + Otrosingresos;
+            return this.sueldobasico + asignacionfamiliar + montoporhoraextras+ Reintegros + Movilidad + Otrosingresos;
         }
 
         //REGLA-12
-        public double CalcularRegimenPensionario()
+        public void CalcularRegimenPensionario()
         {
 
-            return Sueldobasico * contrato.Afp.Porcentajedescuento;
+            regimenpensionario = this.sueldobasico * (contrato.Afp.Porcentajedescuento/100);
         }
 
         //REGLA-13
-        public double CalcularMontoHorasFalta()
+        public void CalcularMontoHorasFalta()
         {
 
-            return contrato.CalcularMontoHorasFalta();
+            montoporhorasdefalta =  contrato.CalcularMontoHorasFalta(nomina.Periodo.Periodo_id);
         }
 
         //REGLA-14
         public double CalcularTotalRetenciones()
         {
 
-            return Regimenpensionario + CalcularMontoHorasFalta() + Adelantos + Otrosdescuentos;
+            return Regimenpensionario + montoporhorasdefalta + Adelantos + Otrosdescuentos;
         }
 		
 		//REGLA-15
         public double CalcularNetoAPagar()
         {
-
             return CalcularTotalIngresos() - CalcularTotalRetenciones();
         }
 

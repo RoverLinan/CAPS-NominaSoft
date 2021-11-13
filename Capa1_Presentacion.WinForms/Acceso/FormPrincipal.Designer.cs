@@ -30,12 +30,12 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonProcesarNomina = new System.Windows.Forms.Button();
+            this.buttonGestionarContrato = new System.Windows.Forms.Button();
             this.buttonAfp = new System.Windows.Forms.Button();
             this.buttonNomina = new System.Windows.Forms.Button();
             this.buttonContrato = new System.Windows.Forms.Button();
             this.buttonEmpleado = new System.Windows.Forms.Button();
-            this.buttonGestionarContrato = new System.Windows.Forms.Button();
-            this.buttonProcesarNomina = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,11 +52,37 @@ namespace Capa1_Presentacion.WinForms.Acceso
             this.panel1.Size = new System.Drawing.Size(1038, 351);
             this.panel1.TabIndex = 0;
             // 
+            // buttonProcesarNomina
+            // 
+            this.buttonProcesarNomina.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonProcesarNomina.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProcesarNomina.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonProcesarNomina.Location = new System.Drawing.Point(578, 177);
+            this.buttonProcesarNomina.Name = "buttonProcesarNomina";
+            this.buttonProcesarNomina.Size = new System.Drawing.Size(200, 77);
+            this.buttonProcesarNomina.TabIndex = 5;
+            this.buttonProcesarNomina.Text = "Procesar NOMINA";
+            this.buttonProcesarNomina.UseVisualStyleBackColor = false;
+            this.buttonProcesarNomina.Click += new System.EventHandler(this.buttonProcesarNomina_Click);
+            // 
+            // buttonGestionarContrato
+            // 
+            this.buttonGestionarContrato.BackColor = System.Drawing.Color.SandyBrown;
+            this.buttonGestionarContrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGestionarContrato.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonGestionarContrato.Location = new System.Drawing.Point(284, 177);
+            this.buttonGestionarContrato.Name = "buttonGestionarContrato";
+            this.buttonGestionarContrato.Size = new System.Drawing.Size(193, 77);
+            this.buttonGestionarContrato.TabIndex = 4;
+            this.buttonGestionarContrato.Text = "Gestionar CONTRATO";
+            this.buttonGestionarContrato.UseVisualStyleBackColor = false;
+            this.buttonGestionarContrato.Click += new System.EventHandler(this.buttonGestionarContrato_Click);
+            // 
             // buttonAfp
             // 
             this.buttonAfp.Location = new System.Drawing.Point(792, 28);
             this.buttonAfp.Name = "buttonAfp";
-            this.buttonAfp.Size = new System.Drawing.Size(129, 150);
+            this.buttonAfp.Size = new System.Drawing.Size(129, 33);
             this.buttonAfp.TabIndex = 3;
             this.buttonAfp.Text = "AFP";
             this.buttonAfp.UseVisualStyleBackColor = true;
@@ -66,7 +92,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             this.buttonNomina.Location = new System.Drawing.Point(578, 28);
             this.buttonNomina.Name = "buttonNomina";
-            this.buttonNomina.Size = new System.Drawing.Size(129, 150);
+            this.buttonNomina.Size = new System.Drawing.Size(129, 33);
             this.buttonNomina.TabIndex = 2;
             this.buttonNomina.Text = "NOMINAS";
             this.buttonNomina.UseVisualStyleBackColor = true;
@@ -76,7 +102,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             this.buttonContrato.Location = new System.Drawing.Point(348, 28);
             this.buttonContrato.Name = "buttonContrato";
-            this.buttonContrato.Size = new System.Drawing.Size(129, 150);
+            this.buttonContrato.Size = new System.Drawing.Size(129, 33);
             this.buttonContrato.TabIndex = 1;
             this.buttonContrato.Text = "CONTRATOS";
             this.buttonContrato.UseVisualStyleBackColor = true;
@@ -86,31 +112,11 @@ namespace Capa1_Presentacion.WinForms.Acceso
             // 
             this.buttonEmpleado.Location = new System.Drawing.Point(120, 28);
             this.buttonEmpleado.Name = "buttonEmpleado";
-            this.buttonEmpleado.Size = new System.Drawing.Size(129, 150);
+            this.buttonEmpleado.Size = new System.Drawing.Size(129, 33);
             this.buttonEmpleado.TabIndex = 0;
             this.buttonEmpleado.Text = "EMPLEADOS";
             this.buttonEmpleado.UseVisualStyleBackColor = true;
             this.buttonEmpleado.Click += new System.EventHandler(this.buttonEmpleado_Click);
-            // 
-            // buttonGestionarContrato
-            // 
-            this.buttonGestionarContrato.Location = new System.Drawing.Point(272, 245);
-            this.buttonGestionarContrato.Name = "buttonGestionarContrato";
-            this.buttonGestionarContrato.Size = new System.Drawing.Size(193, 77);
-            this.buttonGestionarContrato.TabIndex = 4;
-            this.buttonGestionarContrato.Text = "Gestionar CONTRATO";
-            this.buttonGestionarContrato.UseVisualStyleBackColor = true;
-            this.buttonGestionarContrato.Click += new System.EventHandler(this.buttonGestionarContrato_Click);
-            // 
-            // buttonProcesarNomina
-            // 
-            this.buttonProcesarNomina.Location = new System.Drawing.Point(578, 245);
-            this.buttonProcesarNomina.Name = "buttonProcesarNomina";
-            this.buttonProcesarNomina.Size = new System.Drawing.Size(200, 77);
-            this.buttonProcesarNomina.TabIndex = 5;
-            this.buttonProcesarNomina.Text = "Procesar NOMINA";
-            this.buttonProcesarNomina.UseVisualStyleBackColor = true;
-            this.buttonProcesarNomina.Click += new System.EventHandler(this.buttonProcesarNomina_Click);
             // 
             // FormPrincipal
             // 

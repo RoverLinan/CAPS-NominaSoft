@@ -23,7 +23,7 @@ namespace Capa4_Persistencia
         public bool guardar(BoletaDePago boleta)
         {
             string insertarBoleta = "INSERT INTO boletadepago(boleta_id,contrato_id,nomina_id,sueldobasico,asignacionfamiliar,montoporhorasextras" +
-                                      ",reintegros,movilidad,otrosigresos,regimenpensionario,montoporhorasdefalta,adelantos,otrosdescuentos) " +
+                                      ",reintegros,movilidad,otrosingresos,regimenpensionario,montoporhorasdefalta,adelantos,otrosdescuentos) " +
                                       "VALUES(@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13)";
 
 
@@ -31,7 +31,7 @@ namespace Capa4_Persistencia
             {
                 SqlCommand comando = new SqlCommand();
                 comando = gestorSQL.ObtenerComandoSQL(insertarBoleta);
-                comando.Parameters.AddWithValue("@1", "BOL" + new Random().Next(1000, 9999));
+                comando.Parameters.AddWithValue("@1", boleta.Boleta_id);
                 comando.Parameters.AddWithValue("@2", boleta.Contrato.Contrato_id);
                 comando.Parameters.AddWithValue("@3", boleta.Nomina.Nomina_id);
                 comando.Parameters.AddWithValue("@4", boleta.Sueldobasico);

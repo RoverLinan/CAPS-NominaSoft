@@ -231,7 +231,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             {
 
                 this.nomina.Nomina_id = "NOM" + new Random().Next(1000, 9999);
-                this.nomina.Fecha = new DateTime();
+                this.nomina.Fecha = DateTime.Now;
                 this.nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
                 this.nomina.Cerrada = false;
 
@@ -393,7 +393,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             {
 
 
-
+                calcularDatosBoleta(boleta);
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[0].Value = boleta.Contrato.Empleado.Empleado_id;
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[1].Value = boleta.Contrato.Contrato_id;
                 dataGridViewListaPagos.Rows[rowEscribir].Cells[2].Value = boleta.Contrato.Empleado.Nombres + " " + boleta.Contrato.Empleado.Apellidos;
@@ -422,6 +422,16 @@ namespace Capa1_Presentacion.WinForms.Nominas
             textBoxTotalRetenciones.Text = this.nomina.calcularTotalRetencionesNomina().ToString();
             textBoxTotalNetoPagar.Text = this.nomina.calcularTotalSueldoNetoNomina().ToString();
 
+        }
+
+        private void calcularDatosBoleta(BoletaDePago boleta)
+        {
+            boleta.CalcularSueldoBasico();
+            boleta.CalcularMontoAsignacionFamiliar();
+            boleta.CalcularMontoPorHorasExtras();
+            boleta.CalcularRegimenPensionario();
+            boleta.CalcularMontoHorasFalta();
+          
         }
 
         private void limpiarDatosNomina()

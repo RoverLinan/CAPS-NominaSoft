@@ -31,10 +31,11 @@ namespace Capa2_Aplicacion.Servicios
 
             try
             {
-                if (nomina.BoletaDePagos.Count == 0)
+               
+                if (nomina.TienePagosEmpleados() == false)
                 {
 
-                    throw new Exception("No se han generado boletas de pago");
+                    throw new Exception("No se puede guardar la Nómina porque se incumple la regla para guardar la Nómina");
 
                 }
 
@@ -45,14 +46,22 @@ namespace Capa2_Aplicacion.Servicios
 
                 }
 
+                if (nomina.esValidoFechaGeneracionNomina() == false)
+                {
+                    throw new Exception("La fecha de  generacion de la nomina es menor que la fecha del periodo");
+                }
+
 
                 gestorSql.AbrirConexion();
                 nominaSQL.guardar(nomina);
                 gestorSql.CerrarConexion();
 
                 // guardamos las boletas 
+                Random random = new Random();
+
                 foreach (BoletaDePago boleta in nomina.BoletaDePagos)
                 {
+                    boleta.Boleta_id = "BOL" + random.Next(1000, 9999);
                     boletaDePagoServicio.guardar(boleta);
                 }
 

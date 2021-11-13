@@ -28,10 +28,11 @@ namespace Capa2_Aplicacion.Servicios
 
             try
             {
+           
                 gestorSQL.AbrirConexion();
-                bool completado = boletaDePagoSQL.guardar(boleta);
+                boletaDePagoSQL.guardar(boleta);
                 gestorSQL.CerrarConexion();
-                return completado;
+                return true;
             }
             catch (Exception err)
             {
