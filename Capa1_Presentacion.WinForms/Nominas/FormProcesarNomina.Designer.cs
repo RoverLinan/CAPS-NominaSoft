@@ -377,6 +377,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonCerrar.TabIndex = 3;
             this.buttonCerrar.Text = "Cerrar";
             this.buttonCerrar.UseVisualStyleBackColor = true;
+            this.buttonCerrar.Click += new System.EventHandler(this.buttonCerrar_Click);
             // 
             // buttonEliminar
             // 
@@ -386,6 +387,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.buttonEliminar.TabIndex = 4;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // panelSeleccionPeriodo
             // 

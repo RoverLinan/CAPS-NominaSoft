@@ -17,12 +17,14 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private Nomina nomina;
         private ProcesarNominaServicio procesarNominaServicio;
         private List<Nomina> listaNominas;
-        public FormBuscarNomina(Nomina nomina)
+        public FormBuscarNomina()
         {
-            this.nomina = nomina;
+            
             procesarNominaServicio = new ProcesarNominaServicio();
             InitializeComponent();
         }
+
+        public Nomina Nomina { get => nomina; set => nomina = value; }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
@@ -53,13 +55,40 @@ namespace Capa1_Presentacion.WinForms.Nominas
             }
         }
 
-        private void dataGridViewListaNominas_RowEnter(object sender, DataGridViewCellEventArgs e)
+     
+
+        private void dataGridViewListaNominas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                string nomina_id = (string) dataGridViewListaNominas.CurrentRow.Cells[0].Value;
+                
+                foreach (Nomina nomina in this.listaNominas)
+                {
+                    if (nomina.Nomina_id.Equals(nomina_id))
+                    {
+                        this.Nomina = nomina;
+                        Console.WriteLine(this.Nomina.Nomina_id);
+                        break;
+                    }
+                }
 
-            //string nomina_id = (string)dataGridViewListaNominas.CurrentRow.Cells[0].Value;
+                if(this.nomina != null)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else{
+                    this.DialogResult = DialogResult.Cancel;
+                }
+                
+            }
+            catch (Exception err)
+            {
 
-            //this.DialogResult = DialogResult.OK;
-            MessageBox.Show("Hoa");
+                MessageBox.Show(err.Message);
+            }
+         
+            
 
         }
     }

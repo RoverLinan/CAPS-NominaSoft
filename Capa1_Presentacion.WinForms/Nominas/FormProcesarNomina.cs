@@ -48,10 +48,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
             dateTimePickerFechaInicioNomina.Enabled = false;
             dateTimePickerFechaFin.Enabled = false;
             dateTimePickerFechaInicio.Enabled = false;
-            buttonCerrar.Visible = false;
-            buttonEliminar.Visible = false;
-            buttonGuardar.Visible = false;
-            buttonCancelar.Visible = false;
+            buttonCerrar.Enabled = false;
+            buttonEliminar.Enabled = false;
+            buttonGuardar.Enabled = false;
+            buttonCancelar.Enabled = false;
 
         }
 
@@ -81,22 +81,25 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void buttonBuscarNomina_Click(object sender, EventArgs e)
         {
-            Nomina nomina = null;
+
+            this.nomina = null;
+            FormBuscarNomina formBuscar = new FormBuscarNomina();
+
            
-            FormBuscarNomina formBuscar = new FormBuscarNomina(nomina);
-
-            DialogResult dialogResult = formBuscar.ShowDialog();
-            if (nomina == null && dialogResult == DialogResult.OK)
+            if (formBuscar.ShowDialog() == DialogResult.OK)
             {
-
-                MessageBox.Show("LISTOOOOOOO");
-
+                this.nomina = formBuscar.Nomina;
                 cargarListaPeriodo();
+                comboBoxListaPeriodo.Text = this.nomina.Periodo.Descripcion.ToString();
+                generarPagosBoleta();
+
 
                 panelSeleccionPeriodo.Visible = true;
                 panelInformacionNomina.Visible = true;
                 buttonCerrar.Visible = true;
                 buttonEliminar.Visible = true;
+                buttonCerrar.Enabled = true;
+                buttonEliminar.Enabled = true;
 
 
                 buttonGenerarNomina.Enabled = false;
@@ -111,6 +114,14 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 textBoxTotalNetoPagar.Enabled = false;
                 textBoxDescripcionNomina.Enabled = false;
                 dataGridViewListaPagos.Enabled = false;
+                comboBoxListaPeriodo.Enabled = false;
+
+            }
+            else
+            {
+
+
+                MessageBox.Show("No se encontro la nomina");
 
             }
 
@@ -127,19 +138,26 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 cargarListaPeriodo();
 
 
-                buttonGenerarNomina.Visible = true;
-                buttonGuardar.Visible = true;
-                buttonCancelar.Visible = true;
+                panelSeleccionPeriodo.Visible = true;
+                panelInformacionNomina.Visible = true;
+                buttonCerrar.Enabled = false;
+                buttonEliminar.Enabled = false;
+
+
+                buttonGenerarNomina.Enabled = true;
+                buttonGuardar.Enabled = true;
+                buttonCancelar.Enabled = true;
                 buttonCrearNomina.Enabled = false;
                 buttonBuscarNomina.Enabled = false;
 
-          
+                textBoxTotalGenerados.Enabled = false;
+                textBoxTotalIngresos.Enabled = false;
+                textBoxTotalRetenciones.Enabled = false;
+                textBoxTotalNetoPagar.Enabled = false;
+                textBoxDescripcionNomina.Enabled = true;
+                dataGridViewListaPagos.Enabled = false;
+                comboBoxListaPeriodo.Enabled = true;
 
-
-
-                panelSeleccionPeriodo.Visible = true;
-                panelInformacionNomina.Visible = true;
-              
 
 
             } 
@@ -360,7 +378,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
                     }
 
                     this.nomina.Periodo = buscarPeriodo(comboBoxListaPeriodo.Text);
-
+                    //cuando se busque una nomina, se continuara desde este punto porque ya tenemos la nomina,periodo y boletas.
                     generarPagosBoleta();
 
                 }
@@ -434,6 +452,23 @@ namespace Capa1_Presentacion.WinForms.Nominas
           
         }
 
+
+
+
+        private void cargarDatosDeNominaBuscada()
+        {
+
+            
+
+
+
+
+
+
+
+
+        }
+
         private void limpiarDatosNomina()
         {
             dataGridViewListaPagos.Rows.Clear();
@@ -446,8 +481,62 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         }
 
-   
+        private void buttonCerrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show(" Está seguro de cerrar la Nómina. Si cierra la Nómina no se podrán \nmodificar los pagos generados de la Nómina ni eliminar la Nómina", "Advertencia", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
 
+                    procesarNominaServicio.cerrar(this.nomina);
+                    limpiarDatosNomina();
+                    buttonEliminar.Enabled = false;
+                    buttonCerrar.Enabled = false;
+                    buttonCrearNomina.Enabled = true;
+                    buttonBuscarNomina.Enabled = true;
+                    MessageBox.Show("Se cerró la Nómina y se podrán enviar las boletas de pago a los empleados");
+                }
+                else
+                {
+                }
+            }
+            catch (Exception err)
+            {
 
+                MessageBox.Show(err.Message);
+            }
+            
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Está seguro de eliminar la Nómina. Si elimina la Nómina también de eliminaran los pagos generados de la Nómina", "Advertencia", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+
+                    procesarNominaServicio.eliminar(this.nomina);
+                    limpiarDatosNomina();
+                    buttonEliminar.Enabled = false;
+                    buttonCerrar.Enabled = false;
+
+                    buttonCrearNomina.Enabled = true;
+                    buttonBuscarNomina.Enabled = true;
+                    MessageBox.Show("Se elimino la nomina");
+                }
+               
+            }
+            catch (Exception err)
+            {
+
+                MessageBox.Show(err.Message);
+                limpiarDatosNomina();
+                buttonEliminar.Enabled = false;
+                buttonCerrar.Enabled = false;
+
+                buttonCrearNomina.Enabled = true;
+                buttonBuscarNomina.Enabled = true;
+            }
+        }
     }
 }

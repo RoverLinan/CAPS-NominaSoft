@@ -13,12 +13,14 @@ namespace Capa2_Aplicacion.Servicios
         private GestorSQLServer gestorSQL;
         private BoletaDePagoSQLServer boletaDePagoSQL;
         private GestionarContratoServicio gestionarContratoServicio;
+        private GestionarContratoServicio contratoServicio;
 
         public GestionarBoletaDePagoServicio()
         {
             gestorSQL = GestorSQLServer.getInstance();
             boletaDePagoSQL = new BoletaDePagoSQLServer();
             gestionarContratoServicio = new GestionarContratoServicio();
+            contratoServicio = new GestionarContratoServicio();
         }
             
 
@@ -52,7 +54,21 @@ namespace Capa2_Aplicacion.Servicios
                 List<BoletaDePago> listaBoletas = boletaDePagoSQL.buscarPorIdNomina(nomina);
                 gestorSQL.CerrarConexion();
 
+                List<Contrato> listaContratos = contratoServicio.obtenerContratos();
 
+                //asociamos los contratos a las boletas de pago para obtener la informacion adicional
+                foreach (BoletaDePago boleta in listaBoletas)
+                {
+                    foreach (Contrato contrato in listaContratos)
+                    {
+                        if (boleta.Contrato.Contrato_id.Equals(contrato.Contrato_id))
+                        {
+                            boleta.Contrato = contrato;
+                            break;
+                        }
+                    }
+
+                }
 
 
                 return listaBoletas;

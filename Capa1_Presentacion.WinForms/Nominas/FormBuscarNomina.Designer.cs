@@ -42,14 +42,14 @@
             // 
             // textBoxDescripcionNomina
             // 
-            this.textBoxDescripcionNomina.Location = new System.Drawing.Point(117, 77);
+            this.textBoxDescripcionNomina.Location = new System.Drawing.Point(81, 77);
             this.textBoxDescripcionNomina.Name = "textBoxDescripcionNomina";
-            this.textBoxDescripcionNomina.Size = new System.Drawing.Size(297, 20);
+            this.textBoxDescripcionNomina.Size = new System.Drawing.Size(397, 20);
             this.textBoxDescripcionNomina.TabIndex = 0;
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(436, 75);
+            this.buttonBuscar.Location = new System.Drawing.Point(505, 74);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(145, 23);
             this.buttonBuscar.TabIndex = 1;
@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 61);
+            this.label2.Location = new System.Drawing.Point(79, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 13);
             this.label2.TabIndex = 3;
@@ -87,7 +87,7 @@
             this.dataGridViewListaNominas.Name = "dataGridViewListaNominas";
             this.dataGridViewListaNominas.Size = new System.Drawing.Size(569, 271);
             this.dataGridViewListaNominas.TabIndex = 4;
-            this.dataGridViewListaNominas.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListaNominas_RowEnter);
+            this.dataGridViewListaNominas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListaNominas_CellClick);
             // 
             // idNomina
             // 

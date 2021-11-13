@@ -73,6 +73,42 @@ namespace Capa2_Aplicacion.Servicios
             }
         }
 
+
+        public void cerrar(Nomina nomina)
+        {
+            try
+            {
+                gestorSql.AbrirConexion();
+                nominaSQL.cerrar(nomina);
+                gestorSql.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
+
+
+        public void eliminar(Nomina nomina)
+        {
+            try
+            {
+                if (nomina.Cerrada)
+                {
+                    throw new Exception("No se puede eliminar la nomina por estar cerrada");
+                }
+                gestorSql.AbrirConexion();
+                nominaSQL.eliminar(nomina);
+                gestorSql.CerrarConexion();
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+        }
+
         public List<Nomina> buscarNominaPorDescripcion(string descripcion)
         {
             try

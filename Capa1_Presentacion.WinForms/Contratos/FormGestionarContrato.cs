@@ -91,20 +91,17 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     }
                    
                 }
-                else
-                {
-
-                    MessageBox.Show(this, "Mensaje: no hay contratos vigentes");
-                    buttonCrearContrato.Enabled = true;
-                    buttonEditarContrato.Enabled = false;
-                    panelInfoContrato.Visible = false;
-                }
+                
 
             }
             catch (Exception err)
             {
 
                 MessageBox.Show(this, "Mensaje: " + err.Message);
+
+                buttonCrearContrato.Enabled = true;
+                buttonEditarContrato.Enabled = false;
+                panelInfoContrato.Visible = false;
             }
          
             
@@ -287,6 +284,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     MessageBox.Show(this, "mensaje:  contrato cancelado correctamente");
                     panelInfoContrato.Visible = false;
                     buttonCrearContrato.Enabled = true;
+                    buttonEditarContrato.Enabled = false;
                 }
 
 
@@ -351,6 +349,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     panelGeneralInfo.Visible = false;
                     this.contrato = null;
                     this.empleado = null;
+                    limpiarDatos();
                     buttonActualizar.Enabled = false;
 
                 }

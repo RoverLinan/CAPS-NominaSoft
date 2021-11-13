@@ -76,6 +76,43 @@ namespace Capa4_Persistencia
         }
 
 
+        public void cerrar(Nomina nomina)
+        {
+
+            try
+            {
+                string actualizarrSql = "UPDATE  nomina SET cerrada = 'true' where nomina_id = '" + nomina.Nomina_id + "'";
+                SqlCommand comando = new SqlCommand();
+                comando = gestorSQL.ObtenerComandoSQL(actualizarrSql);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+            
+        }
+
+        public void eliminar(Nomina nomina)
+        {
+            try
+            {
+                string eliminarSql = "DELETE FROM nomina  where nomina_id = '" + nomina.Nomina_id + "'";
+                SqlCommand comando = new SqlCommand();
+                comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+        }
+
+
         private Nomina obtenerNomina(SqlDataReader resultado)
         {
             Nomina nomina = new Nomina();
