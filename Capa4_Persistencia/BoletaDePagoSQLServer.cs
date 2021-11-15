@@ -87,7 +87,24 @@ namespace Capa4_Persistencia
         }
 
 
+        public void eliminarPorIdNomina(string id)
+        {
+            
+            try
+            {
+                string eliminarSql = "DELETE FROM boletadepago  where nomina_id = '" + id + "'";
+                SqlCommand comando = new SqlCommand();
+                comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
 
+                throw err;
+            }
+
+
+        }
 
 
 

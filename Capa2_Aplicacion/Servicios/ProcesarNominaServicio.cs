@@ -98,9 +98,16 @@ namespace Capa2_Aplicacion.Servicios
                 {
                     throw new Exception("No se puede eliminar la nomina por estar cerrada");
                 }
+
+                foreach (BoletaDePago boleta in nomina.BoletaDePagos)
+                {
+                    boletaDePagoServicio.eliminarPorIdNomina(nomina.Nomina_id);
+                }
                 gestorSql.AbrirConexion();
                 nominaSQL.eliminar(nomina);
                 gestorSql.CerrarConexion();
+
+                
             }
             catch (Exception err)
             {
@@ -116,6 +123,7 @@ namespace Capa2_Aplicacion.Servicios
                 gestorSql.AbrirConexion();
                 List<Nomina> listaNomina = nominaSQL.buscarPorDescripcion(descripcion);
                 gestorSql.CerrarConexion();
+
 
                 foreach (Nomina nomina in listaNomina)
                 {

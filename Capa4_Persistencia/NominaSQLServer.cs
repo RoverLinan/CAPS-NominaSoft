@@ -122,7 +122,7 @@ namespace Capa4_Persistencia
             nomina.Periodo.Periodo_id = resultado.GetString(1);
             nomina.Fecha = resultado.GetDateTime(2);
             nomina.Descripcion = resultado.GetString(3);
-            nomina.Cerrada = resultado.GetBoolean(5);
+            nomina.Cerrada = resultado.GetBoolean(4);
 
             return nomina;
         }

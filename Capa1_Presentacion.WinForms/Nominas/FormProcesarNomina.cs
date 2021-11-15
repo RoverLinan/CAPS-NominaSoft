@@ -117,13 +117,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 comboBoxListaPeriodo.Enabled = false;
 
             }
-            else
-            {
-
-
-                MessageBox.Show("No se encontro la nomina");
-
-            }
+           
 
 
 
@@ -250,6 +244,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
                 this.nomina.Nomina_id = "NOM" + new Random().Next(1000, 9999);
                 this.nomina.Fecha = DateTime.Now;
+                if(textBoxDescripcionNomina.Text.Trim().Length < 5)
+                {
+                    throw new Exception("Porfavor ingrese una descripcion de nomina mayor a 5 caracteres");
+                }
                 this.nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
                 this.nomina.Cerrada = false;
 

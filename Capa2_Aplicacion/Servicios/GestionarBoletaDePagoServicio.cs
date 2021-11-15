@@ -45,6 +45,27 @@ namespace Capa2_Aplicacion.Servicios
            
         }
 
+        public void eliminarPorIdNomina(string id)
+        {
+            try
+            {
+
+                gestorSQL.AbrirConexion();
+                boletaDePagoSQL.eliminarPorIdNomina(id);
+                gestorSQL.CerrarConexion();
+              
+            }
+            catch (Exception err)
+            {
+
+                throw err;
+            }
+
+
+
+
+        }
+
 
         public List<BoletaDePago> buscarBoletasPorIdNomina(Nomina nomina)
         {

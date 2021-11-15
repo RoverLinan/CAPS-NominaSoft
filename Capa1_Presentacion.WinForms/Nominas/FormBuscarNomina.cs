@@ -36,6 +36,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 this.listaNominas = procesarNominaServicio.buscarNominaPorDescripcion(descripcion);
 
                 dataGridViewListaNominas.Rows.Clear();
+                Console.WriteLine(" cantidad de nominas encontradas:  " + this.listaNominas.Count);
                 dataGridViewListaNominas.Rows.Add(this.listaNominas.Count);
                 int rowEscribir = 0;
                 foreach (Nomina nomina in this.listaNominas)

@@ -183,6 +183,8 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     contratoAux.Tieneasignacionfamiliar = false;
                 }
 
+                validarCamposEntrada();
+               
                 contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
                 contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
                 contratoAux.Cancelado = false;
@@ -338,9 +340,14 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     contratoAux.Tieneasignacionfamiliar = false;
                 }
 
+
+                validarCamposEntrada();
+
                 contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
                 contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
                 contratoAux.Cancelado = false;
+
+                
 
                 if (contratoServicio.actualizarContrato(contratoAux))
                 {
@@ -360,6 +367,35 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
                 MessageBox.Show(this, "Mensaje: " + err.Message);
             }
+        }
+
+        private void validarCamposEntrada()
+        {
+            int numeroHoras = 0;
+            if (!int.TryParse(textBoxHorasSemana.Text,out numeroHoras))
+            {
+                throw new Exception("Solo se permiten numeros y enteros en horas por semana");
+            }
+
+            if (!checkBoxSi.Checked && !checkBoxNo.Checked)
+            {
+                throw new Exception("Porfavor seleccione una opcion en Asignacion Familiar");
+            }
+           
+
+
+            double numeroPagoHora = 0;
+            if (!double.TryParse(textBoxPagoHora.Text,out numeroPagoHora))
+            {
+                throw new Exception("Solo se permiten numeros en pagos por hora");
+            }
+
+            if(textBoxPuesto.Text.Trim().Length < 4)
+            {
+                throw new Exception("Porfavor ingrese un nombre de  puesto correcto");
+            }
+
+
         }
     }
 }
