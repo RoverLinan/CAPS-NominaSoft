@@ -35,18 +35,32 @@ namespace Capa1_Presentacion.WinForms.Contratos
             {
                 panelGeneralInfo.Visible = false;
             }
-            string dni = textBoxDniEmpleado.Text.Trim();
+
+
+
+
+           
+
             try
             {
+                string dni = textBoxDniEmpleado.Text.Trim();
 
                 if (dni.All(char.IsDigit))
                 {
-                    Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                    this.empleado = empleadoAux;
-                    cargarDatosEmpleado(empleadoAux);
-                    buttonActualizar.Visible = false;
-                    panelGeneralInfo.Visible = true;
-                    listaAfp = afpServicio.obtenerListaAfp();
+                    if(dni.Length == 8)
+                    {
+                        Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
+                        this.empleado = empleadoAux;
+                        cargarDatosEmpleado(empleadoAux);
+                        buttonActualizar.Visible = false;
+                        panelGeneralInfo.Visible = true;
+                        listaAfp = afpServicio.obtenerListaAfp();
+                    }
+                    else
+                    {
+                        throw new Exception("Porfavor ingrese un DNI valido (8 digitos)");
+                    }
+                  
                 }
                 else
                 {
