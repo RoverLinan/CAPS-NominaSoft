@@ -11,7 +11,7 @@ namespace NominaSoft_Test.Capa_Dominio
         [TestMethod]
         public void Test_Regla01_1()
         {
-            DateTime fechafin = new DateTime(2021, 10, 10);
+            DateTime fechafin = new DateTime(2022, 10, 1);
 
             bool esperado = true;
             Contrato contrato = new Contrato();
@@ -37,7 +37,7 @@ namespace NominaSoft_Test.Capa_Dominio
         [TestMethod]
         public void Test_Regla02()
         {
-            DateTime fechainicio = new DateTime(2021, 10, 10);
+            DateTime fechainicio = new DateTime(2022, 5, 10);
             bool esperado = true;
             Contrato contrato = new Contrato();
             contrato.Fechainicio = fechainicio;
@@ -90,16 +90,42 @@ namespace NominaSoft_Test.Capa_Dominio
         [TestMethod]
         public void Test_Regla10()
         {
-            Contrato contrato = new Contrato();
-            contrato.Pagoporhora = 10;
-            contrato.Incidencias = new List<IncidenciaLaboral>();
+
+            PeriodoDeNomina periodoDeNomina = new PeriodoDeNomina();
+            periodoDeNomina.Periodo_id = "PNOM123";
+            periodoDeNomina.Fechainicio = new DateTime(2021, 10, 4);
+            periodoDeNomina.Fechafin = new DateTime(2021, 11, 4);
+
+
+            Contrato contrato = new Contrato
+            {
+                Pagoporhora = 10,
+                Incidencias = new List<IncidenciaLaboral>()
+            };
+
+            Nomina nomina = new Nomina
+            {
+                Periodo = periodoDeNomina,
+
+            };
+
+     
+
             IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
+            incidenciaLaboral.Periodo = periodoDeNomina;
             incidenciaLaboral.Totalhorasextras = 10;
+
             contrato.Incidencias.Add(incidenciaLaboral);
+
             BoletaDePago boletadePago = new BoletaDePago();
             boletadePago.Contrato = contrato;
+            boletadePago.Nomina = nomina;
+        
+            boletadePago.CalcularMontoPorHorasExtras();
+
+
             double esperado = 100;
-            double obtenido = boletadePago.CalcularMontoPorHorasExtras();
+            double obtenido = boletadePago.Montoporhoraextras;
             Assert.AreEqual(esperado, obtenido);
         }
     }

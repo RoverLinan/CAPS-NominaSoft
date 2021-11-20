@@ -14,39 +14,49 @@ namespace Capa1_Presentacion.WinForms.Nominas
 {
     public partial class FormBuscarNomina : Form
     {
-        private Nomina nomina;
-        private ProcesarNominaServicio procesarNominaServicio;
-        private List<Nomina> listaNominas;
+        private readonly ProcesarNominaServicio procesarNominaServicio;
+       
         public FormBuscarNomina()
         {
             
             procesarNominaServicio = new ProcesarNominaServicio();
             InitializeComponent();
         }
-
-        public Nomina Nomina { get => nomina; set => nomina = value; }
+        /// <summary>
+        /// REFACTORIZADO 
+        /// </summary>
+        public Nomina Nomina { get; set; }
+        private List<Nomina> ListaNominas { get; set; }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                this.listaNominas = new List<Nomina>();
+                ListaNominas = new List<Nomina>();
 
-                string descripcion = textBoxDescripcionNomina.Text;
-                this.listaNominas = procesarNominaServicio.buscarNominaPorDescripcion(descripcion);
+
+                string descripcionBusqueda = textBoxDescripcionNomina.Text;
+                ListaNominas = procesarNominaServicio.buscarNominaPorDescripcion(descripcionBusqueda);
 
                 dataGridViewListaNominas.Rows.Clear();
-                Console.WriteLine(" cantidad de nominas encontradas:  " + this.listaNominas.Count);
-                dataGridViewListaNominas.Rows.Add(this.listaNominas.Count);
-                int rowEscribir = 0;
-                foreach (Nomina nomina in this.listaNominas)
+                if (ListaNominas.Count > 0)
                 {
+                    dataGridViewListaNominas.Rows.Add(ListaNominas.Count);
+                    int rowEscribir = 0;
+                    foreach (Nomina nominaItem in ListaNominas)
+                    {
 
-                    dataGridViewListaNominas.Rows[rowEscribir].Cells[0].Value = nomina.Nomina_id;
-                    dataGridViewListaNominas.Rows[rowEscribir].Cells[1].Value = nomina.Descripcion;
-                    dataGridViewListaNominas.Rows[rowEscribir].Cells[2].Value = nomina.Fecha;
-                    rowEscribir++;
+                        dataGridViewListaNominas.Rows[rowEscribir].Cells[0].Value = nominaItem.Nomina_id;
+                        dataGridViewListaNominas.Rows[rowEscribir].Cells[1].Value = nominaItem.Descripcion;
+                        dataGridViewListaNominas.Rows[rowEscribir].Cells[2].Value = nominaItem.Fecha;
+                        rowEscribir++;
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("No hay concidencias para la DESCRIPCION: " + descripcionBusqueda);
+                }
+              
 
             }
             catch (Exception err)
@@ -64,23 +74,27 @@ namespace Capa1_Presentacion.WinForms.Nominas
             {
                 string nomina_id = (string) dataGridViewListaNominas.CurrentRow.Cells[0].Value;
                 
-                foreach (Nomina nomina in this.listaNominas)
+                if(ListaNominas != null)
                 {
-                    if (nomina.Nomina_id.Equals(nomina_id))
+                    foreach (Nomina nominaItem in ListaNominas)
                     {
-                        this.Nomina = nomina;
-                        Console.WriteLine(this.Nomina.Nomina_id);
-                        break;
+                        if (nominaItem.Nomina_id.Equals(nomina_id))
+                        {
+                            Nomina = nominaItem;
+                            break;
+                        }
+                    }
+
+                    if (Nomina != null)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        this.DialogResult = DialogResult.Cancel;
                     }
                 }
-
-                if(this.nomina != null)
-                {
-                    this.DialogResult = DialogResult.OK;
-                }
-                else{
-                    this.DialogResult = DialogResult.Cancel;
-                }
+                
                 
             }
             catch (Exception err)

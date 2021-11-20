@@ -14,13 +14,14 @@ namespace Capa1_Presentacion.WinForms.Otros
 {
     public partial class FormRegistrarIncidencia : Form
     {
-        private GestionarPeriodoNominaServicio periodoServicio;
-        private GestionarEmpleadoServicio empleadoServicio;
-        private GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
-        private GestionarContratoServicio contratoServicio;
-        private List<PeriodoDeNomina> listaPeriodo;
-        private Empleado empleado;
-        private Contrato contrato;
+        private readonly GestionarPeriodoNominaServicio periodoServicio;
+        private readonly GestionarEmpleadoServicio empleadoServicio;
+        private readonly GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
+        private readonly GestionarContratoServicio contratoServicio;
+
+        private List<PeriodoDeNomina> ListaPeriodo { get; set; }
+        private Empleado Empleado { get; set; }
+        private Contrato Contrato { get; set; }
 
         public FormRegistrarIncidencia()
         {
@@ -34,100 +35,94 @@ namespace Capa1_Presentacion.WinForms.Otros
 
         private void cargarDatosContrato()
         {
-            try
+           
+            labelIdContrato.Text = Contrato.Contrato_id;
+            if (Contrato.EstaVigente())
             {
-                labelIdContrato.Text = this.contrato.Contrato_id;
-                if (this.contrato.EstaVigente())
-                {
-                    labelEstado.Text = "Vigente";
-                }
-                labelFecha.Text = this.contrato.Fechafin.ToShortDateString();
-                panelIngresoHoras.Visible = true;
-                cargarListaPeriodo();
+                labelEstado.Text = "Vigente";
             }
-            catch (Exception err)
-            {
-
-                throw err;
-            }
+            labelFecha.Text = Contrato.Fechafin.ToShortDateString();
+            panelIngresoHoras.Visible = true;
+            cargarListaPeriodo();
+           
         }
 
         private void cargarListaPeriodo()
         {
             try
             {
-                listaPeriodo = periodoServicio.obtenerListaPeriodo();
-                comboBoxPeriodo.Items.Clear();
-  
-                foreach (PeriodoDeNomina item in listaPeriodo)
-                {
-                    comboBoxPeriodo.Items.Add(item.Descripcion);
-
-                }
-                comboBoxPeriodo.Text = listaPeriodo[0].Descripcion;
-             
+                ListaPeriodo = periodoServicio.obtenerListaPeriodo();
             }
             catch (Exception err)
             {
 
-                throw err;
+                MessageBox.Show("Error interno: " + err.Message);
             }
-           
+
+            if (ListaPeriodo.Count > 0)
+            {
+                comboBoxPeriodo.Items.Clear();
+
+                foreach (PeriodoDeNomina item in ListaPeriodo)
+                {
+                    comboBoxPeriodo.Items.Add(item.Descripcion);
+
+                }
+                comboBoxPeriodo.Text = ListaPeriodo[0].Descripcion;
+
+            }
+            else
+            {
+                MessageBox.Show(this, "No hay periodos disponibles");
+            }
+               
+             
+          
+
 
         }
 
-        private void buttonGuardarIncidencia_Click(object sender, EventArgs e)
+        private void Guardar_Click(object sender, EventArgs e)
         {
 
-            
+          
             
             try
             {
-                
                 IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
-                foreach (PeriodoDeNomina item in listaPeriodo)
+
+
+                incidenciaLaboral.Periodo = buscarPeriodo();
+                string horaExtra = textBoxTotalHorasExtras.Text;
+                string horaFalta = textBoxTotalHorasFalta.Text;
+
+
+                if (validarDatos(horaExtra, horaFalta) && incidenciaLaboral.Periodo != null)
                 {
-                    if (comboBoxPeriodo.Text.Equals(item.Descripcion))
+
+                    incidenciaLaboral.Incidencia_id =  DateTime.Now.Millisecond * DateTime.Now.Second;
+                    incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(horaExtra);
+                    incidenciaLaboral.Totalhorasextras = Convert.ToInt32(horaFalta);
+                    incidenciaLaboral.Contrato = Contrato;
+
+                    if (textBoxDniEmpleado.Text.Equals(Empleado.Dni))
                     {
-                        incidenciaLaboral.Periodo = item;
-                        break;
-                    }
-                }
-
-                if(textBoxTotalHorasExtras.Text.Trim().Length > 0 && textBoxTotalHorasFalta.Text.Trim().Length > 0)
-                {
-                    
-                    if (esSoloDigitos(textBoxTotalHorasFalta.Text) && esSoloDigitos(textBoxTotalHorasExtras.Text))
-                    {
-                        incidenciaLaboral.Totalhorasdefalta = Convert.ToInt32(textBoxTotalHorasFalta.Text);
-                        incidenciaLaboral.Totalhorasextras = Convert.ToInt32(textBoxTotalHorasExtras.Text);
-                        incidenciaLaboral.Contrato = this.contrato;
-
-                        if (textBoxDniEmpleado.Text.Equals(empleado.Dni))
-                        {
-                            incidenciaLaboralServicio.guardar(incidenciaLaboral);
-                            MessageBox.Show(this, "Se completo el registro exitoso.");
-                            this.Dispose();
-                        }
-                        else
-                        {
-                            throw new Exception("DNI no coincide con el empleado que busco");
-                        }
-
+                        incidenciaLaboralServicio.guardar(incidenciaLaboral);
+                        MessageBox.Show(this, "Se completo el registro exitoso.");
+                        this.Dispose();
                     }
                     else
                     {
-                        throw new Exception("Porfavor ingrese solo numeros");
+                     
+                        MessageBox.Show(this, "* DNI no coincide con el empleado que busco");
                     }
 
 
                 }
-                else
-                {
-                    throw new Exception("Porfavor complete todos los cuadros");
-                }
+                else {
 
-              
+                    MessageBox.Show(this,"Porfavor ingrese datos correctos");
+                }
                 
             }
             catch (Exception err)
@@ -136,23 +131,41 @@ namespace Capa1_Presentacion.WinForms.Otros
             }
         }
 
+
+
+
+        bool validarDatos(string horaExtra, string horaFalta)
+        {
+            
+
+            if ((horaExtra.Trim().Length > 0 && horaFalta.Trim().Length > 0) && (esSoloDigitos(horaExtra) && esSoloDigitos(horaFalta)))
+            {
+                return true;
+            }
+
+            return false; 
+        }
+
+
+
         private void buttonBuscarEmpleado_Click_1(object sender, EventArgs e)
         {
-            string dni = textBoxDniEmpleado.Text.Trim();
+          
             
             try
             {
+                string dni = textBoxDniEmpleado.Text.Trim();
                 if (esSoloDigitos(dni))
                 {
                     Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                    this.empleado = empleadoAux;
-                    Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.empleado.Dni);
-                    this.contrato = contratoAux;
+                    this.Empleado = empleadoAux;
+                    Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.Empleado.Dni);
+                    this.Contrato = contratoAux;
                     cargarDatosContrato();
                 }
                 else
                 {
-                    throw new Exception("Porfavor ingrese solo numeros");
+                    MessageBox.Show("Porfavor ingrese solo numeros");
                 }
                
             }
@@ -161,6 +174,22 @@ namespace Capa1_Presentacion.WinForms.Otros
 
                 MessageBox.Show(this, "Mensaje: " + err.Message);
             }
+        }
+
+        PeriodoDeNomina buscarPeriodo()
+        {
+
+           
+            foreach (PeriodoDeNomina item in ListaPeriodo)
+            {
+                if (comboBoxPeriodo.Text.Equals(item.Descripcion))
+                {
+                    return item;
+            
+                }
+            }
+            return null;
+
         }
 
 

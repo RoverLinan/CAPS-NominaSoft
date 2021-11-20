@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class PeriodoDeNominaSQLServer
+    public class PeriodoDeNominaSqlServer
     {
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer gestorSQL;
 
-        public PeriodoDeNominaSQLServer()
+        public PeriodoDeNominaSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
         public bool guardar(PeriodoDeNomina periodoDeNomina)
@@ -25,8 +25,7 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarPeriodo);
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarPeriodo);
                 comando.Parameters.AddWithValue("@id", "PNOM" + periodoDeNomina.Periodo_id);
                 comando.Parameters.AddWithValue("@desc", periodoDeNomina.Descripcion);
                 comando.Parameters.AddWithValue("@fecini", periodoDeNomina.Fechainicio);
@@ -38,13 +37,14 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
         public PeriodoDeNomina buscarPeriodoPorId(string id)
         {
-            PeriodoDeNomina periodoDeNomina;
+            PeriodoDeNomina periodoDeNomina = null;
             string consultaSQL = "select   * from periodonomina where periodo_id = '" + id + "'";
             try
             {
@@ -53,16 +53,14 @@ namespace Capa4_Persistencia
                 {
                     periodoDeNomina = obtenerPeriodoDeNomina(resultadoSQL);
                 }
-                else
-                {
-                    throw new Exception("El periodo no existe");
-                }
+                return periodoDeNomina;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return periodoDeNomina;
+            
         }
 
         public List<PeriodoDeNomina> buscarPeriodosPorIdNomina(Nomina nomina)
@@ -79,16 +77,14 @@ namespace Capa4_Persistencia
                     listaPeriodoDeNomina.Add(periodo);
                 }
 
-                if (listaPeriodoDeNomina.Count == 0)
-                {
-                    throw new Exception("No hay Periodos registradas para esta nomina");
-                }
+                return listaPeriodoDeNomina;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return listaPeriodoDeNomina;
+          
         }
 
 
@@ -117,17 +113,15 @@ namespace Capa4_Persistencia
                     listaPeriodo.Add(obtenerPeriodoDeNomina(resultadoSQL));
                 }
 
-                if (listaPeriodo.Count == 0)
-                {
-                    throw new Exception("No hay Periodos registradas");
-                }
+                return listaPeriodo;
 
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return listaPeriodo;
+            
         }
     }
 }

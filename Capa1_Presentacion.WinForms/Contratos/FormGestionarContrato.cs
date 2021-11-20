@@ -31,18 +31,17 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
         private void buttonBuscarEmpleado_Click(object sender, EventArgs e)
         {
-            if (panelGeneralInfo.Visible)
-            {
-                panelGeneralInfo.Visible = false;
-            }
-
-
-
-
            
+
 
             try
             {
+
+                if (panelGeneralInfo.Visible)
+                {
+                    panelGeneralInfo.Visible = false;
+                }
+
                 string dni = textBoxDniEmpleado.Text.Trim();
 
                 if (dni.All(char.IsDigit))
@@ -50,21 +49,29 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     if(dni.Length == 8)
                     {
                         Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                        this.empleado = empleadoAux;
-                        cargarDatosEmpleado(empleadoAux);
-                        buttonActualizar.Visible = false;
-                        panelGeneralInfo.Visible = true;
-                        listaAfp = afpServicio.obtenerListaAfp();
+                        if(empleadoAux != null)
+                        {
+                            this.empleado = empleadoAux;
+                            cargarDatosEmpleado(empleadoAux);
+                            buttonActualizar.Visible = false;
+                            panelGeneralInfo.Visible = true;
+                            listaAfp = afpServicio.obtenerListaAfp();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No existe un empleado asociado al DNI: " + dni);
+                        }
+                      
                     }
                     else
                     {
-                        throw new Exception("Porfavor ingrese un DNI valido (8 digitos)");
+                        MessageBox.Show("Atencion: El DNI debe ser de 8 caracteres " );
                     }
                   
                 }
                 else
                 {
-                    throw new Exception("Porfavor ingrese solo numeros");
+                    MessageBox.Show("Atencion: Solo se permiten NUMEROS en el DNI");
                 }
 
               
@@ -91,18 +98,17 @@ namespace Capa1_Presentacion.WinForms.Contratos
             try
             {
                 this.contrato = contratoServicio.buscarContratoVigentePorIdEmpleado(empleado.Empleado_id);
-                if(this.contrato != null)
+                if(this.contrato != null && this.contrato.EstaVigente())
                 {
-                    if (this.contrato.EstaVigente())
-                    {
-                        cargarDatosContratoVigente(this.contrato);
-                        panelInfoContrato.Visible = true;
-                        buttonCrearContrato.Enabled = false;
-                        buttonEditarContrato.Enabled = true;
-                        buttonGuardarContrato.Visible = false;
-                        buttonGuardarContrato.Enabled = false;
-                        buttonCancelarContrato.Enabled = true;
-                    }
+                    
+                    cargarDatosContratoVigente(this.contrato);
+                    panelInfoContrato.Visible = true;
+                    buttonCrearContrato.Enabled = false;
+                    buttonEditarContrato.Enabled = true;
+                    buttonGuardarContrato.Visible = false;
+                    buttonGuardarContrato.Enabled = false;
+                    buttonCancelarContrato.Enabled = true;
+                    
                    
                 }
                 
@@ -175,6 +181,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             try
             {
                 Contrato contratoAux = new Contrato();
+                contrato.Contrato_id = "CON" + GenerarNumeroAleatorio.ObtenerNumeroAleatorio();
                 contratoAux.Fechainicio = dateTimeInicio.Value;
                 contratoAux.Fechafin = dateTimeFin.Value;
                 contratoAux.Puesto = textBoxPuesto.Text;
@@ -197,20 +204,47 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     contratoAux.Tieneasignacionfamiliar = false;
                 }
 
-                validarCamposEntrada();
-               
-                contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
-                contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
-                contratoAux.Cancelado = false;
-
-                if(contratoServicio.guardarContrato(contratoAux, this.empleado, contratoAux.Afp))
+                string mensaje;
+                if (validarCamposEntrada(out mensaje))
                 {
-                    MessageBox.Show(this, "Contrato creado correctamente");
-                    panelGeneralInfo.Visible = false;
-                    this.contrato = null;
-                    this.empleado = null;
+
+                    contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
+                    contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
+                    contratoAux.Cancelado = false;
+
+
+
+
+
+                    
+                    if (contratoAux.ValidarContrato(out mensaje))
+                    {
+
+                        contratoAux.Empleado = this.empleado;
+                        contratoServicio.guardarContrato(contratoAux);
+
+                        MessageBox.Show(this, "Contrato creado correctamente");
+                        panelGeneralInfo.Visible = false;
+                        this.contrato = null;
+                        this.empleado = null;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, mensaje);
+                    }
+
+
+
 
                 }
+                else
+                {
+                    MessageBox.Show(this, mensaje);
+                }
+
+
+
 
             }
             catch (Exception err)
@@ -307,10 +341,10 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
                    
             }
-            catch (Exception)
+            catch (Exception err)
             {
+                MessageBox.Show("Atencion: " + err.Message);
 
-                throw;
             }
            
 
@@ -355,25 +389,39 @@ namespace Capa1_Presentacion.WinForms.Contratos
                 }
 
 
-                validarCamposEntrada();
-
-                contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
-                contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
-                contratoAux.Cancelado = false;
-
-                
-
-                if (contratoServicio.actualizarContrato(contratoAux))
+                string mensaje;
+                if (validarCamposEntrada(out mensaje))
                 {
-                    
-                    MessageBox.Show(this, "El contrato se actualizado correctamente");
-                    panelGeneralInfo.Visible = false;
-                    this.contrato = null;
-                    this.empleado = null;
-                    limpiarDatos();
-                    buttonActualizar.Enabled = false;
+
+                    contratoAux.Horasporsemana = int.Parse(textBoxHorasSemana.Text);
+                    contratoAux.Pagoporhora = double.Parse(textBoxPagoHora.Text);
+                    contratoAux.Cancelado = false;
+
+                  
+                    if(contratoAux.ValidarContrato(out mensaje))
+                    {
+
+                        contratoServicio.actualizarContrato(contratoAux);
+                        MessageBox.Show(this, "El contrato se actualizado correctamente");
+                        panelGeneralInfo.Visible = false;
+                        this.contrato = null;
+                        this.empleado = null;
+                        limpiarDatos();
+                        buttonActualizar.Enabled = false;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, mensaje);
+                    }
 
                 }
+                else 
+                {
+                    MessageBox.Show(this, mensaje);
+                }
+
+                
 
             }
             catch (Exception err)
@@ -383,32 +431,40 @@ namespace Capa1_Presentacion.WinForms.Contratos
             }
         }
 
-        private void validarCamposEntrada()
+        private bool validarCamposEntrada(out String mensaje)
         {
+            bool validar = true;
+            mensaje = "Porfavor corriga lo siguiente: \n";
             int numeroHoras = 0;
             if (!int.TryParse(textBoxHorasSemana.Text,out numeroHoras))
             {
-                throw new Exception("Solo se permiten numeros y enteros en horas por semana");
+                validar = false;
+                mensaje += "* Solo se permiten numeros y enteros en horas por semana\n";
             }
 
             if (!checkBoxSi.Checked && !checkBoxNo.Checked)
             {
-                throw new Exception("Porfavor seleccione una opcion en Asignacion Familiar");
+                validar = false;
+                mensaje += "* Porfavor seleccione una opcion en Asignacion Familiar\n";
             }
-           
+
 
 
             double numeroPagoHora = 0;
             if (!double.TryParse(textBoxPagoHora.Text,out numeroPagoHora))
             {
-                throw new Exception("Solo se permiten numeros en pagos por hora");
+               validar = false;
+                mensaje += "* Solo se permiten numeros en pagos por hora\n";
             }
 
             if(textBoxPuesto.Text.Trim().Length < 4)
             {
-                throw new Exception("Porfavor ingrese un nombre de  puesto correcto");
+               validar = false;
+                mensaje += "* Porfavor ingrese un nombre de  puesto correcto";
             }
 
+           
+            return validar;
 
         }
     }

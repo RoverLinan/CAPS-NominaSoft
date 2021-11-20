@@ -1,0 +1,11 @@
+e
+\C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\AfpSqlServer.csutf-8n
+eC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\BoletaDePagoSqlServer.csutf-8j
+aC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\ContratoSqlServer.csutf-8j
+aC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\EmpleadoSqlServer.csutf-8h
+_C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\GestorSqlServer.csutf-8s
+jC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\IncidenciaLaboralSqlServer.csutf-8h
+_C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\NominaSqlServer.csutf-8q
+hC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\PeriodoDeNominaSqlServer.csutf-8p
+gC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\Properties\AssemblyInfo.csutf-8•
+‰C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

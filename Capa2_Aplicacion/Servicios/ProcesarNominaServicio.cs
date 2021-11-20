@@ -10,15 +10,15 @@ namespace Capa2_Aplicacion.Servicios
 {
     public class ProcesarNominaServicio
     {
-        private GestorSQLServer gestorSql;
-        private NominaSQLServer nominaSQL;
-        private GestionarBoletaDePagoServicio boletaDePagoServicio;
-        private GestionarPeriodoNominaServicio periodoNominaServicio;
+        private readonly GestorSqlServer gestorSql;
+        private readonly NominaSqlServer nominaSQL;
+        private readonly GestionarBoletaDePagoServicio boletaDePagoServicio;
+        private readonly GestionarPeriodoNominaServicio periodoNominaServicio;
 
         public ProcesarNominaServicio()
         {
-            gestorSql = GestorSQLServer.getInstance();
-            nominaSQL = new NominaSQLServer();
+            gestorSql = GestorSqlServer.getInstance();
+            nominaSQL = new NominaSqlServer();
             boletaDePagoServicio = new GestionarBoletaDePagoServicio();
             periodoNominaServicio = new GestionarPeriodoNominaServicio();
         }
@@ -32,36 +32,21 @@ namespace Capa2_Aplicacion.Servicios
             try
             {
                
-                if (nomina.TienePagosEmpleados() == false)
-                {
-
-                    throw new Exception("No se puede guardar la Nómina porque se incumple la regla para guardar la Nómina");
-
-                }
-
-                if (nomina.EsFactibleGenerarNomina() == false)
-                {
-
-                    throw new Exception("No es factible generar la nomina");
-
-                }
-
-                if (nomina.esValidoFechaGeneracionNomina() == false)
-                {
-                    throw new Exception("La fecha de  generacion de la nomina es menor que la fecha del periodo");
-                }
-
-
                 gestorSql.AbrirConexion();
                 nominaSQL.guardar(nomina);
                 gestorSql.CerrarConexion();
 
                 // guardamos las boletas 
-                Random random = new Random();
+               
 
                 foreach (BoletaDePago boleta in nomina.BoletaDePagos)
                 {
-                    boleta.Boleta_id = "BOL" + random.Next(1000, 9999);
+                    boleta.Boleta_id = "BOL" + GenerarNumeroAleatorio.ObtenerNumeroAleatorio() + DateTime.Now.Millisecond;
+                    boleta.Reintegros = 0;
+                    boleta.Movilidad = 0;
+                    boleta.Otrosingresos = 0;
+                    boleta.Adelantos = 0;
+                    boleta.Otrosdescuentos = 0;
                     boletaDePagoServicio.guardar(boleta);
                 }
 
@@ -69,7 +54,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -85,7 +71,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -94,10 +81,7 @@ namespace Capa2_Aplicacion.Servicios
         {
             try
             {
-                if (nomina.Cerrada)
-                {
-                    throw new Exception("No se puede eliminar la nomina por estar cerrada");
-                }
+               
 
                 foreach (BoletaDePago boleta in nomina.BoletaDePagos)
                 {
@@ -112,7 +96,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -124,21 +109,21 @@ namespace Capa2_Aplicacion.Servicios
                 List<Nomina> listaNomina = nominaSQL.buscarPorDescripcion(descripcion);
                 gestorSql.CerrarConexion();
 
-
-                foreach (Nomina nomina in listaNomina)
+                if(listaNomina.Count > 0)
                 {
-                    nomina.BoletaDePagos = boletaDePagoServicio.buscarBoletasPorIdNomina(nomina);
-                    nomina.Periodo = periodoNominaServicio.buscarPeriodoPorId(nomina.Periodo.Periodo_id);
+                    foreach (Nomina nomina in listaNomina)
+                    {
+                        nomina.BoletaDePagos = boletaDePagoServicio.buscarBoletasPorIdNomina(nomina);
+                        nomina.Periodo = periodoNominaServicio.buscarPeriodoPorId(nomina.Periodo.Periodo_id);
+                    }
                 }
-
-
-
                 return listaNomina;
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 

@@ -11,13 +11,13 @@ namespace Capa2_Aplicacion.Servicios
     
     public class GestionarEmpleadoServicio
     {
-        private GestorSQLServer gestorSQL;
-        private EmpleadoSQLServer empleadoSQL;
+        private readonly GestorSqlServer gestorSQL;
+        private readonly EmpleadoSqlServer empleadoSQL;
 
         public GestionarEmpleadoServicio()
         {
-            gestorSQL = GestorSQLServer.getInstance();
-            empleadoSQL = new EmpleadoSQLServer();
+            gestorSQL = GestorSqlServer.getInstance();
+            empleadoSQL = new EmpleadoSqlServer();
         }
 
         public bool guardarEmpleado(Empleado empleado)
@@ -32,7 +32,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
           
             
@@ -40,11 +41,11 @@ namespace Capa2_Aplicacion.Servicios
 
         public Empleado buscarEmpleadoPorDni(string dni)
         {
-            Empleado empleado;
+          
             try
             {
                 gestorSQL.AbrirConexion();
-                empleado = empleadoSQL.buscarEmpleadoPorDni(dni);
+                Empleado empleado = empleadoSQL.buscarEmpleadoPorDni(dni);
                 gestorSQL.CerrarConexion();
                 
                 return empleado;
@@ -52,7 +53,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -62,17 +64,17 @@ namespace Capa2_Aplicacion.Servicios
            
             try
             {
-                Empleado empleado;
+               
                 gestorSQL.AbrirConexion();
-                empleado = empleadoSQL.buscarEmpleadoPorId(id);
+                Empleado empleado = empleadoSQL.buscarEmpleadoPorId(id);
                 gestorSQL.CerrarConexion();
 
                 return empleado;
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }

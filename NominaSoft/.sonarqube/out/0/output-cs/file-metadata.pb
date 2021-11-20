@@ -1,0 +1,10 @@
+a
+XC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Afp.csutf-8j
+aC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\BoletaDePago.csutf-8f
+]C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Contrato.csutf-8f
+]C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Empleado.csutf-8o
+fC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\IncidenciaLaboral.csutf-8d
+[C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Nomina.csutf-8m
+dC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\PeriodoDeNomina.csutf-8k
+bC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Properties\AssemblyInfo.csutf-8ê
+ÑC:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

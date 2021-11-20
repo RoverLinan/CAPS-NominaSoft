@@ -10,15 +10,15 @@ namespace Capa2_Aplicacion.Servicios
 {
     public class GestionarIncidenciaLaboralServicio
     {
-        private GestorSQLServer gestorSQL;
-        private IncidenciaLaboralSQLServer incidenciaLaboralSQL;
-        private GestionarPeriodoNominaServicio periodoNominaServicio;
+        private readonly GestorSqlServer gestorSQL;
+        private readonly IncidenciaLaboralSqlServer incidenciaLaboralSQL;
+        private readonly GestionarPeriodoNominaServicio periodoNominaServicio;
 
         public GestionarIncidenciaLaboralServicio()
         {
-            incidenciaLaboralSQL = new IncidenciaLaboralSQLServer();
+            incidenciaLaboralSQL = new IncidenciaLaboralSqlServer();
             periodoNominaServicio = new GestionarPeriodoNominaServicio();
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
 
@@ -35,7 +35,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -52,7 +53,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -62,20 +64,26 @@ namespace Capa2_Aplicacion.Servicios
             {
                 gestorSQL.AbrirConexion();
                 List<IncidenciaLaboral> listaIncidencias = incidenciaLaboralSQL.obtenerListaPorIdContrato(id);
-                foreach (IncidenciaLaboral item in listaIncidencias)
-                {
+                gestorSQL.CerrarConexion();
 
-                    item.Periodo = periodoNominaServicio.buscarPeriodoPorId(item.Periodo.Periodo_id);
+                if(listaIncidencias.Count > 0)
+                {
+                    foreach (IncidenciaLaboral item in listaIncidencias)
+                    {
+
+                        item.Periodo = periodoNominaServicio.buscarPeriodoPorId(item.Periodo.Periodo_id);
+
+                    }
 
                 }
-
-                gestorSQL.CerrarConexion();
+               
                 return listaIncidencias;
             }
             catch (Exception err)
             {
+                Console.WriteLine(err.ToString());
+                throw;
 
-                throw err;
             }
 
         }

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class NominaSQLServer
+    public class NominaSqlServer
     {
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer gestorSQL;
 
-        public NominaSQLServer()
+        public NominaSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
         public bool guardar(Nomina nomina)
@@ -26,8 +26,8 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarNomina);
+
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarNomina);
                 comando.Parameters.AddWithValue("@id", nomina.Nomina_id);
                 comando.Parameters.AddWithValue("@per_id", nomina.Periodo.Periodo_id);
                 comando.Parameters.AddWithValue("@fecha", nomina.Fecha);
@@ -41,7 +41,7 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
                 Console.WriteLine(err.Message);
-                throw new Exception("No se puede guardar la Nómina porque existió un problema de ejecución, verifique e intente en otro momento");
+                throw;
             }
 
         }
@@ -61,17 +61,13 @@ namespace Capa4_Persistencia
                     listaNomina.Add(obtenerNomina(resultado));
                 }
 
-                if (listaNomina.Count == 0)
-                {
-                    throw new Exception("No hay coincidencias de nominas");
-                }
-
                 return listaNomina;
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -82,14 +78,15 @@ namespace Capa4_Persistencia
             try
             {
                 string actualizarrSql = "UPDATE  nomina SET cerrada = 'true' where nomina_id = '" + nomina.Nomina_id + "'";
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(actualizarrSql);
+
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(actualizarrSql);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
             
@@ -100,14 +97,15 @@ namespace Capa4_Persistencia
             try
             {
                 string eliminarSql = "DELETE FROM nomina  where nomina_id = '" + nomina.Nomina_id + "'";
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
+         
+                SqlCommand  comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -116,7 +114,7 @@ namespace Capa4_Persistencia
         private Nomina obtenerNomina(SqlDataReader resultado)
         {
             Nomina nomina = new Nomina();
-            nomina.Periodo = new PeriodoDeNomina(); ;
+            nomina.Periodo = new PeriodoDeNomina(); 
 
             nomina.Nomina_id = resultado.GetString(0);
             nomina.Periodo.Periodo_id = resultado.GetString(1);

@@ -41,16 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AfpSQLServer.cs" />
-    <Compile Include="BoletaDePagoSQLServer.cs" />
-    <Compile Include="ContratoSQLServer.cs" />
-    <Compile Include="EmpleadoSQLServer.cs" />
-    <Compile Include="GestorSQLServer.cs" />
-    <Compile Include="IncidenciaLaboralSQLServer.cs" />
-    <Compile Include="NominaSQLServer.cs" />
-    <Compile Include="PeriodoDeNominaSQLServer.cs" />
+    <Compile Include="AfpSqlServer.cs" />
+    <Compile Include="BoletaDePagoSqlServer.cs" />
+    <Compile Include="ContratoSqlServer.cs" />
+    <Compile Include="EmpleadoSqlServer.cs" />
+    <Compile Include="GestorSqlServer.cs" />
+    <Compile Include="IncidenciaLaboralSqlServer.cs" />
+    <Compile Include="NominaSqlServer.cs" />
+    <Compile Include="PeriodoDeNominaSqlServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsuarioSQLServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Capa3_Dominio\Capa3_Dominio.csproj">

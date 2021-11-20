@@ -8,26 +8,16 @@ namespace Capa3_Dominio.Entidades
 {
     public class Empleado
     {
-        private string empleado_id;
-        private String nombres;
-        private String apellidos;
-        private String dni;
-        private DateTime fechanacimiento;
-        private String telefono;
-        private String correo;
-        private String direccion;
-
-        List<Contrato> listaContratos;
+        public string Empleado_id { get; set; }
+        public String Nombres { get; set; }
+        public String Apellidos { get; set; }
+        public String Dni { get; set; }
+        public DateTime Fechanacimiento { get; set; }
+        public String Telefono { get; set; }
+        public String Correo { get; set; }
+        public String Direccion { get; set; }
 
 
-        public string Empleado_id { get => empleado_id; set => empleado_id = value; }
-        public string Nombres { get => nombres; set => nombres = value; }
-        public string Apellidos { get => apellidos; set => apellidos = value; }
-        public string Dni { get => dni; set => dni = value; }
-        public DateTime Fechanacimiento { get => fechanacimiento; set => fechanacimiento = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public string Correo { get => correo; set => correo = value; }
-        public string Direccion { get => direccion; set => direccion = value; }
-        public List<Contrato> ListaContratos { get => listaContratos; set => listaContratos = value; }
+
     }
 }

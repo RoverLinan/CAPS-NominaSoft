@@ -2,6 +2,7 @@
 using Capa4_Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +12,27 @@ namespace Capa2_Aplicacion.Servicios
     public class GestionarAfpServicio
     {
 
-        private GestorSQLServer gestorSQL;
-        private AfpSQLServer afpSQL;
+        private readonly GestorSqlServer gestorSQL = GestorSqlServer.getInstance();
+        private readonly AfpSqlServer afpSQL  = new AfpSqlServer();
 
         public GestionarAfpServicio()
         {
-            gestorSQL = GestorSQLServer.getInstance();
-            afpSQL = new AfpSQLServer();
+            
         }
 
-        public bool guardarAfp(Afp afp)
+        public void guardarAfp(Afp afp)
         {
             try
             {
                 gestorSQL.AbrirConexion();
                 afpSQL.guardar(afp);
                 gestorSQL.CerrarConexion();
-                return true;
+              
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -40,19 +40,19 @@ namespace Capa2_Aplicacion.Servicios
 
         public Afp buscarAfpPorId(int id)
         {
-            Afp afp;
+           
             try
             {
                 gestorSQL.AbrirConexion();
-                afp = afpSQL.buscarAfpPorId(id);
+                Afp afp = afpSQL.buscarAfpPorId(id);
                 gestorSQL.CerrarConexion();
 
                 return afp;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -67,10 +67,10 @@ namespace Capa2_Aplicacion.Servicios
 
                 return listaAfp;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
     }

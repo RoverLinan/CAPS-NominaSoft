@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,32 +15,29 @@ namespace Capa1_Presentacion.WinForms.Nominas
 {
     public partial class FormProcesarNomina : Form
     {
-        private GestionarPeriodoNominaServicio periodoServicio;
-        private GestionarEmpleadoServicio empleadoServicio;
-        private GestionarContratoServicio contratoServicio;
-        private GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
-        private GestionarAfpServicio afpServicio;
-        private GestionarBoletaDePagoServicio boletaDePagoServicio;
-        private ProcesarNominaServicio procesarNominaServicio;
+        private readonly GestionarPeriodoNominaServicio periodoServicio;
+        private readonly GestionarContratoServicio contratoServicio;
+        private readonly ProcesarNominaServicio procesarNominaServicio;
+        
+      
+       
 
 
-        private List<PeriodoDeNomina> listaPeriodo;
-        private List<IncidenciaLaboral> listaIncidenciasLaborales;
-        private List<Contrato> listaContratos;
-        private List<BoletaDePago> listaBoletasDePago;
-        private List<Afp> listaAfp;
-        private List<Empleado> listaEmpleados;
+        private Nomina Nomina { get; set; }
+        private List<PeriodoDeNomina> ListaPeriodo { get; set; }
+        private List<Contrato> ListaContratos { get; set; }
 
 
-        private Nomina nomina;
+
+
 
         public FormProcesarNomina()
         {
             InitializeComponent();
             periodoServicio = new GestionarPeriodoNominaServicio();
-            empleadoServicio =  new GestionarEmpleadoServicio();
+ 
             contratoServicio = new GestionarContratoServicio();
-            incidenciaLaboralServicio = new GestionarIncidenciaLaboralServicio();
+   
             procesarNominaServicio = new ProcesarNominaServicio();
 
             panelSeleccionPeriodo.Visible = false;
@@ -59,20 +57,29 @@ namespace Capa1_Presentacion.WinForms.Nominas
         {
             try
             {
-                listaPeriodo = periodoServicio.obtenerListaPeriodo();
-                comboBoxListaPeriodo.Items.Clear();
-                foreach (PeriodoDeNomina item in listaPeriodo)
-                {
-                    comboBoxListaPeriodo.Items.Add(item.Descripcion);
-                }
-               comboBoxListaPeriodo.Text = listaPeriodo[0].Descripcion;
+                ListaPeriodo = periodoServicio.obtenerListaPeriodo();
             }
+
             catch (Exception err)
             {
 
-                throw err;
+                MessageBox.Show("Atencion: " + err.Message);
             }
-          
+
+            if (ListaPeriodo.Count > 0)
+            {
+                comboBoxListaPeriodo.Items.Clear();
+                foreach (PeriodoDeNomina item in ListaPeriodo)
+                {
+                    comboBoxListaPeriodo.Items.Add(item.Descripcion);
+                }
+                comboBoxListaPeriodo.Text = ListaPeriodo[0].Descripcion;
+            }
+            else
+            {
+                MessageBox.Show("No hay periodos disponibles");
+            }
+                
 
         }
 
@@ -82,15 +89,15 @@ namespace Capa1_Presentacion.WinForms.Nominas
         private void buttonBuscarNomina_Click(object sender, EventArgs e)
         {
 
-            this.nomina = null;
+            Nomina = null;
             FormBuscarNomina formBuscar = new FormBuscarNomina();
 
            
             if (formBuscar.ShowDialog() == DialogResult.OK)
             {
-                this.nomina = formBuscar.Nomina;
+                Nomina = formBuscar.Nomina;
                 cargarListaPeriodo();
-                comboBoxListaPeriodo.Text = this.nomina.Periodo.Descripcion.ToString();
+                comboBoxListaPeriodo.Text = Nomina.Periodo.Descripcion.ToString();
                 generarPagosBoleta();
 
 
@@ -172,69 +179,49 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
         private void comboBoxListaPeriodo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("se cambio de selection" + comboBoxListaPeriodo.Text);
+          
 
-
-            PeriodoDeNomina periodo = buscarPeriodo(comboBoxListaPeriodo.Text);
-
-            flowLayoutPanelPeriodo.Visible = true;
-            labelIdPeriodo.Text = periodo.Periodo_id;
-            dateTimePickerFechaInicio.Value = periodo.Fechainicio;
-            dateTimePickerFechaFin.Value = periodo.Fechafin;
-
-
-
+            if(buscarPeriodo() != null)
+            {
+                PeriodoDeNomina periodo = buscarPeriodo();
+                flowLayoutPanelPeriodo.Visible = true;
+                labelIdPeriodo.Text = periodo.Periodo_id;
+                dateTimePickerFechaInicio.Value = periodo.Fechainicio;
+                dateTimePickerFechaFin.Value = periodo.Fechafin;
+            }
+            else
+            {
+                MessageBox.Show("nombre de periodo no encontrado");
+            }
+            
         }
 
 
 
-        private PeriodoDeNomina buscarPeriodo(String descripcion)
+        private PeriodoDeNomina buscarPeriodo()
         {
-            try
-            {
+            
                 PeriodoDeNomina periodo = null;
-                foreach (PeriodoDeNomina item in listaPeriodo)
+                foreach (PeriodoDeNomina item in ListaPeriodo)
                 {
                     if (item.Descripcion.Equals(comboBoxListaPeriodo.Text))
                     {
                         periodo = item;
+                       
                         break;
                     }
                 }
 
-                if(periodo == null)
-                {
-                    throw new Exception("Periodo incorrecto");
-                }
-
                 return periodo;
-            }
-            catch (Exception err)
-            {
-
-                throw err;
-            }
-           
         }
 
         private void buttonGenerarNomina_Click(object sender, EventArgs e)
         {
 
-            try
-            {
-                this.nomina = new Nomina();
-                // generarNominaMetodoUno();
-                generarNominaMetodoDos();
-              
-           
-            }
-            catch (Exception err)
-            {
-
-                MessageBox.Show(err.Message);
-            }
-           
-
+            
+                Nomina = new Nomina();
+                generarNomina();
+   
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -242,28 +229,44 @@ namespace Capa1_Presentacion.WinForms.Nominas
             try
             {
 
-                this.nomina.Nomina_id = "NOM" + new Random().Next(1000, 9999);
-                this.nomina.Fecha = DateTime.Now;
-                if(textBoxDescripcionNomina.Text.Trim().Length < 5)
+                Nomina.Nomina_id = "NOM" + GenerarNumeroAleatorio.ObtenerNumeroAleatorio();
+                Nomina.Fecha = DateTime.Now;
+
+               
+                if(textBoxDescripcionNomina.Text.Trim().Length > 5)
                 {
-                    throw new Exception("Porfavor ingrese una descripcion de nomina mayor a 5 caracteres");
+                    string mensaje;
+                    if (Nomina.ValidarNomina(out mensaje))
+                    {
+                        Nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
+                        Nomina.Cerrada = false;
+
+
+
+                        procesarNominaServicio.guardar(Nomina);
+                        MessageBox.Show("Se guardo la Nómina");
+
+                        buttonGenerarNomina.Enabled = false;
+                        buttonGuardar.Enabled = false;
+                        buttonCancelar.Enabled = false;
+                        buttonCrearNomina.Enabled = true;
+                        buttonBuscarNomina.Enabled = true;
+
+                        panelSeleccionPeriodo.Visible = false;
+                        panelInformacionNomina.Visible = false;
+
+                        limpiarDatosNomina();
+                    }
+                    else
+                    {
+                        MessageBox.Show(mensaje);
+                    }
+                   
+                } else
+                {
+                    MessageBox.Show("Porfavor ingrese una descripcion MAYOR A 5 CARACTERES");
                 }
-                this.nomina.Descripcion = textBoxDescripcionNomina.Text.ToUpper();
-                this.nomina.Cerrada = false;
-
-                procesarNominaServicio.guardar(this.nomina);
-                MessageBox.Show("Se guardo la Nómina");
-
-                buttonGenerarNomina.Enabled = false;
-                buttonGuardar.Enabled = false;
-                buttonCancelar.Enabled = false;
-                buttonCrearNomina.Enabled = true;
-                buttonBuscarNomina.Enabled = true;
-
-                panelSeleccionPeriodo.Visible = false;
-                panelInformacionNomina.Visible = false;
-
-                limpiarDatosNomina();
+               
 
 
 
@@ -278,124 +281,102 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
       
 
-
-        private void generarNominaMetodoUno()
+        private void generarNomina()
         {
-            
 
-            PeriodoDeNomina periodoDeNomina = buscarPeriodo(comboBoxListaPeriodo.Text);
-            this.nomina.Periodo = periodoDeNomina;
-
-
-
-            if (periodoDeNomina != null)
-            {
-                this.listaIncidenciasLaborales = incidenciaLaboralServicio.obtenerPorIdPeriodo(periodoDeNomina.Periodo_id);
-
-                if (this.listaIncidenciasLaborales.Count > 0)
-                {
-
-                    foreach (IncidenciaLaboral item in listaIncidenciasLaborales)
-                    {
-
-                        // buscamos contrato para asignarle la incidencia
-                        item.Periodo = periodoDeNomina;
-                        Contrato contrato = contratoServicio.buscarPorId(item.Contrato.Contrato_id);
-                        item.Contrato = contrato;
-                        contrato.Incidencias.Add(item);
-
-                        //buscamos empleado y afp
-                        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(contrato.Empleado.Empleado_id);
-                        Afp afp = afpServicio.buscarAfpPorId(contrato.Afp.Afp_id);
-
-                        contrato.Afp = afp;
-                        contrato.Empleado = empleado;
-
-                        this.listaContratos.Add(contrato);
-
-                        BoletaDePago boletaDePago = new BoletaDePago();
-                        boletaDePago.Contrato = contrato;
-                        boletaDePago.Nomina = this.nomina;
-
-
-                        // agregamos la boleta a la nomina para hacer los calculos
-                        nomina.BoletaDePagos.Add(boletaDePago);
-
-                    }
-
-
-                }
-                else
-                {
-                    throw new Exception("No existen incidencias para este periodo");
-                }
-
-            }
-        }
-
-        private void generarNominaMetodoDos()
-        {
-            this.listaContratos = contratoServicio.obtenerContratos();
 
             try
             {
+                ListaContratos = contratoServicio.obtenerContratos();
 
-                List<Contrato> listaContratosFiltrada = new List<Contrato>();
-                List<IncidenciaLaboral> listaIncidenciasFiltrada;
-
-                foreach (Contrato contrato in this.listaContratos)
-                {
-                    listaIncidenciasFiltrada = new List<IncidenciaLaboral>();
-                    foreach (IncidenciaLaboral incidencia in contrato.Incidencias)
-                    {
-
-                        if (incidencia.Periodo.Periodo_id.Equals(buscarPeriodo(comboBoxListaPeriodo.Text).Periodo_id))
-                        {
-                            listaIncidenciasFiltrada.Add(incidencia);
-                        }
-                    }
-
-                    if (listaIncidenciasFiltrada.Count > 0)
-                    {
-                        contrato.Incidencias = listaIncidenciasFiltrada;
-                        listaContratosFiltrada.Add(contrato);
-                    }
-                }
-
-                if (listaContratosFiltrada.Count > 0)
+                if (ListaContratos.Count > 0)
                 {
 
-                    foreach (Contrato contrato in listaContratosFiltrada)
-                    {
 
-                        BoletaDePago boleta = new BoletaDePago();
-                        boleta.Contrato = contrato;
-                        boleta.Nomina = this.nomina;
-                        this.nomina.BoletaDePagos.Add(boleta);
+                    List<Contrato> listaContratosFiltrada = ContratosFiltrados();
+
+
+                    if (listaContratosFiltrada.Count > 0)
+                    {
+                        
+                        Nomina.BoletaDePagos = CrearBoletas(listaContratosFiltrada);
+                        Nomina.Periodo = buscarPeriodo();
+                        //cuando se busque una nomina, se continuara desde este punto porque ya tenemos la nomina,periodo y boletas.
+                        generarPagosBoleta();
 
                     }
+                    else
+                    {
 
-                    this.nomina.Periodo = buscarPeriodo(comboBoxListaPeriodo.Text);
-                    //cuando se busque una nomina, se continuara desde este punto porque ya tenemos la nomina,periodo y boletas.
-                    generarPagosBoleta();
+                        MessageBox.Show("No hay contratos con incidencias para este periodo");
+                    }
+
 
                 }
                 else
                 {
-                    throw new Exception("No hay contratos con incidencias para este periodo");
+                    MessageBox.Show("Aun no ha registrado ningun contrato en el sistema");
                 }
-
 
             }
             catch (Exception err)
             {
 
-                throw err;
+                MessageBox.Show("Error interno: " + err.Message);
             }
             
-
+            
+            
         }
 
+
+        private List<Contrato> ContratosFiltrados()
+        {
+            List<Contrato> listaContratosFiltrada = new List<Contrato>();
+            List<IncidenciaLaboral> listaIncidenciasFiltrada;
+
+            foreach (Contrato contrato in ListaContratos)
+            {
+                listaIncidenciasFiltrada = new List<IncidenciaLaboral>();
+                foreach (IncidenciaLaboral incidencia in contrato.Incidencias)
+                {
+
+                    if (buscarPeriodo() != null && incidencia.Periodo.Periodo_id.Equals(buscarPeriodo().Periodo_id))
+                    {
+                        listaIncidenciasFiltrada.Add(incidencia);
+                    }
+                }
+
+                if (listaIncidenciasFiltrada.Count > 0)
+                {
+                    contrato.Incidencias = listaIncidenciasFiltrada;
+                    listaContratosFiltrada.Add(contrato);
+                }
+            }
+
+            return listaContratosFiltrada;
+        }
+
+
+
+        private List<BoletaDePago> CrearBoletas(List<Contrato> listaContratosFiltrada)
+        {
+            List<BoletaDePago> boletas = new List<BoletaDePago>();
+            foreach (Contrato contrato in listaContratosFiltrada)
+            {
+
+                BoletaDePago boleta = new BoletaDePago
+                {
+                    Contrato = contrato,
+                    Nomina = Nomina
+                };
+                boletas.Add(boleta);
+
+            }
+
+            return boletas;
+
+        }
 
         private void generarPagosBoleta()
         {
@@ -403,9 +384,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
 
             dataGridViewListaPagos.Rows.Clear();
-            dataGridViewListaPagos.Rows.Add(this.nomina.BoletaDePagos.Count);
+            dataGridViewListaPagos.Rows.Add(Nomina.BoletaDePagos.Count);
             int rowEscribir = 0;
-            foreach (BoletaDePago boleta in this.nomina.BoletaDePagos)
+            foreach (BoletaDePago boleta in Nomina.BoletaDePagos)
             {
 
 
@@ -433,10 +414,10 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
             //generar datos nomina
 
-            textBoxTotalGenerados.Text = this.nomina.BoletaDePagos.Count.ToString();
-            textBoxTotalIngresos.Text = this.nomina.calcularTotalIngresosNomina().ToString();
-            textBoxTotalRetenciones.Text = this.nomina.calcularTotalRetencionesNomina().ToString();
-            textBoxTotalNetoPagar.Text = this.nomina.calcularTotalSueldoNetoNomina().ToString();
+            textBoxTotalGenerados.Text = Nomina.BoletaDePagos.Count.ToString();
+            textBoxTotalIngresos.Text = Nomina.calcularTotalIngresosNomina().ToString();
+            textBoxTotalRetenciones.Text = Nomina.calcularTotalRetencionesNomina().ToString();
+            textBoxTotalNetoPagar.Text = Nomina.calcularTotalSueldoNetoNomina().ToString();
 
         }
 
@@ -452,21 +433,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
 
 
-
-        private void cargarDatosDeNominaBuscada()
-        {
-
-            
-
-
-
-
-
-
-
-
-        }
-
         private void limpiarDatosNomina()
         {
             dataGridViewListaPagos.Rows.Clear();
@@ -475,7 +441,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
             textBoxTotalIngresos.Text = "";
             textBoxTotalRetenciones.Text = "";
             textBoxTotalNetoPagar.Text = "";
-            this.nomina = null;
+            Nomina = null;
 
         }
 
@@ -486,7 +452,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
                 if (MessageBox.Show(" Está seguro de cerrar la Nómina. Si cierra la Nómina no se podrán \nmodificar los pagos generados de la Nómina ni eliminar la Nómina", "Advertencia", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
 
-                    procesarNominaServicio.cerrar(this.nomina);
+                    procesarNominaServicio.cerrar(Nomina);
                     limpiarDatosNomina();
                     buttonEliminar.Enabled = false;
                     buttonCerrar.Enabled = false;
@@ -494,9 +460,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
                     buttonBuscarNomina.Enabled = true;
                     MessageBox.Show("Se cerró la Nómina y se podrán enviar las boletas de pago a los empleados");
                 }
-                else
-                {
-                }
+                
             }
             catch (Exception err)
             {
@@ -512,15 +476,25 @@ namespace Capa1_Presentacion.WinForms.Nominas
             {
                 if (MessageBox.Show("Está seguro de eliminar la Nómina. Si elimina la Nómina también de eliminaran los pagos generados de la Nómina", "Advertencia", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
+                    if (!Nomina.Cerrada)
+                    {
 
-                    procesarNominaServicio.eliminar(this.nomina);
-                    limpiarDatosNomina();
-                    buttonEliminar.Enabled = false;
-                    buttonCerrar.Enabled = false;
+                        procesarNominaServicio.eliminar(this.Nomina);
+                        limpiarDatosNomina();
+                        buttonEliminar.Enabled = false;
+                        buttonCerrar.Enabled = false;
 
-                    buttonCrearNomina.Enabled = true;
-                    buttonBuscarNomina.Enabled = true;
-                    MessageBox.Show("Se elimino la nomina");
+                        buttonCrearNomina.Enabled = true;
+                        buttonBuscarNomina.Enabled = true;
+                        MessageBox.Show("Se elimino la nomina");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede eliminar la nomina por estar CERRADA");
+                    }
+
+            
                 }
                
             }

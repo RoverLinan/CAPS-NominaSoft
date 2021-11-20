@@ -142,7 +142,7 @@ namespace Capa1_Presentacion.WinForms.Otros
             this.buttonGuardarIncidencia.TabIndex = 8;
             this.buttonGuardarIncidencia.Text = "Guardar incidencia";
             this.buttonGuardarIncidencia.UseVisualStyleBackColor = true;
-            this.buttonGuardarIncidencia.Click += new System.EventHandler(this.buttonGuardarIncidencia_Click);
+            this.buttonGuardarIncidencia.Click += new System.EventHandler(this.Guardar_Click);
             // 
             // panel2
             // 

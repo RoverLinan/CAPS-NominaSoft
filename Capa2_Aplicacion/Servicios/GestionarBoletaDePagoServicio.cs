@@ -10,16 +10,15 @@ namespace Capa2_Aplicacion.Servicios
 {
     public class GestionarBoletaDePagoServicio
     {
-        private GestorSQLServer gestorSQL;
-        private BoletaDePagoSQLServer boletaDePagoSQL;
-        private GestionarContratoServicio gestionarContratoServicio;
-        private GestionarContratoServicio contratoServicio;
+        private readonly GestorSqlServer gestorSQL;
+        private readonly BoletaDePagoSqlServer boletaDePagoSQL;
+        private readonly GestionarContratoServicio contratoServicio;
 
         public GestionarBoletaDePagoServicio()
         {
-            gestorSQL = GestorSQLServer.getInstance();
-            boletaDePagoSQL = new BoletaDePagoSQLServer();
-            gestionarContratoServicio = new GestionarContratoServicio();
+            gestorSQL = GestorSqlServer.getInstance();
+            boletaDePagoSQL = new BoletaDePagoSqlServer();
+       
             contratoServicio = new GestionarContratoServicio();
         }
             
@@ -39,7 +38,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
            
@@ -58,7 +58,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -97,7 +98,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err) 
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 

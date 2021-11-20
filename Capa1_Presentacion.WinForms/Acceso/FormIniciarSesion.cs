@@ -14,11 +14,13 @@ namespace Capa1_Presentacion.WinForms.Acceso
 {
     public partial class FormIniciarSesion : Form
     {
-        private GestionarUsuarioServicio usuarioServicio;
+       
         public FormIniciarSesion()
         {
             InitializeComponent();
-            usuarioServicio = new GestionarUsuarioServicio();
+
+
+   
         }
 
        
@@ -26,7 +28,7 @@ namespace Capa1_Presentacion.WinForms.Acceso
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
           
-     
+                
             
               
                 FormPrincipal formPrincipal = new FormPrincipal();

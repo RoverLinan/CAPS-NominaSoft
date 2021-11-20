@@ -9,15 +9,15 @@ using Capa3_Dominio.Entidades;
 
 namespace Capa4_Persistencia
 {
-    public class AfpSQLServer
+    public class AfpSqlServer
     {
 
 
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer gestorSQL;
 
-        public AfpSQLServer()
+        public AfpSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
         public bool guardar(Afp afp)
@@ -27,8 +27,8 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarAfp);
+         
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarAfp);
                 comando.Parameters.AddWithValue("@id", afp.Afp_id);
                 comando.Parameters.AddWithValue("@nom", afp.Nombre);
                 comando.Parameters.AddWithValue("@pdscto", afp.Porcentajedescuento);
@@ -39,31 +39,31 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
         public Afp buscarAfpPorId(int id)
         {
-            Afp afp;
+            
             string consultaSQL = "select   * from afp where afp_id = '" + id + "'";
             try
             {
+                Afp afp = null;
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 if (resultadoSQL.Read())
                 {
                     afp = obtenerAfp(resultadoSQL);
                 }
-                else
-                {
-                    throw new Exception("La afp no existe");
-                }
+                return afp;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return afp;
+           
         }
 
         public List<Afp> listaAfp()
@@ -78,17 +78,14 @@ namespace Capa4_Persistencia
                     listaAfp.Add(obtenerAfp(resultadoSQL));
                 }
 
-                if(listaAfp.Count == 0)
-                {
-                    throw new Exception("No hay AFP registradas");
-                }
-               
+                return listaAfp;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return listaAfp;
+           
         }
 
         public Afp obtenerAfp(SqlDataReader resultado)

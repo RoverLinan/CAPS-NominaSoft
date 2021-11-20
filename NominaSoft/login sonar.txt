@@ -1,0 +1,3 @@
+SonarScanner.MSBuild.exe begin /k:"NominaSoft" /d:sonar.login="762562bd5166514ea36141d6e4b7c73e8d27b183"
+MSBuild.exe NominaSoft.sln /t:Rebuild
+SonarScanner.MSBuild.exe end /d:sonar.login="762562bd5166514ea36141d6e4b7c73e8d27b183"

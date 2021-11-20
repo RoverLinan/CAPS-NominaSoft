@@ -2,6 +2,7 @@
 using Capa4_Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,13 @@ namespace Capa2_Aplicacion.Servicios
 {
     public class GestionarPeriodoNominaServicio
     {
-        private GestorSQLServer gestorSQL;
-        private PeriodoDeNominaSQLServer periodoNominaSQL;
+        private readonly GestorSqlServer gestorSQL;
+        private readonly PeriodoDeNominaSqlServer periodoNominaSQL;
 
         public GestionarPeriodoNominaServicio()
         {
-            gestorSQL = GestorSQLServer.getInstance();
-            periodoNominaSQL = new PeriodoDeNominaSQLServer();
+            gestorSQL = GestorSqlServer.getInstance();
+            periodoNominaSQL = new PeriodoDeNominaSqlServer();
         }
 
         public bool guardarPeriodoDeNomina(PeriodoDeNomina periodoDeNomina)
@@ -24,10 +25,7 @@ namespace Capa2_Aplicacion.Servicios
             try
             {
 
-                if (periodoDeNomina.tieneFechaFinValida() == false)
-                {
-                    throw new Exception("fecha fin: El periodo no cumple con la regla 16");
-                }
+               
 
                 gestorSQL.AbrirConexion();
                 periodoNominaSQL.guardar(periodoDeNomina);
@@ -37,7 +35,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -57,7 +56,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -80,7 +80,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -98,10 +99,11 @@ namespace Capa2_Aplicacion.Servicios
 
                 return listaPeriodo;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 

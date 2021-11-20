@@ -8,15 +8,15 @@ using Capa3_Dominio.Entidades;
 
 namespace Capa4_Persistencia
 {
-    public class EmpleadoSQLServer
+    public class EmpleadoSqlServer
     {
 
-        private GestorSQLServer gestorSQL;
-        
+        private readonly GestorSqlServer gestorSQL;
 
-        public EmpleadoSQLServer()
+
+        public EmpleadoSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
         public bool guardar(Empleado empleado)
@@ -27,8 +27,8 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarEmpleado);
+               
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarEmpleado);
                 comando.Parameters.AddWithValue("@id","EMP" + empleado.Dni);
                 comando.Parameters.AddWithValue("@nom", empleado.Nombres);
                 comando.Parameters.AddWithValue("@ape", empleado.Apellidos);
@@ -44,13 +44,14 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
         public Empleado buscarEmpleadoPorDni(string dni)
         {
-            Empleado empleado;
+            Empleado empleado = null;
             string consultaSQL = "select   * from empleado where dni = '" + dni + "'";
             try
             {
@@ -59,39 +60,39 @@ namespace Capa4_Persistencia
                 {
                     empleado = obtenerEmpleado(resultadoSQL);
                 }
-                else
-                {
-                    throw new Exception("El empleado no existe");
-                }
+                return empleado;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return empleado;
+         
         }
 
         public Empleado buscarEmpleadoPorId(string id)
         {
-            Empleado empleado;
+          
             string consultaSQL = "select   * from empleado where empleado_id = '" + id + "'";
             try
             {
+
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
+                Empleado empleado = null;
                 if (resultadoSQL.Read())
                 {
                     empleado = obtenerEmpleado(resultadoSQL);
                 }
-                else
-                {
-                    throw new Exception("El empleado no existe");
-                }
+                
+                return empleado;
             }
-            catch (Exception err)
+            catch (SqlException errSql)
             {
-                throw err;
+                Console.WriteLine(errSql.Message);
+                throw;
             }
-            return empleado;
+           
+            
         }
 
         public Empleado obtenerEmpleado( SqlDataReader resultado)

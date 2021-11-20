@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class IncidenciaLaboralSQLServer
+    public class IncidenciaLaboralSqlServer
     {
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer gestorSQL;
 
-        public IncidenciaLaboralSQLServer()
+        public IncidenciaLaboralSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
 
@@ -28,9 +28,9 @@ namespace Capa4_Persistencia
                                      "VALUES(@id,@pe_id,@c_id,@totalhfalta,@totalhxtras)";
 
 
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarSql);
-                comando.Parameters.AddWithValue("@id", new Random().Next(1, 10001));
+
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarSql);
+                comando.Parameters.AddWithValue("@id",incidencia.Incidencia_id);
                 comando.Parameters.AddWithValue("@pe_id", incidencia.Periodo.Periodo_id);
                 comando.Parameters.AddWithValue("@c_id", incidencia.Contrato.Contrato_id);
                 comando.Parameters.AddWithValue("@totalhfalta", incidencia.Totalhorasdefalta);
@@ -41,39 +41,10 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
-        }
-
-        public List<IncidenciaLaboral> listaIncidenciasPorIdContrato(string id)
-        {
-            string buscarSql = "SELECT * FROM incidencialaboral where contrato_id ='" + id + "'";
-            List<IncidenciaLaboral> listaIncidencias = new List<IncidenciaLaboral>();
-
-            try
-            {
-                SqlDataReader resultado = gestorSQL.EjecutarConsulta(buscarSql);
-
-                while (resultado.Read())
-                {
-                    listaIncidencias.Add(obtenerIncidencia(resultado));
-                }
-
-                if (listaIncidencias.Count == 0)
-                {
-                    throw new Exception("No hay incidencias para este contrato");
-                }
-
-                return listaIncidencias;
-            }
-            catch (Exception err)
-            {
-
-                throw err;
-            }
-          
-           
         }
 
 
@@ -92,17 +63,14 @@ namespace Capa4_Persistencia
                     listaIncidencias.Add(obtenerIncidencia(resultado));
                 }
 
-                if (listaIncidencias.Count == 0)
-                {
-                    throw new Exception("No hay incidencias para este contrato");
-                }
 
                 return listaIncidencias;
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -128,17 +96,14 @@ namespace Capa4_Persistencia
                     listaIncidencias.Add(obtenerIncidencia(resultado));
                 }
 
-                if (listaIncidencias.Count == 0)
-                {
-                    throw new Exception("No hay incidencias para este periodo");
-                }
-
+             
                 return listaIncidencias;
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }

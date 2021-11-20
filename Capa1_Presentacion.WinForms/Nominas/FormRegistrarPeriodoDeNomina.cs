@@ -33,11 +33,19 @@ namespace Capa1_Presentacion.WinForms.Nominas
             {
 
 
+                if (periodoNomina.tieneFechaFinValida())
+                {
+                 
+                    periodoNominaServicio.guardarPeriodoDeNomina(periodoNomina);
+                    MessageBox.Show(this, "Se completo el registro exitoso.");
+                    this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show(this, "fecha fin: El periodo no cumple con la regla 16");
+                }
 
-
-                periodoNominaServicio.guardarPeriodoDeNomina(periodoNomina);
-                MessageBox.Show(this, "Se completo el registro exitoso.");
-                this.Dispose();
+                
             }
             catch (Exception err)
             {
@@ -50,9 +58,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.Dispose();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

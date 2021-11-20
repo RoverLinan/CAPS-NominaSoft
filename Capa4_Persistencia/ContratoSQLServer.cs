@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class ContratoSQLServer
+    public class ContratoSqlServer
     {
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer gestorSQL;
 
-        public ContratoSQLServer()
+        public ContratoSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
-        public bool guardar(Contrato contrato, Empleado empleado, Afp afp)
+        public void guardar(Contrato contrato)
         {
             string insertarContrato = "INSERT INTO contrato(contrato_id,empleado_id,afp_id,fechainicio,fechafin" +
                                        ",tieneasignacionfamiliar,horasporsemana,pagoporhora,puesto,cancelado)" +
@@ -25,11 +25,11 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarContrato);
-                comando.Parameters.AddWithValue("@c_id", "CON" + empleado.Dni + new Random().Next(10,10001));
-                comando.Parameters.AddWithValue("@e_id", empleado.Empleado_id);
-                comando.Parameters.AddWithValue("@afp_id", afp.Afp_id);
+
+                SqlCommand comando  = gestorSQL.ObtenerComandoSQL(insertarContrato);
+                comando.Parameters.AddWithValue("@c_id", contrato.Contrato_id);
+                comando.Parameters.AddWithValue("@e_id", contrato.Empleado.Empleado_id);
+                comando.Parameters.AddWithValue("@afp_id", contrato.Afp.Afp_id);
                 comando.Parameters.AddWithValue("@feini", contrato.Fechainicio);
                 comando.Parameters.AddWithValue("@fefin", contrato.Fechafin);
                 comando.Parameters.AddWithValue("@asigfami", contrato.Tieneasignacionfamiliar);
@@ -38,12 +38,13 @@ namespace Capa4_Persistencia
                 comando.Parameters.AddWithValue("@puesto", contrato.Puesto);
                 comando.Parameters.AddWithValue("@canc", contrato.Cancelado);
                 comando.ExecuteNonQuery();
-                return true;
+               
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
          
@@ -62,15 +63,12 @@ namespace Capa4_Persistencia
                     contratos.Add(obtenerContrato(resultadoSQL));
                 }
 
-                if(contratos.Count == 0)
-                {
-                    throw new Exception("No hay contratos registrados");
-                }
                return contratos;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
      
 
@@ -85,8 +83,8 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(actualizarContrato);
+
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(actualizarContrato);
                 comando.Parameters.AddWithValue("@afp_id", contrato.Afp.Afp_id);
                 comando.Parameters.AddWithValue("@fechaini", contrato.Fechainicio);
                 comando.Parameters.AddWithValue("@fechafin", contrato.Fechafin);
@@ -99,10 +97,11 @@ namespace Capa4_Persistencia
                 comando.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception err)
+            catch (SqlException err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 
@@ -114,10 +113,11 @@ namespace Capa4_Persistencia
         {
             string consultaSQL = "select   * from contrato where contrato_id = '" + id + "'";
 
-            Contrato contrato = null;
+         
 
             try
             {
+                Contrato contrato = null;
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 while (resultadoSQL.Read())
                 {
@@ -128,48 +128,45 @@ namespace Capa4_Persistencia
                     }
 
                 }
+                return contrato;
 
-                if (contrato == null)
-                {
-                    throw new Exception("No hay contratos vigentes ");
-                }
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return contrato;
+            
         }
 
 
 
         public List<Contrato> buscarContratosPorIdEmpleado(string id)
         {
-            List<Contrato> contratos = new List<Contrato>();
+           
             string consultaSQL = "select   * from contrato where empleado_id = '" + id + "'";
             try
             {
+                List<Contrato> contratos = new List<Contrato>();
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 if (resultadoSQL.Read())
                 {
                     contratos.Add(obtenerContrato(resultadoSQL));
                 }
-                else
-                {
-                    throw new Exception("No hay contratos asignados");
-                }
+                return contratos;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return contratos;
+          
         }
 
 
         public Contrato buscarContratoVigentePorIdEmpleado(string id)
         {
-            Contrato contrato = null;
+            
 
             DateTime fechActual = DateTime.Now;
             Console.WriteLine("fecha cortaaaaaa  :  " + fechActual.ToString("dd-MM-yyyy"));
@@ -178,6 +175,7 @@ namespace Capa4_Persistencia
 
             try
             {
+                Contrato contrato = null;
                 SqlDataReader resultadoSQL = gestorSQL.EjecutarConsulta(consultaSQL);
                 while(resultadoSQL.Read())
                 {
@@ -189,16 +187,14 @@ namespace Capa4_Persistencia
                    
                 }
 
-                if (contrato == null)
-                {
-                    throw new Exception("No hay contratos vigentes ");
-                }
+                return contrato;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
-            return contrato;
+        
         }
 
 
@@ -208,8 +204,8 @@ namespace Capa4_Persistencia
             {
                 string consultaSQL = "update contrato set cancelado = @valor where contrato_id = '" + idContrato + "'";
 
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
+
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(consultaSQL);
                 comando.Parameters.AddWithValue("@valor", true);
                 comando.ExecuteNonQuery();
                 return true;
@@ -217,7 +213,8 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
            
         }

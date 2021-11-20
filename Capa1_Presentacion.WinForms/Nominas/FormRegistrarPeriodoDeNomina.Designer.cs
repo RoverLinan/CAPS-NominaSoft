@@ -118,7 +118,6 @@ namespace Capa1_Presentacion.WinForms.Nominas
             this.label8.Size = new System.Drawing.Size(380, 25);
             this.label8.TabIndex = 15;
             this.label8.Text = "REGISTRO DE PERIODO DE NOMINA";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // FormRegistrarPeriodoDeNomina
             // 

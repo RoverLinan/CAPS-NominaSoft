@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class GestorSQLServer
+    public class GestorSqlServer
     {
         private SqlConnection conexion;
         private SqlTransaction transaccion;
-        private static GestorSQLServer gestorSingleton;
+        private static GestorSqlServer gestorSingleton;
 
 
 
 
-        private GestorSQLServer()
+        private GestorSqlServer()
         {
 
         }
 
 
-        public static GestorSQLServer getInstance()
+        public static GestorSqlServer getInstance()
         {
             if(gestorSingleton == null)
             {
-                gestorSingleton =  new GestorSQLServer();
+                gestorSingleton =  new GestorSqlServer();
             }
             return gestorSingleton;
         }
@@ -44,7 +44,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error en la conexión con la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -57,7 +58,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al cerrar la conexión con la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
             
         }
@@ -71,7 +73,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al iniciar la transacción con la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -84,7 +87,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al terminar la transacción con la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -97,7 +101,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al cancelar la transacción con la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -114,7 +119,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al ejecutar consulta en la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -131,7 +137,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al ejecutar comando en la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -148,7 +155,8 @@ namespace Capa4_Persistencia
             }
             catch (Exception err)
             {
-                throw new Exception("Error al ejecutar comando en la Base de Datos.", err);
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 

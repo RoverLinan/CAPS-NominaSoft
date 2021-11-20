@@ -8,27 +8,23 @@ namespace Capa3_Dominio.Entidades
 {
     public class PeriodoDeNomina
     {
-        private String periodo_id;
-        private String descripcion;
-        private DateTime fechainicio;
-        private DateTime fechafin;
+        public String Periodo_id { get; set; }
+        public String Descripcion { get; set; }
+        public DateTime Fechainicio { get; set; }
+        public DateTime Fechafin { get; set; }
 
-        List<IncidenciaLaboral> incidenciasLaborales;
-        List<Nomina> listaNominas;
+   
 
-        public string Periodo_id { get => periodo_id; set => periodo_id = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-        public DateTime Fechainicio { get => fechainicio; set => fechainicio = value; }
-        public DateTime Fechafin { get => fechafin; set => fechafin = value; }
+    
 
 
         //implementacion para cumplir con la REGLA 7
         public int CalcularTotalSemanas()
         {
             
-            if (fechafin.CompareTo(fechainicio) == 1)
+            if (Fechafin.CompareTo(Fechainicio) == 1)
             {
-                TimeSpan diffechas = fechafin - fechainicio;
+                TimeSpan diffechas = Fechafin - Fechainicio;
                 int dias = diffechas.Days;
                 return dias / 7;
 
@@ -39,7 +35,7 @@ namespace Capa3_Dominio.Entidades
         //REGLA -16
         public bool tieneFechaFinValida()
         {
-            TimeSpan diffechas = fechafin - fechainicio;
+            TimeSpan diffechas = Fechafin - Fechainicio;
             Console.WriteLine("diferencia de dias: " + diffechas.Days);
             if(diffechas.Days > 15 && diffechas.Days < 30)
             {

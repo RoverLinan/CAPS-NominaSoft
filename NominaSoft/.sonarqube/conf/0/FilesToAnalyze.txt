@@ -1,0 +1,8 @@
+﻿C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Afp.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\BoletaDePago.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Contrato.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Empleado.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\IncidenciaLaboral.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\Nomina.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Entidades\PeriodoDeNomina.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\Properties\AssemblyInfo.cs

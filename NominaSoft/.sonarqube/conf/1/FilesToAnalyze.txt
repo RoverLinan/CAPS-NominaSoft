@@ -1,0 +1,9 @@
+﻿C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\AfpSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\BoletaDePagoSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\ContratoSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\EmpleadoSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\GestorSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\IncidenciaLaboralSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\NominaSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\PeriodoDeNominaSqlServer.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa4_Persistencia\Properties\AssemblyInfo.cs

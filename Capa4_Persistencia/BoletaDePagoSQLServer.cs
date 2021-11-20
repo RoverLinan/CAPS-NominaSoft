@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Capa4_Persistencia
 {
-    public class BoletaDePagoSQLServer
+    public class BoletaDePagoSqlServer
     {
-        private GestorSQLServer gestorSQL;
+        private readonly GestorSqlServer  gestorSQL;
 
 
-        public BoletaDePagoSQLServer()
+        public BoletaDePagoSqlServer()
         {
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
 
@@ -29,21 +29,21 @@ namespace Capa4_Persistencia
 
             try
             {
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(insertarBoleta);
+               
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(insertarBoleta);
                 comando.Parameters.AddWithValue("@1", boleta.Boleta_id);
                 comando.Parameters.AddWithValue("@2", boleta.Contrato.Contrato_id);
                 comando.Parameters.AddWithValue("@3", boleta.Nomina.Nomina_id);
                 comando.Parameters.AddWithValue("@4", boleta.Sueldobasico);
                 comando.Parameters.AddWithValue("@5", boleta.Asignacionfamiliar);
                 comando.Parameters.AddWithValue("@6", boleta.Montoporhoraextras);
-                comando.Parameters.AddWithValue("@7", boleta.Reintegros = 0);
-                comando.Parameters.AddWithValue("@8", boleta.Movilidad = 0);
-                comando.Parameters.AddWithValue("@9", boleta.Otrosingresos = 0);
+                comando.Parameters.AddWithValue("@7", boleta.Reintegros);
+                comando.Parameters.AddWithValue("@8", boleta.Movilidad);
+                comando.Parameters.AddWithValue("@9", boleta.Otrosingresos);
                 comando.Parameters.AddWithValue("@10", boleta.Regimenpensionario);
                 comando.Parameters.AddWithValue("@11", boleta.Montoporhorasdefalta);
-                comando.Parameters.AddWithValue("@12", boleta.Adelantos = 0);
-                comando.Parameters.AddWithValue("@13", boleta.Otrosdescuentos = 0);
+                comando.Parameters.AddWithValue("@12", boleta.Adelantos);
+                comando.Parameters.AddWithValue("@13", boleta.Otrosdescuentos);
                 comando.ExecuteNonQuery();
                 return true;
 
@@ -51,7 +51,8 @@ namespace Capa4_Persistencia
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -73,15 +74,13 @@ namespace Capa4_Persistencia
                     listaBoletas.Add(boletaDePago);
                 }
 
-                if (listaBoletas.Count == 0)
-                {
-                    throw new Exception("No hay boletas generadas para esta nomina");
-                }
+           
                 return listaBoletas;
             }
             catch (Exception err)
             {
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -93,14 +92,15 @@ namespace Capa4_Persistencia
             try
             {
                 string eliminarSql = "DELETE FROM boletadepago  where nomina_id = '" + id + "'";
-                SqlCommand comando = new SqlCommand();
-                comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
+                
+                SqlCommand comando = gestorSQL.ObtenerComandoSQL(eliminarSql);
                 comando.ExecuteNonQuery();
             }
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
 

@@ -12,7 +12,7 @@ C:\coding\UPN\calidad\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.dll
 C:\coding\UPN\calidad\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.pdb
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\bin\Debug\Capa3_Dominio.dll
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\bin\Debug\Capa3_Dominio.pdb
-C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.csproj.AssemblyReference.cache
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.dll
 C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.pdb
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\Capa3_Dominio\obj\Debug\Capa3_Dominio.csproj.AssemblyReference.cache

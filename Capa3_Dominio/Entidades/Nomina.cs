@@ -8,29 +8,23 @@ namespace Capa3_Dominio.Entidades
 {
     public class Nomina
     {
-        private String nomina_id;
-        private DateTime fecha;
-        private String descripcion;
-        private bool cerrada;
+        public  String Nomina_id { get; set; }
+        public DateTime Fecha { get; set; }
+        public String Descripcion { get; set; }
+        public bool Cerrada { get; set; }
 
-        private PeriodoDeNomina periodo;
-        private List<BoletaDePago> boletaDePagos = new List<BoletaDePago>();
+        public PeriodoDeNomina Periodo { get; set; }
+        public List<BoletaDePago> BoletaDePagos { get; set; }
         
 
-        public string Nomina_id { get => nomina_id; set => nomina_id = value; }
-        public DateTime Fecha { get => fecha; set => fecha = value; }
-        public string Descripcion { get => descripcion; set => descripcion = value; }
-        public bool Cerrada { get => cerrada; set => cerrada = value; }
-        public PeriodoDeNomina Periodo { get => periodo; set => periodo = value; }
-        public List<BoletaDePago> BoletaDePagos { get => boletaDePagos; set => boletaDePagos = value; }
 
         //REGLA-06
 
         public bool ValidarFechaContratos()
         {
-            foreach (BoletaDePago item in boletaDePagos)
+            foreach (BoletaDePago item in BoletaDePagos)
             {
-                if(item.Contrato.Fechafin.CompareTo(periodo.Fechainicio) == 1 && item.Contrato.Cancelado == false)
+                if(item.Contrato.Fechafin.CompareTo(Periodo.Fechainicio) == 1 && !item.Contrato.Cancelado)
                 {
                     return true;
                 }
@@ -41,8 +35,8 @@ namespace Capa3_Dominio.Entidades
         //REGLA-06
         public bool ValidarFechaFinPeriodo()
         {
-            Console.WriteLine(periodo.Fechafin.ToString() + "  -----  " + this.fecha.ToString());
-            if (periodo.Fechafin.CompareTo(this.fecha) == -1)
+            Console.WriteLine(Periodo.Fechafin.ToString() + "  -----  " + this.Fecha.ToString());
+            if (Periodo.Fechafin.CompareTo(this.Fecha) == -1)
             {
                 
                 return true;
@@ -63,7 +57,7 @@ namespace Capa3_Dominio.Entidades
         //REGLA-16
         public bool ValidarRestaFechaFinPeriodo()
         {
-            var timeSpan = periodo.Fechafin - periodo.Fechainicio;
+            var timeSpan = Periodo.Fechafin - Periodo.Fechainicio;
             if (timeSpan.TotalDays > 15 && timeSpan.TotalDays < 30)
             {
                 return true;
@@ -77,7 +71,7 @@ namespace Capa3_Dominio.Entidades
         public bool esValidoFechaGeneracionNomina()
         {
 
-            if(fecha.CompareTo(Periodo.Fechafin) == 1)
+            if(Fecha.CompareTo(Periodo.Fechafin) == 1)
             {
                 return true;
             }
@@ -90,7 +84,7 @@ namespace Capa3_Dominio.Entidades
 
         public bool TienePagosEmpleados()
         {
-            if(boletaDePagos.Count > 0)
+            if(BoletaDePagos.Count > 0)
             {
                 return true;
             }
@@ -103,7 +97,7 @@ namespace Capa3_Dominio.Entidades
         {
             double total = 0;   
 
-            foreach (BoletaDePago boleta in boletaDePagos)
+            foreach (BoletaDePago boleta in BoletaDePagos)
             {
                 total += boleta.CalcularTotalIngresos();
             }
@@ -117,7 +111,7 @@ namespace Capa3_Dominio.Entidades
         {
             double total = 0;
 
-            foreach (BoletaDePago boleta in boletaDePagos)
+            foreach (BoletaDePago boleta in BoletaDePagos)
             {
                 total += boleta.CalcularTotalRetenciones();
             }
@@ -131,13 +125,46 @@ namespace Capa3_Dominio.Entidades
         {
             double total = 0;
 
-            foreach (BoletaDePago boleta in boletaDePagos)
+            foreach (BoletaDePago boleta in BoletaDePagos)
             {
                 total += boleta.CalcularNetoAPagar();
             }
 
             return total;
 
+        }
+
+
+        public bool ValidarNomina(out string mensaje)
+        {
+            bool cumple = true;
+            mensaje = "Se incumplen las sguientes reglas: \n";
+
+            if (!TienePagosEmpleados())
+            {
+
+             
+                mensaje += "* No se puede guardar la Nómina porque se incumple la regla para guardar la Nómina\n";
+                cumple = false;
+
+            }
+
+            if (!EsFactibleGenerarNomina())
+            {
+
+             
+                mensaje += "* No es factible generar la nomina por error en la fecha de periodos\n";
+                cumple = false;
+            }
+
+            if (!esValidoFechaGeneracionNomina())
+            {
+        
+                mensaje += "* La fecha de  generacion de la nomina es menor que la fecha del periodo";
+                cumple = false;
+            }
+
+            return cumple;
         }
 
 

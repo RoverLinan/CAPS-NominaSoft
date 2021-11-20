@@ -51,9 +51,9 @@
   <ItemGroup>
     <Compile Include="Capa_Dominio\UnitTestBoletaDePago.cs" />
     <Compile Include="Capa_Dominio\UnitTestContrato.cs" />
-    <Compile Include="Capa_Dominio\UnitTestIncidenciaLaboral.cs" />
     <Compile Include="Capa_Dominio\UnitTestNomina.cs" />
     <Compile Include="Capa_Dominio\UnitTestPeriodoDeNomina.cs" />
+    <Compile Include="Capa_Persistencia\UnitTestContrato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +63,10 @@
     <ProjectReference Include="..\..\Capa3_Dominio\Capa3_Dominio.csproj">
       <Project>{09dbef37-9295-4f07-982a-a6377ce4f990}</Project>
       <Name>Capa3_Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Capa4_Persistencia\Capa4_Persistencia.csproj">
+      <Project>{7654d614-3cc8-47d6-bdd5-8c9b7d822625}</Project>
+      <Name>Capa4_Persistencia</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

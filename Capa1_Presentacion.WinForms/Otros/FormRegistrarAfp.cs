@@ -15,7 +15,7 @@ namespace Capa1_Presentacion.WinForms.Otros
     public partial class FormRegistrarAfp : Form
     {
 
-        private GestionarAfpServicio afpServicio;
+        private readonly GestionarAfpServicio afpServicio;
 
         public FormRegistrarAfp()
         {

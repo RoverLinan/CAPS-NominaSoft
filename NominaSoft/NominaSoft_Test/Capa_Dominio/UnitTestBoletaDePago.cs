@@ -31,8 +31,8 @@ namespace NominaSoft_Test.Capa_Dominio
             boletadePago.Contrato = contrato;
             boletadePago.Nomina = nomina;
             double esperado = 200;
-            double obtenido = boletadePago.CalcularSueldoBasico();
-            Assert.AreEqual(esperado, obtenido);
+            boletadePago.CalcularSueldoBasico();
+            Assert.AreEqual(esperado, boletadePago.Sueldobasico);
         }
 
 
@@ -54,8 +54,10 @@ namespace NominaSoft_Test.Capa_Dominio
             BoletaDePago boletadePago = new BoletaDePago();
             boletadePago.Contrato = contrato;
             boletadePago.Nomina = nomina;
+            boletadePago.Sueldobasico = 200;
             double esperado = 20;
-            double resultado = boletadePago.CalcularMontoAsignacionFamiliar();
+            boletadePago.CalcularMontoAsignacionFamiliar();
+            double resultado = boletadePago.Asignacionfamiliar;
             Assert.AreEqual(esperado, resultado);
         }
 
@@ -82,14 +84,15 @@ namespace NominaSoft_Test.Capa_Dominio
         {
             Contrato contrato = new Contrato();
             Afp afp = new Afp();
-            afp.Porcentajedescuento = 0.1;
+            afp.Porcentajedescuento = 10;
             afp.Nombre = "Habitad";
             BoletaDePago boletadePago = new BoletaDePago();
             boletadePago.Sueldobasico = 930;
             boletadePago.Contrato = contrato;
             contrato.Afp = afp;
             double esperado = 93;
-            double obtenido = boletadePago.CalcularRegimenPensionario();
+            boletadePago.CalcularRegimenPensionario();
+            double obtenido = boletadePago.Regimenpensionario;
             Assert.AreEqual(esperado, obtenido);
         }
 
@@ -97,16 +100,40 @@ namespace NominaSoft_Test.Capa_Dominio
         [TestMethod]
         public void Test_Regla13()
         {
-            Contrato contrato = new Contrato();
-            contrato.Pagoporhora = 10;
-            contrato.Incidencias = new List<IncidenciaLaboral>();
+            PeriodoDeNomina periodoDeNomina = new PeriodoDeNomina();
+            periodoDeNomina.Periodo_id = "PNOM123";
+            periodoDeNomina.Fechainicio = new DateTime(2021, 10, 4);
+            periodoDeNomina.Fechafin = new DateTime(2021, 11, 4);
+
+
+            Contrato contrato = new Contrato
+            {
+                Pagoporhora = 10,
+                Incidencias = new List<IncidenciaLaboral>()
+            };
+
+            Nomina nomina = new Nomina
+            {
+                Periodo = periodoDeNomina,
+
+            };
+
+
+
             IncidenciaLaboral incidenciaLaboral = new IncidenciaLaboral();
+            incidenciaLaboral.Periodo = periodoDeNomina;
             incidenciaLaboral.Totalhorasdefalta = 10;
+
             contrato.Incidencias.Add(incidenciaLaboral);
+
             BoletaDePago boletadePago = new BoletaDePago();
             boletadePago.Contrato = contrato;
+            boletadePago.Nomina = nomina;
+        
+
             double esperado = 100;
-            double obtenido = boletadePago.CalcularMontoHorasFalta();
+            boletadePago.CalcularMontoHorasFalta();
+            double obtenido = boletadePago.Montoporhorasdefalta;
             Assert.AreEqual(esperado, obtenido);
         }
 

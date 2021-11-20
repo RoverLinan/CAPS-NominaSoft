@@ -8,36 +8,24 @@ namespace Capa3_Dominio.Entidades
 {
     public class BoletaDePago
     {
-        private String boleta_id;
-        private double sueldobasico;
-        private double asignacionfamiliar;
-        private double montoporhoraextras;
-        private double reintegros;
-        private double movilidad;
-        private double otrosingresos;
-        private double regimenpensionario;
-        private double montoporhorasdefalta;
-        private double adelantos;
-        private double otrosdescuentos;
+        public String Boleta_id { get; set; }
+        public double Sueldobasico { get; set; }
+        public double Asignacionfamiliar { get; set; }
+        public double Montoporhoraextras { get; set; }
+        public double Reintegros { get; set; }
+        public double Movilidad { get; set; }
+        public double Otrosingresos { get; set; }
+        public double Regimenpensionario { get; set; }
+        public double Montoporhorasdefalta { get; set; }
+        public double Adelantos { get; set; }
+        public double Otrosdescuentos { get; set; }
 
 
-        private Contrato contrato;
-        private Nomina nomina;
+        public Contrato Contrato { get; set; }
+        public Nomina Nomina { get; set; }
         
 
-        public string Boleta_id { get => boleta_id; set => boleta_id = value; }
-        public double Sueldobasico { get => sueldobasico; set => sueldobasico = value; }
-        public double Asignacionfamiliar { get => asignacionfamiliar; set => asignacionfamiliar = value; }
-        public double Montoporhoraextras { get => montoporhoraextras; set => montoporhoraextras = value; }
-        public double Reintegros { get => reintegros; set => reintegros = value; }
-        public double Movilidad { get => movilidad; set => movilidad = value; }
-        public double Otrosingresos { get => otrosingresos; set => otrosingresos = value; }
-        public double Regimenpensionario { get => regimenpensionario; set => regimenpensionario = value; }
-        public double Montoporhorasdefalta { get => montoporhorasdefalta; set => montoporhorasdefalta = value; }
-        public double Adelantos { get => adelantos; set => adelantos = value; }
-        public double Otrosdescuentos { get => otrosdescuentos; set => otrosdescuentos = value; }
-        public Contrato Contrato { get => contrato; set => contrato = value; }
-        public Nomina Nomina { get => nomina; set => nomina = value; }
+      
 
 
 
@@ -45,25 +33,28 @@ namespace Capa3_Dominio.Entidades
         //REGLA-7
         public int CalcularTotalHoras()
         {
-            return Nomina.Periodo.CalcularTotalSemanas() * contrato.Horasporsemana;
+            return Nomina.Periodo.CalcularTotalSemanas() * Contrato.Horasporsemana;
 
         }
 
         //REGLA-08
         public void CalcularSueldoBasico()
         {
-             this.sueldobasico = CalcularTotalHoras() * contrato.Pagoporhora;
+             this.Sueldobasico = CalcularTotalHoras() * Contrato.Pagoporhora;
         }
 
         //REGLA-09
         public void CalcularMontoAsignacionFamiliar()
         {
-            if (contrato.Tieneasignacionfamiliar)
+            if (Contrato.Tieneasignacionfamiliar)
             {
-                this.asignacionfamiliar = this.sueldobasico * 0.1;
+                this.Asignacionfamiliar = this.Sueldobasico * 0.1;
+            }
+            else {
+                this.Asignacionfamiliar = 0;
             }
 
-            this.asignacionfamiliar = 0;
+          
         }
 
 
@@ -71,7 +62,7 @@ namespace Capa3_Dominio.Entidades
         public void CalcularMontoPorHorasExtras()
         {
 
-             this.montoporhoraextras = this.contrato.CalcularMontoPorHorasExtras(nomina.Periodo.Periodo_id);
+             Montoporhoraextras = Contrato.CalcularMontoPorHorasExtras(Nomina.Periodo.Periodo_id);
         }
 
 
@@ -79,28 +70,28 @@ namespace Capa3_Dominio.Entidades
         public double CalcularTotalIngresos()
         {
 
-            return this.sueldobasico + asignacionfamiliar + montoporhoraextras+ Reintegros + Movilidad + Otrosingresos;
+            return Sueldobasico + Asignacionfamiliar + Montoporhoraextras+ Reintegros + Movilidad + Otrosingresos;
         }
 
         //REGLA-12
         public void CalcularRegimenPensionario()
         {
 
-            regimenpensionario = this.sueldobasico * (contrato.Afp.Porcentajedescuento/100);
+            Regimenpensionario = Sueldobasico * (Contrato.Afp.Porcentajedescuento/100);
         }
 
         //REGLA-13
         public void CalcularMontoHorasFalta()
         {
 
-            montoporhorasdefalta =  contrato.CalcularMontoHorasFalta(nomina.Periodo.Periodo_id);
+            Montoporhorasdefalta =  Contrato.CalcularMontoHorasFalta(Nomina.Periodo.Periodo_id);
         }
 
         //REGLA-14
         public double CalcularTotalRetenciones()
         {
 
-            return Regimenpensionario + montoporhorasdefalta + Adelantos + Otrosdescuentos;
+            return Regimenpensionario + Montoporhorasdefalta + Adelantos + Otrosdescuentos;
         }
 		
 		//REGLA-15

@@ -10,21 +10,21 @@ namespace Capa2_Aplicacion.Servicios
 {
     public class GestionarContratoServicio
     {
-        private ContratoSQLServer contratoSQLServer;
-        private GestionarAfpServicio afpServicio;
-        private GestionarEmpleadoServicio empleadoServicio;
-        private GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
-        private GestorSQLServer gestorSQL;
+        private readonly ContratoSqlServer contratoSQLServer;
+        private readonly GestionarAfpServicio afpServicio;
+        private readonly GestionarEmpleadoServicio empleadoServicio;
+        private readonly GestionarIncidenciaLaboralServicio incidenciaLaboralServicio;
+        private readonly GestorSqlServer gestorSQL;
 
 
         public GestionarContratoServicio()
         {
-            contratoSQLServer = new ContratoSQLServer();
+            contratoSQLServer = new ContratoSqlServer();
             afpServicio = new GestionarAfpServicio();
             empleadoServicio =  new GestionarEmpleadoServicio();    
             incidenciaLaboralServicio = new GestionarIncidenciaLaboralServicio();
            
-            gestorSQL = GestorSQLServer.getInstance();
+            gestorSQL = GestorSqlServer.getInstance();
         }
 
 
@@ -40,7 +40,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
           
         }
@@ -49,47 +50,21 @@ namespace Capa2_Aplicacion.Servicios
 
 
 
-        public bool guardarContrato(Contrato contrato, Empleado empleado, Afp afp)
+        public void guardarContrato(Contrato contrato)
         {
-
-
-            
-
 
             try
             {
-
-
-                if (!contrato.ValidarFechaInicio())
-                {
-                    throw new Exception("fecha inicio incorrecta");
-                }
-
-                if (!contrato.ValidarFechaFin())
-                {
-                    throw new Exception("fecha fin incorrecta");
-                }
-
-                if (!contrato.ValidarPagoPorHora())
-                {
-                    throw new Exception("pago por hora incorrecta");
-                }
-                if (!contrato.ViladarHorasPorSemana())
-                {
-                    throw new Exception("horas por semana incorrecta");
-                }
-
-
-
+                
                 gestorSQL.AbrirConexion();
-                bool guardado = contratoSQLServer.guardar(contrato, empleado, afp);
+                contratoSQLServer.guardar(contrato);
                 gestorSQL.CerrarConexion();
-                return guardado;
+              
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine (err.ToString());
+                throw;
             }
            
         }
@@ -106,8 +81,8 @@ namespace Capa2_Aplicacion.Servicios
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine (err.ToString());
+                throw;
             }
 
         }
@@ -124,8 +99,8 @@ namespace Capa2_Aplicacion.Servicios
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
 
         }
@@ -147,16 +122,18 @@ namespace Capa2_Aplicacion.Servicios
                 {
                     item.Afp = afpServicio.buscarAfpPorId(item.Afp.Afp_id);
                     item.Empleado = empleadoServicio.buscarEmpleadoPorId(item.Empleado.Empleado_id);
-            
+                    
                     item.Incidencias = incidenciaLaboralServicio.obtenerListaPorIdContrato(item.Contrato_id);
+
+                   
                 }
               
                 return contratos;
             }
             catch (Exception err)
             {
-
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -166,29 +143,6 @@ namespace Capa2_Aplicacion.Servicios
 
             try
             {
-
-
-                if (!contrato.ValidarFechaInicio())
-                {
-                    throw new Exception("fecha inicio incorrecta");
-                }
-
-                if (!contrato.ValidarFechaFin())
-                {
-                    throw new Exception("fecha fin incorrecta");
-                }
-
-                if (!contrato.ValidarPagoPorHora())
-                {
-                    throw new Exception("pago por hora incorrecta");
-                }
-                if (!contrato.ViladarHorasPorSemana())
-                {
-                    throw new Exception("horas por semana incorrecta");
-                }
-
-
-
                 gestorSQL.AbrirConexion();
                 bool guardado = contratoSQLServer.actualizar(contrato);
                 gestorSQL.CerrarConexion();
@@ -197,7 +151,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 
@@ -214,7 +169,8 @@ namespace Capa2_Aplicacion.Servicios
             catch (Exception err)
             {
 
-                throw err;
+                Console.WriteLine(err.ToString());
+                throw;
             }
         }
 

@@ -1,0 +1,13 @@
+﻿C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Capa_Dominio\UnitTestBoletaDePago.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Capa_Dominio\UnitTestContrato.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Capa_Dominio\UnitTestNomina.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Capa_Dominio\UnitTestPeriodoDeNomina.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Capa_Persistencia\UnitTestContrato.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\Properties\AssemblyInfo.cs
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\packages\MSTest.TestAdapter.2.1.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Rover\OneDrive\Documentos\GitHub\CAPS-NominaSoft\NominaSoft\NominaSoft_Test\packages.config

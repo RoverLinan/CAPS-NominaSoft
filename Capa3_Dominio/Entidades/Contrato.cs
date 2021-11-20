@@ -8,31 +8,21 @@ namespace Capa3_Dominio.Entidades
 {
     public class Contrato
     {
-        private String contrato_id;
-        private DateTime fechainicio;
-        private DateTime fechafin;
-        private bool tieneasignacionfamiliar;
-        private int horasporsemana;
-        private double pagoporhora;
-        private String puesto;
-        private bool cancelado;
+        public String Contrato_id { get; set; }
+        public DateTime Fechainicio { get; set; }
+        public DateTime Fechafin { get; set; }
+        public bool Tieneasignacionfamiliar { get; set; }
+        public int Horasporsemana { get; set; }
+        public double Pagoporhora { get; set; }
+        public String Puesto { get; set; }
+        public bool Cancelado { get; set; }
 
-        private Afp afp;
-        private Empleado empleado;
-        private List<IncidenciaLaboral> incidencias;
+        public Afp Afp { get; set; }
+        public Empleado Empleado { get; set; }
+        public List<IncidenciaLaboral> Incidencias { get; set; }
 
 
-        public string Contrato_id { get => contrato_id; set => contrato_id = value; }
-        public DateTime Fechainicio { get => fechainicio; set => fechainicio = value; }
-        public DateTime Fechafin { get => fechafin; set => fechafin = value; }
-        public bool Tieneasignacionfamiliar { get => tieneasignacionfamiliar; set => tieneasignacionfamiliar = value; }
-        public int Horasporsemana { get => horasporsemana; set => horasporsemana = value; }
-        public double Pagoporhora { get => pagoporhora; set => pagoporhora = value; }
-        public string Puesto { get => puesto; set => puesto = value; }
-        public bool Cancelado { get => cancelado; set => cancelado = value; }
-        public Afp Afp { get => afp; set => afp = value; }
-        public Empleado Empleado { get => empleado; set => empleado = value; }
-        public List<IncidenciaLaboral> Incidencias { get => incidencias; set => incidencias = value; }
+      
 
 
         //REGLA-01
@@ -44,7 +34,7 @@ namespace Capa3_Dominio.Entidades
 
             DateTime fechaActual = DateTime.Parse(DateTime.Now.ToShortDateString());
 
-            if ((fechafin.CompareTo(fechaActual) == 0 || fechafin.CompareTo(fechaActual)==1) && cancelado == false)
+            if ((Fechafin.CompareTo(fechaActual) == 0 || Fechafin.CompareTo(fechaActual)==1) && !Cancelado)
             {
                 estado = true;
             }
@@ -63,7 +53,7 @@ namespace Capa3_Dominio.Entidades
          
             DateTime fechaActual = DateTime.Parse(DateTime.Now.ToShortDateString());
 
-            if (fechainicio.CompareTo(fechaActual) == 0 || fechainicio.CompareTo(fechaActual) == 1)
+            if (Fechainicio.CompareTo(fechaActual) == 0 || Fechainicio.CompareTo(fechaActual) == 1)
             {
                 estado = true;
             }
@@ -74,16 +64,16 @@ namespace Capa3_Dominio.Entidades
         public bool ValidarFechaFin()
         {
             bool estado = false;
-
-            if(fechafin.CompareTo(fechainicio) == 1)
+            Console.WriteLine(Fechafin.ToShortDateString() + "  " + Fechainicio.ToShortDateString());
+            if(Fechafin.CompareTo(Fechainicio) == 1)
             {
-                if((fechafin.Year - fechainicio.Year == 0) && fechainicio.Month >= 3)
+                if((Fechafin.Year - Fechainicio.Year == 0) &&  (Fechafin.Month - Fechainicio.Month) >= 3)
                 {
                     estado = true;
                 }
-                if(fechafin.Year - fechainicio.Year == 1)
+                if(Fechafin.Year - Fechainicio.Year == 1)
                 {
-                    int cantidadmeses = (12 - fechainicio.Month) + fechafin.Month;
+                    int cantidadmeses = (12 - Fechainicio.Month) + Fechafin.Month;
                     if(cantidadmeses >=3  && cantidadmeses <= 12)
                     {
                         estado = true;
@@ -92,7 +82,7 @@ namespace Capa3_Dominio.Entidades
                 }
 
             }
-
+            Console.WriteLine(estado);
             return estado;
 
         }
@@ -102,12 +92,9 @@ namespace Capa3_Dominio.Entidades
 
         public bool ViladarHorasPorSemana()
         {
-            if(horasporsemana >= 8 && horasporsemana <= 40)
+            if((Horasporsemana >= 8 && Horasporsemana <= 40 ) && Horasporsemana % 4 == 0)
             {
-                if(horasporsemana % 4 == 0)
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
@@ -115,7 +102,7 @@ namespace Capa3_Dominio.Entidades
         //REGLA-05
         public bool ValidarPagoPorHora()
         {
-            if(pagoporhora >= 10 && pagoporhora <= 60)
+            if(Pagoporhora >= 10 && Pagoporhora <= 60)
             {
                 return true;
             }
@@ -128,7 +115,7 @@ namespace Capa3_Dominio.Entidades
         public double CalcularMontoPorHorasExtras(string periodo_id)
         {
             int totalHorasExtras = 0;
-            foreach (IncidenciaLaboral item in incidencias)
+            foreach (IncidenciaLaboral item in Incidencias)
             {
                 if (item.Periodo.Periodo_id.Equals(periodo_id))
                 {
@@ -137,16 +124,16 @@ namespace Capa3_Dominio.Entidades
                
             }
 
-            return totalHorasExtras * pagoporhora;
+            return totalHorasExtras * Pagoporhora;
         }
 
         //REGLA-13
         public double CalcularHorasFalta(string periodo_id)
         {
             double totalHorasFalta = 0;
-            if (incidencias.Count() > 0)
+            if (Incidencias.Count > 0)
             {
-                foreach (IncidenciaLaboral incidenciaLaboral in incidencias)
+                foreach (IncidenciaLaboral incidenciaLaboral in Incidencias)
                 {
                     if (incidenciaLaboral.Periodo.Periodo_id.Equals(periodo_id))
                     {
@@ -165,6 +152,44 @@ namespace Capa3_Dominio.Entidades
             return CalcularHorasFalta(periodo_id) * Pagoporhora;
         }
 
+
+
+
+
+        public bool ValidarContrato(out String mensaje)
+        {
+            mensaje = "Se incumplen las sguientes reglas: \n";
+            bool cumple = true;
+            if (!ValidarFechaInicio())
+            {
+                
+                mensaje += "* fecha inicio incorrecta \n";
+                cumple = false;
+            }
+
+            if (!ValidarFechaFin())
+            {
+                
+                mensaje += "* fecha fin incorrecta\n";
+                cumple = false;
+            }
+
+            if (!ValidarPagoPorHora())
+            {
+              
+                mensaje += "* pago por hora incorrecta\n";
+                cumple = false;
+            }
+            if (!ViladarHorasPorSemana())
+            {
+                
+                mensaje += "* horas por semana incorrecta";
+                cumple = false;
+            }
+
+            return cumple;
+
+        }
 
     }
 }
