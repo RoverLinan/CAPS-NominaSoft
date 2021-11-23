@@ -37,6 +37,7 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaNominas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,12 +116,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Lista de resultados";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(79, 100);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(385, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "*Nota:  Si no ingresa una descripción, entonces se mostraran todas las nóminas.";
+            // 
             // FormBuscarNomina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(722, 504);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridViewListaNominas);
             this.Controls.Add(this.label2);
@@ -146,5 +157,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idNomina;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -187,6 +187,12 @@ namespace Capa3_Dominio.Entidades
                 cumple = false;
             }
 
+            if(Afp == null)
+            {
+                mensaje += "* Porfavor seleccione una AFP";
+                cumple = false;
+            }
+
             return cumple;
 
         }

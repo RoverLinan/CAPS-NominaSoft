@@ -108,8 +108,19 @@ namespace Capa1_Presentacion.WinForms.Contratos
                     buttonGuardarContrato.Visible = false;
                     buttonGuardarContrato.Enabled = false;
                     buttonCancelarContrato.Enabled = true;
-                    
-                   
+
+
+                }
+                else
+                {
+                    MessageBox.Show(this, "Mensaje: No tiene contratos vigentes ");
+         
+                    buttonCrearContrato.Enabled = true;
+                    buttonEditarContrato.Enabled = false;
+                    buttonCancelarContrato.Enabled = false;
+                    panelInfoContrato.Visible = false;
+
+
                 }
                 
 
@@ -119,9 +130,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
 
                 MessageBox.Show(this, "Mensaje: " + err.Message);
 
-                buttonCrearContrato.Enabled = true;
-                buttonEditarContrato.Enabled = false;
-                panelInfoContrato.Visible = false;
+               
             }
          
             
@@ -181,7 +190,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
             try
             {
                 Contrato contratoAux = new Contrato();
-                contrato.Contrato_id = "CON" + GenerarNumeroAleatorio.ObtenerNumeroAleatorio();
+                contratoAux.Contrato_id = "CON" + GenerarNumeroAleatorio.ObtenerNumeroAleatorio();
                 contratoAux.Fechainicio = dateTimeInicio.Value;
                 contratoAux.Fechafin = dateTimeFin.Value;
                 contratoAux.Puesto = textBoxPuesto.Text;
@@ -463,6 +472,7 @@ namespace Capa1_Presentacion.WinForms.Contratos
                 mensaje += "* Porfavor ingrese un nombre de  puesto correcto";
             }
 
+          
            
             return validar;
 

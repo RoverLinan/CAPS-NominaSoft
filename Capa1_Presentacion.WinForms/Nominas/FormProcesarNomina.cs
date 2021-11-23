@@ -219,8 +219,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
         {
 
             
-                Nomina = new Nomina();
-                generarNomina();
+            Nomina = new Nomina();
+            buttonGuardar.Enabled = true;
+            generarNomina();
    
         }
 
@@ -298,7 +299,7 @@ namespace Capa1_Presentacion.WinForms.Nominas
 
                     if (listaContratosFiltrada.Count > 0)
                     {
-                        
+                       
                         Nomina.BoletaDePagos = CrearBoletas(listaContratosFiltrada);
                         Nomina.Periodo = buscarPeriodo();
                         //cuando se busque una nomina, se continuara desde este punto porque ya tenemos la nomina,periodo y boletas.
@@ -309,6 +310,9 @@ namespace Capa1_Presentacion.WinForms.Nominas
                     {
 
                         MessageBox.Show("No hay contratos con incidencias para este periodo");
+                        limpiarDatosNomina();
+                        Nomina = null;
+                        buttonGuardar.Enabled = false;
                     }
 
 

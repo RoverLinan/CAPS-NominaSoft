@@ -158,10 +158,27 @@ namespace Capa1_Presentacion.WinForms.Otros
                 if (esSoloDigitos(dni))
                 {
                     Empleado empleadoAux = empleadoServicio.buscarEmpleadoPorDni(dni);
-                    this.Empleado = empleadoAux;
-                    Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.Empleado.Dni);
-                    this.Contrato = contratoAux;
-                    cargarDatosContrato();
+                    if(empleadoAux != null)
+                    {
+                        this.Empleado = empleadoAux;
+                        Contrato contratoAux = contratoServicio.buscarContratoVigentePorIdEmpleado("EMP" + this.Empleado.Dni);
+                     
+                        if(contratoAux != null)
+                        {
+                            this.Contrato = contratoAux;
+                            cargarDatosContrato();
+                        }
+                        else
+                        {
+                            MessageBox.Show("no tiene contratos vigentes");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe el empleado");
+                    }
+                  
                 }
                 else
                 {
